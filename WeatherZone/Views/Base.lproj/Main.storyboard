@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wGC-0H-Ew9">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,9 +13,9 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherZone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -19,6 +23,78 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1981" y="809"/>
+        </scene>
+        <!--Weather View Controller-->
+        <scene sceneID="jZo-14-EyD">
+            <objects>
+                <viewController storyboardIdentifier="WeatherViewController" id="qxM-BA-J75" userLabel="Weather View Controller" customClass="WeatherViewController" customModule="WeatherZone" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kb4-cO-pO3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DvZ-G8-uuK">
+                                <rect key="frame" x="107" y="137" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="DbP-uM-2WR"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfi-pv-cLa">
+                                <rect key="frame" x="161" y="424.5" width="92" height="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="39"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBk-t5-ALw">
+                                <rect key="frame" x="176" y="627" width="62" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vfi-pv-cLa" firstAttribute="centerX" secondItem="kb4-cO-pO3" secondAttribute="centerX" id="6PY-DD-sbe"/>
+                            <constraint firstItem="vfi-pv-cLa" firstAttribute="centerY" secondItem="kb4-cO-pO3" secondAttribute="centerY" id="7Lw-ck-jwi"/>
+                            <constraint firstItem="I2B-qJ-ie3" firstAttribute="bottom" secondItem="pBk-t5-ALw" secondAttribute="bottom" constant="203" id="9uN-A6-wZI"/>
+                            <constraint firstItem="pBk-t5-ALw" firstAttribute="centerX" secondItem="kb4-cO-pO3" secondAttribute="centerX" id="Zko-zL-6N8"/>
+                            <constraint firstItem="DvZ-G8-uuK" firstAttribute="top" secondItem="I2B-qJ-ie3" secondAttribute="top" constant="49" id="iNF-nm-SU0"/>
+                            <constraint firstItem="DvZ-G8-uuK" firstAttribute="centerX" secondItem="kb4-cO-pO3" secondAttribute="centerX" id="rp8-yT-Uar"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="I2B-qJ-ie3"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Good Weather" id="EZq-Is-8qU"/>
+                    <connections>
+                        <outlet property="cityNameTextField" destination="DvZ-G8-uuK" id="rot-ve-2t7"/>
+                        <outlet property="humidityLabel" destination="pBk-t5-ALw" id="dC9-c2-Bpe"/>
+                        <outlet property="temperatureLabel" destination="vfi-pv-cLa" id="wha-F4-LxU"/>
+                        <segue destination="BYZ-38-t0r" kind="show" id="Wwb-aO-ngN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kgk-l1-0wy" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="808.92857142857144"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iif-lq-kjs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wGC-0H-Ew9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2NX-EV-CiV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qxM-BA-J75" kind="relationship" relationship="rootViewController" id="AXJ-bM-GIQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="07N-GT-965" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="808.92857142857144"/>
         </scene>
     </scenes>
 </document>
