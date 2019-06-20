@@ -1,0 +1,65 @@
+[
+    {
+        "id": 2147714,
+        "name": "Sydney",
+        "country": "AU",
+        "coord": {
+            "lon": 151.207321,
+            "lat": -33.867851
+        }
+    },
+    {
+        "id": 4163971,
+        "name": "Melbourne",
+        "country": "AU",
+        "coord": {
+            "lon": -80.608109,
+            "lat": 28.08363
+        }
+    },
+    {
+        "id": 1023656,
+        "name": "Adelaide",
+        "country": "ZA",
+        "coord": {
+            "lon": 26.295641,
+            "lat": -32.70747
+        }
+    },
+    {
+        "id": 7839562,
+        "name": "Brisbane",
+        "country": "AU",
+        "coord": {
+            "lon": 153.029938,
+            "lat": -27.44573
+        }
+    },
+    {
+        "id": 2063523,
+        "name": "Perth",
+        "country": "AU",
+        "coord": {
+            "lon": 115.833328,
+            "lat": -31.933331
+        }
+    },
+    {
+        "id": 2165087,
+        "name": "Gold Coast",
+        "country": "AU",
+        "coord": {
+            "lon": 153.433334,
+            "lat": -28
+        }
+    },
+    {
+        "id": 2147291,
+        "name": "State of Tasmania",
+        "country": "AU",
+        "coord": {
+            "lon": 147,
+            "lat": -42
+        }
+    },
+]
