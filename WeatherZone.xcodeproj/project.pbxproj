@@ -9,8 +9,11 @@
 /* Begin PBXBuildFile section */
 		5548074C362E214FE28FD746 /* Pods_WeatherZoneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB6E22FF08840B9FB3FA1F6 /* Pods_WeatherZoneUITests.framework */; };
 		7A31FC0B48F0C575610E2767 /* Pods_WeatherZone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14CA0EFAF321610C4773EB5B /* Pods_WeatherZone.framework */; };
+		AF1BD0FC22B7891800088403 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1BD0FB22B7891800088403 /* WeatherViewModel.swift */; };
+		AF1BD0FE22B7894100088403 /* WeatherViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1BD0FD22B7894100088403 /* WeatherViewModelProtocol.swift */; };
+		AFBF708122BB0EF200629344 /* GetWeatherHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF708022BB0EF200629344 /* GetWeatherHandler.swift */; };
+		AFBF708322BB0F5A00629344 /* GetWeatherHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF708222BB0F5A00629344 /* GetWeatherHandlerProtocol.swift */; };
 		AFC972A522AE89D9006BE3DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC972A422AE89D9006BE3DB /* AppDelegate.swift */; };
-		AFC972A722AE89D9006BE3DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC972A622AE89D9006BE3DB /* ViewController.swift */; };
 		AFC972AA22AE89D9006BE3DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC972A822AE89D9006BE3DB /* Main.storyboard */; };
 		AFC972AD22AE89D9006BE3DB /* WeatherZone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AFC972AB22AE89D9006BE3DB /* WeatherZone.xcdatamodeld */; };
 		AFC972AF22AE89DB006BE3DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFC972AE22AE89DB006BE3DB /* Assets.xcassets */; };
@@ -51,9 +54,12 @@
 		2B5EE54B726D1A169D6C625C /* Pods-WeatherZoneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherZoneTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherZoneTests/Pods-WeatherZoneTests.release.xcconfig"; sourceTree = "<group>"; };
 		68C4299119E8299F2F319819 /* Pods-WeatherZoneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherZoneUITests.release.xcconfig"; path = "Target Support Files/Pods-WeatherZoneUITests/Pods-WeatherZoneUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9FD1186FA8C3FE66124549B6 /* Pods-WeatherZone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherZone.release.xcconfig"; path = "Target Support Files/Pods-WeatherZone/Pods-WeatherZone.release.xcconfig"; sourceTree = "<group>"; };
+		AF1BD0FB22B7891800088403 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		AF1BD0FD22B7894100088403 /* WeatherViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModelProtocol.swift; sourceTree = "<group>"; };
+		AFBF708022BB0EF200629344 /* GetWeatherHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeatherHandler.swift; sourceTree = "<group>"; };
+		AFBF708222BB0F5A00629344 /* GetWeatherHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeatherHandlerProtocol.swift; sourceTree = "<group>"; };
 		AFC972A122AE89D9006BE3DB /* WeatherZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC972A422AE89D9006BE3DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AFC972A622AE89D9006BE3DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AFC972A922AE89D9006BE3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AFC972AC22AE89D9006BE3DB /* WeatherZone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherZone.xcdatamodel; sourceTree = "<group>"; };
 		AFC972AE22AE89DB006BE3DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,6 +134,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AF1BD0FA22B788FF00088403 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AF1BD0FD22B7894100088403 /* WeatherViewModelProtocol.swift */,
+				AF1BD0FB22B7891800088403 /* WeatherViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AFBF707F22BB0EB700629344 /* APIHandler */ = {
+			isa = PBXGroup;
+			children = (
+				AFBF708022BB0EF200629344 /* GetWeatherHandler.swift */,
+				AFBF708222BB0F5A00629344 /* GetWeatherHandlerProtocol.swift */,
+			);
+			path = APIHandler;
+			sourceTree = "<group>";
+		};
 		AFC9729822AE89D9006BE3DB = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +179,8 @@
 		AFC972A322AE89D9006BE3DB /* WeatherZone */ = {
 			isa = PBXGroup;
 			children = (
+				AFBF707F22BB0EB700629344 /* APIHandler */,
+				AF1BD0FA22B788FF00088403 /* ViewModel */,
 				AFC972DC22AE900B006BE3DB /* Extensions */,
 				AFC972DB22AE8FF7006BE3DB /* Models */,
 				AFC972DD22AE9013006BE3DB /* Views */,
@@ -207,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				AFC972E722AE9461006BE3DB /* WeatherViewController.swift */,
-				AFC972A622AE89D9006BE3DB /* ViewController.swift */,
 				AFC972A822AE89D9006BE3DB /* Main.storyboard */,
 			);
 			path = Views;
@@ -436,8 +461,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFC972A722AE89D9006BE3DB /* ViewController.swift in Sources */,
+				AF1BD0FE22B7894100088403 /* WeatherViewModelProtocol.swift in Sources */,
+				AFBF708322BB0F5A00629344 /* GetWeatherHandlerProtocol.swift in Sources */,
+				AF1BD0FC22B7891800088403 /* WeatherViewModel.swift in Sources */,
 				AFC972E522AE90E0006BE3DB /* URL+Extensions.swift in Sources */,
+				AFBF708122BB0EF200629344 /* GetWeatherHandler.swift in Sources */,
 				AFC972DF22AE903F006BE3DB /* WeatherResult.swift in Sources */,
 				AFC972A522AE89D9006BE3DB /* AppDelegate.swift in Sources */,
 				AFC972E322AE90CA006BE3DB /* URLRequest+Extensions.swift in Sources */,
