@@ -1,4 +1,9 @@
-# WeatherZone
+<p align="center">
+<img src="WeatherZone/Resources/app_icon.png" alt="WeatherZone for iOS" height="128" width="128">
+</p>
+
+<h1 align="center">WeatherZone - Open Source Weather</h1>
+
 ## Requirements:
 * iOS 11.0+
 * Xcode 10.2.1
