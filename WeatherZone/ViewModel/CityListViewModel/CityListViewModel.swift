@@ -12,24 +12,35 @@ import RxCocoa
 
 class CityListViewModel: CityListViewModelProtocol {
     private let cityListHandler: CityListHandlerProtocol
+    private let getWeatherHandler: GetWeatherHandlerProtocol
+
     private let disposeBag = DisposeBag()
-    var cityList: Observable<[CityListModel]>
-    
-    private let cityListSubject = PublishSubject<[CityListModel]>()
-    
-    init(withCityList cityListHandler: CityListHandlerProtocol = CityListHandler()) {
+    var weatherList: Observable<[WeatherResult]>
+    private let weatherListSubject = PublishSubject<[WeatherResult]>()
+
+    init(withCityList cityListHandler: CityListHandlerProtocol = CityListHandler(), withGetWeather getWeatherHandler: GetWeatherHandlerProtocol = GetWeatherHandler()) {
         self.cityListHandler = cityListHandler
-        self.cityList = cityListSubject.asObserver()
+        self.getWeatherHandler = getWeatherHandler
+        self.weatherList = weatherListSubject.asObservable()
     }
     
-    func getCityInfo() {
+    func getWeatherInfo() {
         self.cityListHandler
-        .getCityInfo(withFilename: "StartCity")
-            .subscribe(onNext: { [weak self] result in
-                self?.cityListSubject.on(.next(result))
-                }, onError: { error in
-                    print("VM error :", error)
-            })
-        .disposed(by: disposeBag)
+            .getCityInfo(withFilename: "StartCity")
+            .flatMap { [weak self] list -> Observable<CityWeatherModel> in
+                let arrayId = list.map { String($0.id!) }
+                let stringIds = arrayId.joined(separator: ",")
+                return self?.getWeatherHandler
+                    .getWeatherInfo(byCityIDs: stringIds)
+                    .catchError({ error -> Observable<CityWeatherModel> in
+                        return Observable<CityWeatherModel>.empty()
+                    }) ?? Observable<CityWeatherModel>.empty()
+            }.subscribe(onNext: { [weak self] response in
+                if let weatherInfo = response.list {
+                    self?.weatherListSubject.on(.next(weatherInfo))
+                }
+            }, onError: { error in
+                print("VM error :", error)
+            }).disposed(by: disposeBag)
     }
 }

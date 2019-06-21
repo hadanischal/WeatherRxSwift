@@ -17,7 +17,7 @@ class WeatherViewModel: WeatherViewModelProtocol {
     
     private let weatherListSubject = PublishSubject<Weather?>()
     
-    init(withGetNews getWeatherHandler: GetWeatherHandlerProtocol = GetWeatherHandler()) {
+    init(withGetWeather getWeatherHandler: GetWeatherHandlerProtocol = GetWeatherHandler()) {
         self.getWeatherHandler = getWeatherHandler
         self.weatherList = weatherListSubject.asObserver()
     }

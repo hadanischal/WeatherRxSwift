@@ -9,6 +9,6 @@
 import RxSwift
 
 protocol CityListViewModelProtocol {
-    var cityList: Observable<[CityListModel]> { get }
-    func getCityInfo()
+    var weatherList: Observable<[WeatherResult]> { get }
+    func getWeatherInfo()
 }

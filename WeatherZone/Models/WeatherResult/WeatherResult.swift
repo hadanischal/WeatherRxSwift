@@ -8,12 +8,13 @@
 
 import UIKit
 
-struct WeatherResult: Decodable {
-    let main: Weather
+struct WeatherResult: Codable {
+    let main: Weather?
+    var name: String?
 }
 
 extension WeatherResult {
     static var empty: WeatherResult {
-        return WeatherResult(main: Weather(temp: 0.0, humidity: 0.0))
+        return WeatherResult (main: Weather(temp: 0.0, humidity: 0.0), name: "")        
     }
 }
