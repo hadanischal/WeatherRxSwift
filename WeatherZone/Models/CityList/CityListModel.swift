@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct CityResult: Codable {
-    var list: [CityListModel]
-}
-
 struct CityListModel: Codable{
     let id: Int?
     let name: String?

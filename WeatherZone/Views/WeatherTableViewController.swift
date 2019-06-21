@@ -13,41 +13,56 @@ import RxCocoa
 class WeatherTableViewController: UITableViewController {
     private let disposeBag = DisposeBag()
     var viewModel: CityListViewModelProtocol = CityListViewModel()
-    private var cityList = [CityListModel]()
-
+    private var weatherList = [WeatherResult]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "City List"
-        self.viewModel.cityList
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        self.viewModel.weatherList
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { list in
-                self.cityList = list
-                self.tableView.reloadData()
+            .subscribe(onNext: { [weak self] list in
+                self?.weatherList = list
+                self?.tableView.reloadData()
             }, onError: { error in
                 print("error:\(error)")
             })
             .disposed(by: disposeBag)
-        self.viewModel.getCityInfo()
+        self.getWeatherInfo()
+        self.syncTask()
     }
-
+    
+    private func syncTask() {
+        let scheduler = SerialDispatchQueueScheduler(qos: .default)
+        Observable<Int>.interval(.seconds(20), scheduler: scheduler)
+            .subscribe { [weak self] event in
+                print(event)
+                self?.getWeatherInfo()
+            }.disposed(by: disposeBag)
+    }
+    
+    private func getWeatherInfo() {
+        self.viewModel.getWeatherInfo()
+    }
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cityList.count
+        return self.weatherList.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityListTableViewCell", for: indexPath) as? CityListTableViewCell else {
             fatalError("CityListTableViewCell does not exist")
         }
-        cell.model = self.cityList[indexPath.row]
+        cell.model = self.weatherList[indexPath.row]
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
     }

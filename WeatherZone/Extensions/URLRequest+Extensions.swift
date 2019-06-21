@@ -21,6 +21,7 @@ extension URLRequest {
         
         return Observable.just(resource.url)
             .flatMap { url -> Observable<(response: HTTPURLResponse, data: Data)> in
+                print("resource.url :", url)
                 let request = URLRequest(url: url)
                 return URLSession.shared.rx.response(request: request)
             }.map { response, data -> T in
@@ -44,7 +45,6 @@ extension URLRequest {
             }.map { data -> T in
                 return try JSONDecoder().decode(T.self, from: data)
             }.asObservable()
-
     }
 */
 }

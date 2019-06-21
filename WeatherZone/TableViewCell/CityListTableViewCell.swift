@@ -12,14 +12,13 @@ class CityListTableViewCell: UITableViewCell {
     @IBOutlet weak var labelCityName: UILabel!
     @IBOutlet weak var labelCityTemperature: UILabel!
     
-    var model : CityListModel? {
+    var model : WeatherResult? {
         didSet {
             guard let data = model else {
                 return
             }
             labelCityName.text = data.name
-            labelCityTemperature.text = data.country
-//            labelCityTemperature.text = "\(data.main?.temp ?? 0) °C"
+            labelCityTemperature.text = "\(data.main?.temp ?? 0) °C"
         }
     }
     

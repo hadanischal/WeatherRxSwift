@@ -51,7 +51,7 @@ class WeatherViewController: UIViewController {
     private func displayWeather(_ weather: Weather?) {
         
         if let weather = weather {
-            self.temperatureLabel.text = "\(weather.temp) ℉"
+            self.temperatureLabel.text = "\(weather.temp) °C"
             self.humidityLabel.text = "\(weather.humidity) 💦"
         } else {
             self.temperatureLabel.text = "🙈"

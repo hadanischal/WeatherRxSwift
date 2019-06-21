@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Weather: Decodable {
+struct Weather: Codable {
     let temp: Double
     let humidity: Double
 }

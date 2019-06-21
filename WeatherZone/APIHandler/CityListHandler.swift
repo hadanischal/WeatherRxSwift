@@ -14,17 +14,12 @@ class CityListHandler: CityListHandlerProtocol {
     init() {}
     
     func getCityInfo(withFilename fileName: String) -> Observable<[CityListModel]> {
-      return Observable<[CityListModel]>.create { observer in
+        return Observable<[CityListModel]>.create { observer in
             if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
                 do {
                     let data = try Data(contentsOf: url)
-//                    let object = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-//                    let jsonObj = object as? [Any]
-//                    print("jsonObj:\(jsonObj)")
-
                     let decoder = JSONDecoder()
                     let jsonData = try decoder.decode([CityListModel].self, from: data)
-                    
                     observer.on(.next(jsonData))
                     observer.on(.completed)
                 } catch (let error) {
@@ -34,7 +29,7 @@ class CityListHandler: CityListHandlerProtocol {
             }
             return Disposables.create()
         }
-     }
+    }
 }
 
 
