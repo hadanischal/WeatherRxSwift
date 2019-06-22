@@ -12,4 +12,3 @@ protocol WeatherViewModelProtocol {
     var weatherList: Observable<Weather?> { get }
     func getWeatherInfo(by city: String)
 }
-

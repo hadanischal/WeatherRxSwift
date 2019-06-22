@@ -22,9 +22,20 @@ class CityListViewModel: CityListViewModelProtocol {
         self.cityListHandler = cityListHandler
         self.getWeatherHandler = getWeatherHandler
         self.weatherList = weatherListSubject.asObservable()
+        self.getWeatherInfo()
+        self.syncTask()
     }
-    
-    func getWeatherInfo() {
+
+    private func syncTask() {
+        let scheduler = SerialDispatchQueueScheduler(qos: .default)
+        Observable<Int>.interval(.seconds(20), scheduler: scheduler)
+            .subscribe { [weak self] event in
+                print(event)
+                self?.getWeatherInfo()
+            }.disposed(by: disposeBag)
+    }
+
+   private func getWeatherInfo() {
         self.cityListHandler
             .getCityInfo(withFilename: "StartCity")
             .flatMap { [weak self] list -> Observable<CityWeatherModel> in
@@ -32,7 +43,7 @@ class CityListViewModel: CityListViewModelProtocol {
                 let stringIds = arrayId.joined(separator: ",")
                 return self?.getWeatherHandler
                     .getWeatherInfo(byCityIDs: stringIds)
-                    .catchError({ error -> Observable<CityWeatherModel> in
+                    .catchError({ _ -> Observable<CityWeatherModel> in
                         return Observable<CityWeatherModel>.empty()
                     }) ?? Observable<CityWeatherModel>.empty()
             }.subscribe(onNext: { [weak self] response in

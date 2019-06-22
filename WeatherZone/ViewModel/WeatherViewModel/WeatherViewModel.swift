@@ -14,18 +14,18 @@ class WeatherViewModel: WeatherViewModelProtocol {
     private let getWeatherHandler: GetWeatherHandlerProtocol
     private let disposeBag = DisposeBag()
     var weatherList: Observable<Weather?>
-    
+
     private let weatherListSubject = PublishSubject<Weather?>()
-    
+
     init(withGetWeather getWeatherHandler: GetWeatherHandlerProtocol = GetWeatherHandler()) {
         self.getWeatherHandler = getWeatherHandler
         self.weatherList = weatherListSubject.asObserver()
     }
-    
+
     func getWeatherInfo(by city: String) {
         getWeatherHandler.getWeatherInfo(by: city)
             .retry(3)
-            .catchError{ error -> Observable<WeatherResult?> in
+            .catchError { error -> Observable<WeatherResult?> in
                 print(error.localizedDescription)
                 return Observable.just(WeatherResult.empty)
             }

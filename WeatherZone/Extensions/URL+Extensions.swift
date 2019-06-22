@@ -12,7 +12,7 @@ extension URL {
     static func urlForWeatherAPI(city: String) -> URL? {
         return URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city)&APPID=\(ApiKey.appId)&units=metric")
     }
-    
+
     static func urlForWeatherAPI(byCityIDs cityIDs: String) -> URL? {
         return URL(string: "https://api.openweathermap.org/data/2.5/group?id=\(cityIDs)&APPID=\(ApiKey.appId)&units=metric")
     }
