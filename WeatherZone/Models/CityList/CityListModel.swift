@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CityListModel: Codable{
+struct CityListModel: Codable {
     let id: Int?
     let name: String?
     let coord: Coord?

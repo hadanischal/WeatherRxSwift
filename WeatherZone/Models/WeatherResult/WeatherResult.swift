@@ -15,6 +15,6 @@ struct WeatherResult: Codable {
 
 extension WeatherResult {
     static var empty: WeatherResult {
-        return WeatherResult (main: Weather(temp: 0.0, humidity: 0.0), name: "")        
+        return WeatherResult (main: Weather(temp: 0.0, humidity: 0.0), name: "")
     }
 }

@@ -12,7 +12,7 @@ import RxCocoa
 
 class CityListHandler: CityListHandlerProtocol {
     init() {}
-    
+
     func getCityInfo(withFilename fileName: String) -> Observable<[CityListModel]> {
         return Observable<[CityListModel]>.create { observer in
             if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
@@ -31,5 +31,3 @@ class CityListHandler: CityListHandlerProtocol {
         }
     }
 }
-
-
