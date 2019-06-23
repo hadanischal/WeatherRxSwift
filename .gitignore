@@ -84,6 +84,7 @@ build
 !*.xcodeproj/project.pbxproj
 !*.xcworkspace/contents.xcworkspacedata
 
-
+### Cuckoo-GeneratedMocks ###
+GeneratedMocks.swift
 
 

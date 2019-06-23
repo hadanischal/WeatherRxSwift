@@ -28,7 +28,7 @@ class CityListViewModel: CityListViewModelProtocol {
 
     private func syncTask() {
         let scheduler = SerialDispatchQueueScheduler(qos: .default)
-        Observable<Int>.interval(.seconds(20), scheduler: scheduler)
+        Observable<Int>.interval(.seconds(200), scheduler: scheduler)
             .subscribe { [weak self] event in
                 print(event)
                 self?.getWeatherInfo()

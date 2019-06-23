@@ -24,6 +24,7 @@
 		AFBF708322BB0F5A00629344 /* GetWeatherHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF708222BB0F5A00629344 /* GetWeatherHandlerProtocol.swift */; };
 		AFBF708622BB20E600629344 /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBF708522BB20E600629344 /* WeatherTableViewController.swift */; };
 		AFBF708E22BBB76F00629344 /* StartCity.json in Resources */ = {isa = PBXBuildFile; fileRef = AFBF708D22BBB76F00629344 /* StartCity.json */; };
+		AFC21A4C22BF50570032FC1D /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC21A4B22BF50570032FC1D /* GeneratedMocks.swift */; };
 		AFC972A522AE89D9006BE3DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC972A422AE89D9006BE3DB /* AppDelegate.swift */; };
 		AFC972AA22AE89D9006BE3DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC972A822AE89D9006BE3DB /* Main.storyboard */; };
 		AFC972AD22AE89D9006BE3DB /* WeatherZone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AFC972AB22AE89D9006BE3DB /* WeatherZone.xcdatamodeld */; };
@@ -80,6 +81,8 @@
 		AFBF708222BB0F5A00629344 /* GetWeatherHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWeatherHandlerProtocol.swift; sourceTree = "<group>"; };
 		AFBF708522BB20E600629344 /* WeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
 		AFBF708D22BBB76F00629344 /* StartCity.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StartCity.json; sourceTree = "<group>"; };
+		AFC21A4A22BF41390032FC1D /* Cuckoo-GeneratedMocks.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "Cuckoo-GeneratedMocks.sh"; sourceTree = "<group>"; };
+		AFC21A4B22BF50570032FC1D /* GeneratedMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		AFC972A122AE89D9006BE3DB /* WeatherZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFC972A422AE89D9006BE3DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFC972A922AE89D9006BE3DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -237,9 +240,18 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		AFC21A4922BF40F50032FC1D /* Build scripts */ = {
+			isa = PBXGroup;
+			children = (
+				AFC21A4A22BF41390032FC1D /* Cuckoo-GeneratedMocks.sh */,
+			);
+			name = "Build scripts";
+			sourceTree = "<group>";
+		};
 		AFC9729822AE89D9006BE3DB = {
 			isa = PBXGroup;
 			children = (
+				AFC21A4922BF40F50032FC1D /* Build scripts */,
 				AFC972D522AE8B87006BE3DB /* .gitignore */,
 				AFC972D722AE8BA1006BE3DB /* .swiftlint.yml */,
 				AFC972A322AE89D9006BE3DB /* WeatherZone */,
@@ -283,6 +295,7 @@
 		AFC972BB22AE89DB006BE3DB /* WeatherZoneTests */ = {
 			isa = PBXGroup;
 			children = (
+				AFC21A4B22BF50570032FC1D /* GeneratedMocks.swift */,
 				AFC972BC22AE89DB006BE3DB /* WeatherZoneTests.swift */,
 				AFC972BE22AE89DB006BE3DB /* Info.plist */,
 			);
@@ -357,6 +370,7 @@
 				AFC972B422AE89DB006BE3DB /* Sources */,
 				AFC972B522AE89DB006BE3DB /* Frameworks */,
 				AFC972B622AE89DB006BE3DB /* Resources */,
+				B71114B9371E8EFC403AC927 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -484,6 +498,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B71114B9371E8EFC403AC927 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeatherZoneTests/Pods-WeatherZoneTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WeatherZoneTests/Pods-WeatherZoneTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeatherZoneTests/Pods-WeatherZoneTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D695DAC200DF8C9BDEA5B1DE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -580,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFC972BD22AE89DB006BE3DB /* WeatherZoneTests.swift in Sources */,
+				AFC21A4C22BF50570032FC1D /* GeneratedMocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
