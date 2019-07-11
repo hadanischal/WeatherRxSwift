@@ -22,7 +22,7 @@ class CityListViewModel: CityListViewModelProtocol {
         self.cityListHandler = cityListHandler
         self.getWeatherHandler = getWeatherHandler
         self.weatherList = weatherListSubject.asObservable()
-        self.getWeatherInfo()
+//        self.getWeatherInfo()
         self.syncTask()
     }
 
@@ -35,7 +35,7 @@ class CityListViewModel: CityListViewModelProtocol {
             }.disposed(by: disposeBag)
     }
 
-   private func getWeatherInfo() {
+    func getWeatherInfo() {
         self.cityListHandler
             .getCityInfo(withFilename: "StartCity")
             .flatMap { [weak self] list -> Observable<CityWeatherModel> in
