@@ -16,13 +16,13 @@ import RxSwift
 @testable import WeatherZone
 
 class CityListViewModelTests: QuickSpec {
-    
+
     override func spec() {
         var testViewModel: CityListViewModel!
         var mockCityListHandler: MockCityListHandlerProtocol!
         var mockGetWeatherHandler: MockGetWeatherHandlerProtocol!
         var testScheduler: TestScheduler!
-        
+
         describe("CityListViewModel") {
             beforeEach {
                 testScheduler = TestScheduler(initialClock: 0)
@@ -37,9 +37,9 @@ class CityListViewModelTests: QuickSpec {
                 })
                 testViewModel = CityListViewModel(withCityList: mockCityListHandler, withGetWeather: mockGetWeatherHandler)
             }
-            
-            describe("Get Employee Info from server", {
-                
+
+            describe("Get weather List from server", {
+
                 context("when server request succeed ", {
                     beforeEach {
                         stub(mockCityListHandler, block: { stub in
@@ -53,12 +53,12 @@ class CityListViewModelTests: QuickSpec {
                     it("calls to the CityListHandler to get city info", closure: {
                         verify(mockCityListHandler).getCityInfo(withFilename: any())
                     })
-                    it("calls to the CityListHandler to get city info", closure: {
+                    it("calls to the GetWeatherHandler to get weather info", closure: {
                         verify(mockGetWeatherHandler).getWeatherInfo(byCityIDs: any())
                     })
                 })
-                
-                it("emits the employeeResult to the UI", closure: {
+
+                it("emits the weatherList to the UI", closure: {
                     testScheduler.scheduleAt(300, action: {
                         testViewModel.getWeatherInfo()
                     })
@@ -67,14 +67,14 @@ class CityListViewModelTests: QuickSpec {
                     expect(res.events.first?.time).to(equal(300))
                     expect(res.events.last?.time).to(equal(300))
                 })
-                
+
                 context("when get city info request failed ", {
                     beforeEach {
                         stub(mockCityListHandler, block: { stub in
                             when(stub.getCityInfo(withFilename: any())).thenReturn(Observable.error(RxError.noElements))
                         })
                     }
-                    it("doesnt emits employeeResult to the UI", closure: {
+                    it("doesnt emits weather list to the UI", closure: {
                         testScheduler.scheduleAt(300, action: {
                             testViewModel.getWeatherInfo()
                         })
@@ -82,10 +82,10 @@ class CityListViewModelTests: QuickSpec {
                         expect(res.events).to(beEmpty())
                     })
                 })
-                
+
                 context("when server request failed for get weather info", {
                     beforeEach {
-                        
+
                         stub(mockCityListHandler, block: { stub in
                             when(stub.getCityInfo(withFilename: any())).thenReturn(Observable.just([cityList]))
                         })
@@ -93,7 +93,7 @@ class CityListViewModelTests: QuickSpec {
                             when(stub.getWeatherInfo(byCityIDs: any())).thenReturn(Observable.error(RxError.noElements))
                         })
                     }
-                    it("doesnt emits employeeResult to the UI", closure: {
+                    it("doesnt emits weatherList to the UI", closure: {
                         testScheduler.scheduleAt(300, action: {
                             testViewModel.getWeatherInfo()
                         })
@@ -101,9 +101,9 @@ class CityListViewModelTests: QuickSpec {
                         expect(res.events).to(beEmpty())
                     })
                 })
-                
+
             })
-            
+
         }
     }
 }
