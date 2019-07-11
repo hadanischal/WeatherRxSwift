@@ -22,20 +22,20 @@ class CityListViewModel: CityListViewModelProtocol {
         self.cityListHandler = cityListHandler
         self.getWeatherHandler = getWeatherHandler
         self.weatherList = weatherListSubject.asObservable()
-        self.getWeatherInfo()
+//        self.getWeatherInfo()
         self.syncTask()
     }
 
     private func syncTask() {
         let scheduler = SerialDispatchQueueScheduler(qos: .default)
-        Observable<Int>.interval(.seconds(20), scheduler: scheduler)
+        Observable<Int>.interval(.seconds(200), scheduler: scheduler)
             .subscribe { [weak self] event in
                 print(event)
                 self?.getWeatherInfo()
             }.disposed(by: disposeBag)
     }
 
-   private func getWeatherInfo() {
+    func getWeatherInfo() {
         self.cityListHandler
             .getCityInfo(withFilename: "StartCity")
             .flatMap { [weak self] list -> Observable<CityWeatherModel> in
