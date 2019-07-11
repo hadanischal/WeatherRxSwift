@@ -29,6 +29,7 @@ class WeatherTableViewController: UITableViewController {
                 print("error:\(error)")
             })
             .disposed(by: disposeBag)
+        self.viewModel.getWeatherInfo()
     }
 
     // MARK: - Table view data source
