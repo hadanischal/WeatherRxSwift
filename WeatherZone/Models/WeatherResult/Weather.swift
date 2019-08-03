@@ -9,6 +9,8 @@
 import UIKit
 
 struct Weather: Codable {
-    let temp: Double
-    let humidity: Double
+    let id: Int
+    let main: String
+    let description: String
+    let icon: String
 }

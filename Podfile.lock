@@ -1,5 +1,6 @@
 PODS:
   - Cuckoo (1.0.6)
+  - Kingfisher (5.7.0)
   - Nimble (8.0.2)
   - Quick (2.1.0)
   - RxBlocking (5.0.0):
@@ -16,6 +17,7 @@ PODS:
 
 DEPENDENCIES:
   - Cuckoo (~> 1.0.6)
+  - Kingfisher (~> 5.0)
   - Nimble (~> 8)
   - Quick (~> 2.1.0)
   - RxBlocking (~> 5.0.0)
@@ -27,6 +29,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Cuckoo
+    - Kingfisher
     - Nimble
     - Quick
     - RxBlocking
@@ -38,6 +41,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Cuckoo: 8074fc309159c4862665b83798f5ad03e061e8bd
+  Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
   Nimble: 622629381bda1dd5678162f21f1368cec7cbba60
   Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
   RxBlocking: c67185d26498ea3cbe3e121917c3c16739e43123
@@ -47,6 +51,6 @@ SPEC CHECKSUMS:
   RxTest: 4349afe98f564e0a9bc19063368904622d17d49a
   SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
 
-PODFILE CHECKSUM: 7432fac16f02ab75bc7f510df5180a5dba2d010d
+PODFILE CHECKSUM: 37d7494eb33dbdae6517f4d992c033202d55109f
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.7.5

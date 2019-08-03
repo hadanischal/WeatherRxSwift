@@ -9,12 +9,15 @@
 import UIKit
 
 struct WeatherResult: Codable {
-    let main: Weather?
+    let main: MainModel?
+    let weather: [Weather]?
     var name: String?
 }
 
 extension WeatherResult {
     static var empty: WeatherResult {
-        return WeatherResult (main: Weather(temp: 0.0, humidity: 0.0), name: "")
+        return WeatherResult(main: mainModel, weather: nil, name: nil)
     }
 }
+fileprivate let mainModel = MainModel.empty
+

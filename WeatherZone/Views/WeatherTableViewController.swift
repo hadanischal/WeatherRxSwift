@@ -19,6 +19,7 @@ class WeatherTableViewController: UITableViewController {
         super.viewDidLoad()
         self.title = "City List"
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.setupUI()
 
         self.viewModel.weatherList
             .observeOn(MainScheduler.instance)
@@ -32,6 +33,11 @@ class WeatherTableViewController: UITableViewController {
         self.viewModel.getWeatherInfo()
     }
 
+    func setupUI() {
+        self.tableView.backgroundColor = UIColor.viewBackgroundColor
+        self.tableView.separatorStyle = .none
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -47,11 +53,12 @@ class WeatherTableViewController: UITableViewController {
             fatalError("CityListTableViewCell does not exist")
         }
         cell.model = self.weatherList[indexPath.row]
+        cell.selectionStyle = .none
         return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
+        return 80
     }
     /*
     // MARK: - Navigation

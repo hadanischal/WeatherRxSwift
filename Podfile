@@ -10,7 +10,8 @@ target 'WeatherZone' do
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
   pod 'SwiftLint'
-  
+  pod 'Kingfisher', '~> 5.0'
+
   target 'WeatherZoneTests' do
     inherit! :search_paths
     # Pods for testing
