@@ -111,7 +111,7 @@ class CityListViewModelTests: QuickSpec {
 private let coord = Coord(lon: 12.00, lat: 11.00)
 private let cityList = CityListModel(id: 1, name: "Bob", coord: coord, country: "Dream Land")
 
-private let weather = Weather(temp: 12.00, humidity: 11.0)
-private let weatherResult = WeatherResult(main: weather, name: "Gloomy Day")
+private let mainModel = MainModel(temp: 12.00, pressure: 11.00, humidity: 10.00, temp_min: 9.00, temp_max: 15.00)
+private let weatherResult = WeatherResult(main: mainModel, name: "Gloomy Day")
 
 private let citysWeatherResult = CityWeatherModel(cnt: 1, list: [weatherResult])

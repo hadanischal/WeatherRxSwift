@@ -9,6 +9,6 @@
 import RxSwift
 
 protocol WeatherViewModelProtocol {
-    var weatherList: Observable<Weather?> { get }
+    var weatherList: Observable<WeatherResult> { get }
     func getWeatherInfo(by city: String)
 }

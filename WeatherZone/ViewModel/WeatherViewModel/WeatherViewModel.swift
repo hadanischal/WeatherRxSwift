@@ -13,9 +13,9 @@ import RxCocoa
 class WeatherViewModel: WeatherViewModelProtocol {
     private let getWeatherHandler: GetWeatherHandlerProtocol
     private let disposeBag = DisposeBag()
-    var weatherList: Observable<Weather?>
+    var weatherList: Observable<WeatherResult>
 
-    private let weatherListSubject = PublishSubject<Weather?>()
+    private let weatherListSubject = PublishSubject<WeatherResult>()
 
     init(withGetWeather getWeatherHandler: GetWeatherHandlerProtocol = GetWeatherHandler()) {
         self.getWeatherHandler = getWeatherHandler
@@ -31,8 +31,7 @@ class WeatherViewModel: WeatherViewModelProtocol {
             }
             .subscribe(onNext: { [weak self] result in
                 if let result = result {
-                    let currentWeather = result.main
-                    self?.weatherListSubject.onNext(currentWeather)
+                    self?.weatherListSubject.onNext(result)
                 }
                 }, onError: { error in
                     print("VM error :", error)

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+//Current weather bulks for city list
 struct CityWeatherModel: Codable {
     var cnt: Int?
     var list: [WeatherResult]?

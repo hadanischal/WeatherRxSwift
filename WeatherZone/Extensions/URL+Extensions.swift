@@ -16,6 +16,10 @@ extension URL {
     static func urlForWeatherAPI(byCityIDs cityIDs: String) -> URL? {
         return URL(string: "https://api.openweathermap.org/data/2.5/group?id=\(cityIDs)&APPID=\(ApiKey.appId)&units=metric")
     }
+
+    static func iconURL(_ icon: String)-> URL? {
+        return URL(string: "http://openweathermap.org/img/wn/\(icon)@2x.png")
+    }
 }
 //http://api.openweathermap.org/data/2.5/group?id=524901,703448,2643743&units=metric
 //imperial °F or metric °C
