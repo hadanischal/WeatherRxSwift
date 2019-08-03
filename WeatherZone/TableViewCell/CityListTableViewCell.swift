@@ -18,11 +18,14 @@ class CityListTableViewCell: UITableViewCell {
                 return
             }
             labelCityName.text = data.name
-            labelCityTemperature.text = "\(data.main?.temp ?? 0) °C"
+            if let main = data.main {
+                labelCityTemperature.text = "\(main.temp) °C"
+            }
         }
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.contentView.backgroundColor = .viewBackgroundColor
     }
 }
