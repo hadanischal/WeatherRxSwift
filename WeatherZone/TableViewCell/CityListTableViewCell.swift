@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CityListTableViewCell: UITableViewCell {
     @IBOutlet weak var labelCityName: UILabel!
     @IBOutlet weak var labelCityTemperature: UILabel!
+    @IBOutlet weak var weatherImageView: UIImageView!
 
     var model: WeatherResult? {
         didSet {
@@ -21,6 +23,14 @@ class CityListTableViewCell: UITableViewCell {
             if let main = data.main {
                 labelCityTemperature.text = "\(main.temp) °C"
             }
+            if
+                let weather = data.weather,
+                weather.count > 0 {
+                let imageIcon = weather[0].icon
+                let url = URL.iconURL(imageIcon)
+                self.weatherImageView.kf.setImage(with: url)
+            }
+
         }
     }
 

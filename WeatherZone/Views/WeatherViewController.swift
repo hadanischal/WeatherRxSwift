@@ -21,16 +21,25 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupUI()
+        self.setupViewModel()
+    }
 
+    func setupUI() {
+        self.view.backgroundColor = UIColor.viewBackgroundColor
+        self.title = "Add City"
+    }
+
+    func setupViewModel() {
         self.viewModel.weatherList
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] weather in
                 self?.displayWeather(weather)
-            }, onError: { error in
-                print("on error ")
-                print(error)
+                }, onError: { error in
+                    print("on error ")
+                    print(error)
             })
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
 
         self.cityNameTextField.rx.controlEvent(.editingDidEndOnExit)
             .asObservable()

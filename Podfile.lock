@@ -13,6 +13,7 @@ PODS:
   - RxSwift (5.0.0)
   - RxTest (5.0.0):
     - RxSwift (~> 5)
+  - SkyFloatingLabelTextField (3.7.0)
   - SwiftLint (0.33.0)
 
 DEPENDENCIES:
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
   - RxTest (~> 5.0.0)
+  - SkyFloatingLabelTextField (~> 3.0)
   - SwiftLint
 
 SPEC REPOS:
@@ -37,6 +39,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - RxTest
+    - SkyFloatingLabelTextField
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -49,8 +52,9 @@ SPEC CHECKSUMS:
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   RxTest: 4349afe98f564e0a9bc19063368904622d17d49a
+  SkyFloatingLabelTextField: 4b46db0ab1ccde0919cded29c656e6b4805eda04
   SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
 
-PODFILE CHECKSUM: 37d7494eb33dbdae6517f4d992c033202d55109f
+PODFILE CHECKSUM: 7fadb90f767ee49459e12596c86464a0c5f6be28
 
 COCOAPODS: 1.7.5

@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+ platform :ios, '12.2'
 
 target 'WeatherZone' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -11,6 +11,7 @@ target 'WeatherZone' do
   pod 'RxCocoa', '~> 5'
   pod 'SwiftLint'
   pod 'Kingfisher', '~> 5.0'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
 
   target 'WeatherZoneTests' do
     inherit! :search_paths
@@ -25,6 +26,7 @@ target 'WeatherZone' do
   target 'WeatherZoneUITests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'Nimble', '~> 8'
   end
   
 end
