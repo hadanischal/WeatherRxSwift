@@ -16,8 +16,6 @@ struct WeatherResult: Codable {
 
 extension WeatherResult {
     static var empty: WeatherResult {
-        return WeatherResult(main: mainModel, weather: nil, name: nil)
+        return WeatherResult(main: nil, weather: nil, name: nil)
     }
 }
-fileprivate let mainModel = MainModel.empty
-

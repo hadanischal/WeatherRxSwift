@@ -112,6 +112,6 @@ private let coord = Coord(lon: 12.00, lat: 11.00)
 private let cityList = CityListModel(id: 1, name: "Bob", coord: coord, country: "Dream Land")
 
 private let mainModel = MainModel(temp: 12.00, pressure: 11.00, humidity: 10.00, temp_min: 9.00, temp_max: 15.00)
-private let weatherResult = WeatherResult(main: mainModel, name: "Gloomy Day")
+private let weatherResult = WeatherResult(main: mainModel, weather: nil, name: "Sydney")
 
 private let citysWeatherResult = CityWeatherModel(cnt: 1, list: [weatherResult])

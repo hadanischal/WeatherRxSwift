@@ -17,7 +17,7 @@ extension URL {
         return URL(string: "https://api.openweathermap.org/data/2.5/group?id=\(cityIDs)&APPID=\(ApiKey.appId)&units=metric")
     }
 
-    static func iconURL(_ icon: String)-> URL? {
+    static func iconURL(_ icon: String) -> URL? {
         return URL(string: "http://openweathermap.org/img/wn/\(icon)@2x.png")
     }
 }
