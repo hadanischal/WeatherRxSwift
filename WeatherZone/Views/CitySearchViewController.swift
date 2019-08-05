@@ -42,6 +42,15 @@ class CitySearchViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func setupViewModel() {
         viewModel = CitySearchViewModel()
+        viewModel.cityList
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] list in
+                self?.cityList = list
+                self?.tableView?.reloadData()
+            }).disposed(by: disposeBag)
+
+        let searchQuery = searchBar.rx.text.orEmpty.asObservable()
+        viewModel.searchCityWithName(withName: searchQuery)
     }
 
     // MARK: - Table view data source
