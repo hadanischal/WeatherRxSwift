@@ -11,47 +11,92 @@ import RxSwift
 import RxCocoa
 
 class CityListViewModel: CityListViewModelProtocol {
+    //input
     private let cityListHandler: CityListHandlerProtocol
-    private let getWeatherHandler: GetWeatherHandlerProtocol
+    private let weatherHandler: GetWeatherHandlerProtocol
+    
+    //output
+    var cityList: [CityListModel]!
+    var weatherList: Observable<[WeatherResult]>
+    let weatherListBehaviorRelay: BehaviorRelay<[WeatherResult]> = BehaviorRelay(value: [])
 
     private let disposeBag = DisposeBag()
-    var weatherList: Observable<[WeatherResult]>
-    private let weatherListSubject = PublishSubject<[WeatherResult]>()
-
-    init(withCityList cityListHandler: CityListHandlerProtocol = CityListHandler(), withGetWeather getWeatherHandler: GetWeatherHandlerProtocol = GetWeatherHandler()) {
+    
+    init(withCityList cityListHandler: CityListHandlerProtocol = CityListHandler(),
+         withGetWeather weatherHandler: GetWeatherHandlerProtocol = GetWeatherHandler()) {
         self.cityListHandler = cityListHandler
-        self.getWeatherHandler = getWeatherHandler
-        self.weatherList = weatherListSubject.asObservable()
-//        self.getWeatherInfo()
+        self.weatherHandler = weatherHandler
+        self.weatherList = weatherListBehaviorRelay.asObservable()
+        self.cityList = []
         self.syncTask()
+        self.getCityListFromFile()
     }
-
+    
     private func syncTask() {
         let scheduler = SerialDispatchQueueScheduler(qos: .default)
         Observable<Int>.interval(.seconds(200), scheduler: scheduler)
             .subscribe { [weak self] event in
                 print(event)
-                self?.getWeatherInfo()
+                self?.getWeatherInfoForCityList()
             }.disposed(by: disposeBag)
     }
-
-    func getWeatherInfo() {
+    
+    // MARK: - Get Citylist from jsonfile
+    
+     func getCityListFromFile() {
         self.cityListHandler
             .getCityInfo(withFilename: "StartCity")
-            .flatMap { [weak self] list -> Observable<CityWeatherModel> in
-                let arrayId = list.map { String($0.id!) }
-                let stringIds = arrayId.joined(separator: ",")
-                return self?.getWeatherHandler
-                    .getWeatherInfo(byCityIDs: stringIds)
-                    .catchError({ _ -> Observable<CityWeatherModel> in
-                        return Observable<CityWeatherModel>.empty()
-                    }) ?? Observable<CityWeatherModel>.empty()
-            }.subscribe(onNext: { [weak self] response in
-                if let weatherInfo = response.list {
-                    self?.weatherListSubject.on(.next(weatherInfo))
-                }
-            }, onError: { error in
-                print("VM error :", error)
+            .subscribe(onNext: { [weak self] cityListModel in
+                self?.cityList = cityListModel
+                self?.getWeatherInfoForCityList()
+                }, onError: { error in
+                    print("getCityInfo error :", error)
             }).disposed(by: disposeBag)
+    }
+    
+    // Get weather list for city list
+    private func getWeatherInfoForCityList() {
+        let arrayId = cityList.map { String($0.id!) }
+        let stringIds = arrayId.joined(separator: ",")
+        
+        self.weatherHandler
+            .getWeatherInfo(byCityIDs: stringIds)
+            .subscribe(onNext: { [weak self] cityListWeather in
+                if let weatherList = cityListWeather.list {
+                    self?.weatherListBehaviorRelay.accept(weatherList)
+                }
+                }, onError: { error in
+                    print("WeatherInfoForCityList error :", error)
+            }).disposed(by: disposeBag)
+    }
+    
+    // MARK: - Fetch weather for selected city
+    
+    func fetchWeatherFor(selectedCity city: CityListModel) {
+        let foundItems = self.cityList.filter {$0.id == city.id }
+        
+        if foundItems.count == 0, //add city if its not in list
+            let cityId = city.name {
+            
+            self.cityList.append(city)
+            
+            self.weatherHandler
+                .getWeatherInfo(by: "\(cityId)")
+                .subscribe(onNext: { [weak self] weatherResult in
+                    
+                    if
+                        let weatherValue = weatherResult,
+                        let weatherRelayValue = self?.weatherListBehaviorRelay.value
+                    {
+                        var weatherListAppended = weatherRelayValue
+                        weatherListAppended.append(weatherValue)
+                        self?.weatherListBehaviorRelay.accept(weatherListAppended)
+                    }
+                    
+                    }, onError: { error in
+                        print("selectedCity error :", error)
+                }).disposed(by: disposeBag)
+        }
+        
     }
 }

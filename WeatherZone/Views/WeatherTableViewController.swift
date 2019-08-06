@@ -30,14 +30,13 @@ class WeatherTableViewController: UITableViewController {
                 print("error:\(error)")
             })
             .disposed(by: disposeBag)
-        self.viewModel.getWeatherInfo()
     }
 
     func setupUI() {
         self.tableView.backgroundColor = UIColor.viewBackgroundColor
         self.tableView.separatorStyle = .none
     }
-    
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -60,14 +59,27 @@ class WeatherTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    /*
-    // MARK: - Navigation
 
+    // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+
+        if segue.identifier == "segueCitySearch" {
+            guard let navC = segue.destination as? UINavigationController,
+                let citySearchVC = navC.viewControllers.first as? CitySearchViewController else {
+                    fatalError("Segue destination is not found")
+            }
+
+            citySearchVC
+                .selectedCity?
+                .observeOn(MainScheduler.asyncInstance)
+                .subscribe(onNext: { [weak self] cityModel in
+                    self?.viewModel.fetchWeatherFor(selectedCity: cityModel)
+                    citySearchVC.dismiss(animated: true)
+                })
+            .disposed(by: disposeBag)
+        }
+
     }
-    */
 
 }
