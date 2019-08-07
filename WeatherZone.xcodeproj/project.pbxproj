@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		02E6D3FE79BC78B0887A2277 /* Pods_WeatherZoneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96FDC149325AEFC3D6790D59 /* Pods_WeatherZoneTests.framework */; };
+		0423E7F322F98C2B0084B4A4 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0423E7F222F98C2B0084B4A4 /* AnimationViewController.swift */; };
+		0423E7FB22F997E20084B4A4 /* programmingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0423E7FA22F997E20084B4A4 /* programmingAnimation.json */; };
 		043B837722F5B6A1003707F5 /* ColourConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B837622F5B6A1003707F5 /* ColourConstant.swift */; };
 		043B837922F5BE10003707F5 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B837822F5BE10003707F5 /* MainModel.swift */; };
 		043B837B22F5C5B0003707F5 /* WeatherZoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC972C722AE89DB006BE3DB /* WeatherZoneUITests.swift */; };
@@ -72,6 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0423E7F222F98C2B0084B4A4 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
+		0423E7FA22F997E20084B4A4 /* programmingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = programmingAnimation.json; sourceTree = "<group>"; };
 		043B837622F5B6A1003707F5 /* ColourConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourConstant.swift; sourceTree = "<group>"; };
 		043B837822F5BE10003707F5 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		044A995622F8428900556E1C /* CitySearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchViewModelTests.swift; sourceTree = "<group>"; };
@@ -308,6 +312,7 @@
 				AFC21A4922BF40F50032FC1D /* Build scripts */,
 				AFC972D522AE8B87006BE3DB /* .gitignore */,
 				AFC972D722AE8BA1006BE3DB /* .swiftlint.yml */,
+				0423E7FA22F997E20084B4A4 /* programmingAnimation.json */,
 				AFC972A322AE89D9006BE3DB /* WeatherZone */,
 				AFC972BB22AE89DB006BE3DB /* WeatherZoneTests */,
 				AFC972C622AE89DB006BE3DB /* WeatherZoneUITests */,
@@ -392,6 +397,7 @@
 		AFC972DD22AE9013006BE3DB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0423E7F222F98C2B0084B4A4 /* AnimationViewController.swift */,
 				AFBF708522BB20E600629344 /* WeatherTableViewController.swift */,
 				AFC972E722AE9461006BE3DB /* WeatherViewController.swift */,
 				AFC972A822AE89D9006BE3DB /* Main.storyboard */,
@@ -510,6 +516,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0423E7FB22F997E20084B4A4 /* programmingAnimation.json in Resources */,
 				AFC972D822AE8BA1006BE3DB /* .swiftlint.yml in Resources */,
 				AFC972D622AE8B87006BE3DB /* .gitignore in Resources */,
 				04F00B8422F6AC5500E80557 /* cityList.json in Resources */,
@@ -685,6 +692,7 @@
 				AFC972AD22AE89D9006BE3DB /* WeatherZone.xcdatamodeld in Sources */,
 				AF334FB322BBC76900413DBA /* CityListTableViewCell.swift in Sources */,
 				AF334FA322BBBA9D00413DBA /* CityListModel.swift in Sources */,
+				0423E7F322F98C2B0084B4A4 /* AnimationViewController.swift in Sources */,
 				AFC972E122AE904E006BE3DB /* Weather.swift in Sources */,
 				04F00B7C22F6A6F200E80557 /* CitySearchViewModel.swift in Sources */,
 			);
@@ -906,7 +914,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 54E5FDE8B93DCB8BEF10E299 /* Pods-WeatherZoneTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8K9W8TZ624;
@@ -928,7 +936,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5A5EFE70FBAF5C79A44BA6A5 /* Pods-WeatherZoneTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8K9W8TZ624;
@@ -950,7 +958,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CCB4C67349599AB7BB29E9D1 /* Pods-WeatherZoneUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8K9W8TZ624;
 				INFOPLIST_FILE = WeatherZoneUITests/Info.plist;
@@ -971,7 +979,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F9662BBD6295CA72EBC93D5E /* Pods-WeatherZoneUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8K9W8TZ624;
 				INFOPLIST_FILE = WeatherZoneUITests/Info.plist;
