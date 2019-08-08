@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import Lottie
 
 class AnimationViewController: UIViewController {
+    var viewModel: AnimationViewModelProtocol = AnimationViewModel()
 
     @IBOutlet weak var animationView1: AnimationView!
     let animationView = AnimationView()
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()

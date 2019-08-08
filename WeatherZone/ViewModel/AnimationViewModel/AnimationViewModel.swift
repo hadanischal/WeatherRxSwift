@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+import Lottie
+
+class AnimationViewModel: AnimationViewModelProtocol {
+    var animation: Driver<Animation?>
+    
+    
+    init() {
+        let programmingAnimation = Animation.named("programmingAnimation", subdirectory: "")
+        animation = Driver.just(programmingAnimation)
+    }
+}
