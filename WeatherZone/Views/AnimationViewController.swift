@@ -20,9 +20,9 @@ class AnimationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.lottieAnimation()
+        self.setupViewModel()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         animationView.play(fromProgress: 0,
@@ -36,46 +36,54 @@ class AnimationViewController: UIViewController {
                                 print("Animation cancelled")
                             }
         })
-        
+
     }
 
-    private func lottieAnimation() {
-        
-        guard
-            let animation = Animation.named("programmingAnimation", subdirectory: "")
-            else {
-            print("Lottie file not found")
-            self.displayRootView()
-            return
-        }
-        
+    private func setupViewModel() {
+        viewModel
+            .animation
+            .asDriver(onErrorJustReturn: nil)
+            //            .filter { $0 == nil}
+            .drive(onNext: { [weak self] lottieAnimation in
+                if let animation = lottieAnimation {
+                    self?.lottieAnimation(withAnimation: animation)
+                } else {
+                    print("Lottie file not found")
+                    self?.displayRootView()
+                }
+
+            }).disposed(by: disposeBag)
+
+    }
+
+    private func lottieAnimation(withAnimation animation: Animation) {
+
         animationView.animation = animation
         animationView.contentMode = .scaleAspectFit
         animationView1.addSubview(animationView)
-
 
         animationView.backgroundBehavior = .pauseAndRestore
         animationView.translatesAutoresizingMaskIntoConstraints = false
         animationView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
         animationView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        
+
         animationView.bottomAnchor.constraint(equalTo: animationView1.bottomAnchor, constant: -12).isActive = true
         animationView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         animationView.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
-        
+
         /// *** Keypath Setting
-        
+
         let redValueProvider = ColorValueProvider(Color(r: 1, g: 0.2, b: 0.3, a: 1))
         animationView.setValueProvider(redValueProvider, keypath: AnimationKeypath(keypath: "Switch Outline Outlines.**.Fill 1.Color"))
         animationView.setValueProvider(redValueProvider, keypath: AnimationKeypath(keypath: "Checkmark Outlines 2.**.Stroke 1.Color"))
     }
-    
+
     private func displayRootView() {
         let delayInSeconds = 1.0
         DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds) { [weak self] in
-       // DispatchQueue.main.async { [weak self] in
+            // DispatchQueue.main.async { [weak self] in
             self?.performSegue(withIdentifier: "segueWeatherListView", sender: nil)
-          }
+        }
     }
-    
+
 }

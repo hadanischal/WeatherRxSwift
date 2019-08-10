@@ -13,7 +13,7 @@ class CitySearchViewModel: CitySearchViewModelProtocol {
     //input
     private let cityListHandler: CityListHandlerProtocol
     private let backgroundScheduler: SchedulerType
-    
+
     //output
     var cityList: Observable<[CityListModel]>
     private let cityListSubject = PublishSubject<[CityListModel]>()
@@ -25,7 +25,7 @@ class CitySearchViewModel: CitySearchViewModelProtocol {
         ) {
         self.cityListHandler = cityListHandler
         self.backgroundScheduler = backgroundScheduler
-        
+
         self.cityList = cityListSubject.asObservable()
         self.localCityList = []
         self.getCityList()
