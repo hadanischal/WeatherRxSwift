@@ -16,12 +16,12 @@ import RxSwift
 @testable import WeatherZone
 
 class CitySearchViewModelTests: QuickSpec {
-    
+
     override func spec() {
         var testViewModel: CitySearchViewModel!
         var mockCityListHandler: MockCityListHandlerProtocol!
         var testScheduler: TestScheduler!
-        
+
         describe("CitySearchViewModel") {
             beforeEach {
                 testScheduler = TestScheduler(initialClock: 0)
@@ -31,9 +31,9 @@ class CitySearchViewModelTests: QuickSpec {
                 })
                 testViewModel = CitySearchViewModel(withCityList: mockCityListHandler, withSchedulerType: MainScheduler.instance)
             }
-            
+
             describe("Get city List from json file", {
-                
+
                 context("when getCityInfo withFilename succeed ", {
                     beforeEach {
                         stub(mockCityListHandler, block: { stub in
@@ -43,7 +43,7 @@ class CitySearchViewModelTests: QuickSpec {
                     it("calls to the CityListHandler to get city info", closure: {
                         verify(mockCityListHandler).getCityInfo(withFilename: any())
                     })
-                    
+
                     it("emits cityList Changed to the UI", closure: {
                         testScheduler.scheduleAt(300, action: {
                             testViewModel.getCityList()
@@ -52,19 +52,19 @@ class CitySearchViewModelTests: QuickSpec {
                         let res = testScheduler.start { testObservable }
                         expect(res.events.count).to(equal(1))
                     })
-                    
+
                     it("emits cityList Changed to the UI", closure: {
                         testScheduler.scheduleAt(300, action: {
                             testViewModel.getCityList()
                         })
-                        
+
                         let testObservable = testViewModel.cityList
                         let res = testScheduler.start { testObservable }
-                        
+
                         let expectedValue = cityList
                         if let firsElement = res.events.first?.value.element {
                             expect(firsElement.count).to(equal(1))
-                            
+
                             if firsElement.count > 0 {
                                 // Success
                                 expect(firsElement[0].name).to(equal(expectedValue.name))
@@ -78,11 +78,11 @@ class CitySearchViewModelTests: QuickSpec {
                         } else {
                             fail("Expected city list, got \(res.events) events)")
                         }
-                        
+
                     })
-                    
+
                 })
-                
+
                 context("when get city info request failed ", {
                     beforeEach {
                         stub(mockCityListHandler, block: { stub in
@@ -98,16 +98,15 @@ class CitySearchViewModelTests: QuickSpec {
                         })
                         let testObservable = testViewModel.cityList
                         let res = testScheduler.start { testObservable }
-                        
+
                         expect(res.events).to(beEmpty())
                     })
                 })
             })
-            
-            
+
             describe("Search city list with name from json file", {
                 var searchText: Observable<String>!
-                
+
                 context("when getCityInfo withFilename succeed ", {
                     beforeEach {
                         searchText = testScheduler.createColdObservable([Recorded.next(300, "Sydney")]).asObservable()
@@ -116,29 +115,29 @@ class CitySearchViewModelTests: QuickSpec {
                             when(stub.getCityInfo(withFilename: any())).thenReturn(Observable.just([cityList]))
                         })
                     }
-                    
+
                     it("emits cityList Changed to the UI", closure: {
                         testViewModel.searchCityWithName(withName: searchText)
-                        
+
                         let testObservable = testViewModel.cityList
                         let res = testScheduler.start { testObservable }
                         expect(res.events.count).to(equal(1))
                     })
-                    
+
                     it("emits cityList Changed to the UI", closure: {
                         testScheduler.scheduleAt(300, action: {
                             testViewModel.getCityList()
                         })
-                        
+
                         testViewModel.searchCityWithName(withName: searchText)
-                        
+
                         let testObservable = testViewModel.cityList
                         let res = testScheduler.start { testObservable }
-                        
+
                         let expectedValue = cityList
                         if let firsElement = res.events.first?.value.element {
                             expect(firsElement.count).to(equal(1))
-                            
+
                             if firsElement.count > 0 {
                                 // Success
                                 expect(firsElement[0].name).to(equal(expectedValue.name))
@@ -152,10 +151,10 @@ class CitySearchViewModelTests: QuickSpec {
                         } else {
                             fail("Expected city list, got \(res.events) events)")
                         }
-                        
+
                     })
                 })
-                
+
                 context("when getCityInfo withFilename succeed ", {
                     beforeEach {
                         searchText = testScheduler.createColdObservable([Recorded.next(300, "abcd"), Recorded.next(320, "syd")]).asObservable()
@@ -164,29 +163,29 @@ class CitySearchViewModelTests: QuickSpec {
                             when(stub.getCityInfo(withFilename: any())).thenReturn(Observable.just([cityList]))
                         })
                     }
-                    
+
                     it("emits cityList Changed to the UI", closure: {
                         testViewModel.searchCityWithName(withName: searchText)
-                        
+
                         let testObservable = testViewModel.cityList
                         let res = testScheduler.start { testObservable }
                         expect(res.events.count).to(equal(1))
                     })
-                    
+
                     it("emits cityList Changed to the UI", closure: {
                         testScheduler.scheduleAt(320, action: {
                             testViewModel.getCityList()
                         })
-                        
+
                         testViewModel.searchCityWithName(withName: searchText)
-                        
+
                         let testObservable = testViewModel.cityList
                         let res = testScheduler.start { testObservable }
-                        
+
                         let expectedValue = cityList
                         if let firsElement = res.events.last?.value.element {
                             expect(firsElement.count).to(equal(1))
-                            
+
                             if firsElement.count > 0 {
                                 // Success
                                 expect(firsElement[0].name).to(equal(expectedValue.name))
@@ -200,11 +199,11 @@ class CitySearchViewModelTests: QuickSpec {
                         } else {
                             fail("Expected city list, got \(res.events) events)")
                         }
-                        
+
                     })
                 })
             })
-            
+
         }
     }
 }

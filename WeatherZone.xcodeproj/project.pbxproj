@@ -19,6 +19,7 @@
 		04B6391222FC53D30041FB0D /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B6391022FC53D30041FB0D /* UIAlertControllerExtension.swift */; };
 		04B6391322FC53D30041FB0D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B6391122FC53D30041FB0D /* UIViewControllerExtension.swift */; };
 		04B6391522FC54030041FB0D /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B6391422FC54010041FB0D /* AlertAction.swift */; };
+		04D67FF022FD66EE006F8FBD /* AnimationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D67FEF22FD66EE006F8FBD /* AnimationViewModelTests.swift */; };
 		04F00B7922F6A3A600E80557 /* CitySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F00B7822F6A3A600E80557 /* CitySearchViewController.swift */; };
 		04F00B7C22F6A6F200E80557 /* CitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F00B7B22F6A6F200E80557 /* CitySearchViewModel.swift */; };
 		04F00B7E22F6A72900E80557 /* CitySearchViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F00B7D22F6A72900E80557 /* CitySearchViewModelProtocol.swift */; };
@@ -89,6 +90,7 @@
 		04B6391022FC53D30041FB0D /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		04B6391122FC53D30041FB0D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		04B6391422FC54010041FB0D /* AlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
+		04D67FEF22FD66EE006F8FBD /* AnimationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewModelTests.swift; sourceTree = "<group>"; };
 		04F00B7822F6A3A600E80557 /* CitySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchViewController.swift; sourceTree = "<group>"; };
 		04F00B7B22F6A6F200E80557 /* CitySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchViewModel.swift; sourceTree = "<group>"; };
 		04F00B7D22F6A72900E80557 /* CitySearchViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				AF567B8622D41694006EB878 /* CityListViewModelTests.swift */,
 				AF1F87FF22D6C1AA00157F5A /* WeatherViewModelTests.swift */,
 				044A995622F8428900556E1C /* CitySearchViewModelTests.swift */,
+				04D67FEF22FD66EE006F8FBD /* AnimationViewModelTests.swift */,
 			);
 			path = WeatherZoneTests;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				AF567B8522D4160E006EB878 /* ManualMocks.swift in Sources */,
 				AFC21A4C22BF50570032FC1D /* GeneratedMocks.swift in Sources */,
 				044A995722F8428900556E1C /* CitySearchViewModelTests.swift in Sources */,
+				04D67FF022FD66EE006F8FBD /* AnimationViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

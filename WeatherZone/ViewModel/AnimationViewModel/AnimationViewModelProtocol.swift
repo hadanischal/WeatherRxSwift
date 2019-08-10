@@ -8,9 +8,8 @@
 
 import Foundation
 import RxSwift
-import RxCocoa
 import Lottie
 
 protocol AnimationViewModelProtocol {
-    var animation: Driver<Animation?> { get }
+    var animation: Observable<Animation?> { get }
 }

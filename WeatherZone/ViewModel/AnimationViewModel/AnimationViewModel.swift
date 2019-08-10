@@ -12,11 +12,10 @@ import RxCocoa
 import Lottie
 
 class AnimationViewModel: AnimationViewModelProtocol {
-    var animation: Driver<Animation?>
-    
-    
+    var animation: Observable<Animation?>
+
     init() {
         let programmingAnimation = Animation.named("programmingAnimation", subdirectory: "")
-        animation = Driver.just(programmingAnimation)
+        animation = Observable.just(programmingAnimation)
     }
 }

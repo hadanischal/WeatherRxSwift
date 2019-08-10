@@ -16,13 +16,13 @@ import RxSwift
 @testable import WeatherZone
 
 class CityListViewModelTests: QuickSpec {
-    
+
     override func spec() {
         var testViewModel: CityListViewModel!
         var mockCityListHandler: MockCityListHandlerProtocol!
         var mockGetWeatherHandler: MockGetWeatherHandlerProtocol!
         var testScheduler: TestScheduler!
-        
+
         describe("CityListViewModel") {
             beforeEach {
                 testScheduler = TestScheduler(initialClock: 0)
@@ -37,9 +37,9 @@ class CityListViewModelTests: QuickSpec {
                 })
                 testViewModel = CityListViewModel(withCityList: mockCityListHandler, withGetWeather: mockGetWeatherHandler)
             }
-            
+
             describe("Get weather List from server", {
-                
+
                 context("when server request succeed ", {
                     beforeEach {
                         stub(mockCityListHandler, block: { stub in
@@ -58,14 +58,14 @@ class CityListViewModelTests: QuickSpec {
                     })
                     it("emits weather changed for citylist to the UI", closure: {
                         testViewModel.getCityListFromFile()
-                        
+
                         let testObservable = testViewModel.weatherList
                         let res = testScheduler.start { testObservable }
-                        
+
                         let expectedValue = weatherResult
                         if let firsElement = res.events.first?.value.element {
                             expect(firsElement.count).to(equal(1))
-                            
+
                             if firsElement.count > 0 {
                                 // Success
                                 expect(firsElement[0].name).to(equal(expectedValue.name))
@@ -79,12 +79,12 @@ class CityListViewModelTests: QuickSpec {
                         } else {
                             fail("Expected city list, got \(res.events) events)")
                         }
-                        
+
                     })
                 })
-                
+
                 it("emits the weatherList to the UI", closure: {
-                    
+
                     let res = testScheduler.start { testViewModel.weatherList.asObservable() }
                     expect(res.events.count).to(equal(1))
                     expect(res.events.first?.time).to(equal(200))
@@ -94,7 +94,7 @@ class CityListViewModelTests: QuickSpec {
                         fail("Expected weather list, got \(res.events) events)")
                     }
                 })
-                
+
                 context("when get city info request failed ", {
                     beforeEach {
                         stub(mockCityListHandler, block: { stub in
@@ -111,10 +111,10 @@ class CityListViewModelTests: QuickSpec {
                         }
                     })
                 })
-                
+
                 context("when server request failed for get weather info", {
                     beforeEach {
-                        
+
                         stub(mockCityListHandler, block: { stub in
                             when(stub.getCityInfo(withFilename: any())).thenReturn(Observable.just([cityList]))
                         })
@@ -132,12 +132,11 @@ class CityListViewModelTests: QuickSpec {
                         }
                     })
                 })
-                
+
             })
-            
-            
+
             describe("fetch weather info for selected city from server", {
-                
+
                 context("when server request succeed ", {
                     beforeEach {
                         stub(mockGetWeatherHandler, block: { stub in
@@ -153,11 +152,11 @@ class CityListViewModelTests: QuickSpec {
 
                         let testObservable = testViewModel.weatherList
                         let res = testScheduler.start { testObservable }
-                        
+
                         let expectedValue = weatherResult
                         if let firsElement = res.events.first?.value.element {
                             expect(firsElement.count).to(equal(1))
-                            
+
                             if firsElement.count > 0 {
                                 // Success
                                 expect(firsElement[0].name).to(equal(expectedValue.name))
@@ -171,24 +170,24 @@ class CityListViewModelTests: QuickSpec {
                         } else {
                             fail("Expected weather list, got \(res.events) events)")
                         }
-                        
+
                     })
                 })
-                
+
                 it("emits the weatherList to the UI", closure: {
-                    
+
                     let res = testScheduler.start { testViewModel.weatherList.asObservable() }
                     expect(res.events.count).to(equal(1))
                     expect(res.events.first?.time).to(equal(200))
                     expect(res.events.last?.time).to(equal(200))
-                    
+
                     if let firstElement = res.events.first?.value.element {
                         expect(firstElement).to(beEmpty())
                     } else {
                         fail("Expected weather list, got \(res.events) events)")
                     }
                 })
-                
+
                 context("when get city info request failed ", {
                     beforeEach {
                         stub(mockGetWeatherHandler, block: { stub in
@@ -205,10 +204,9 @@ class CityListViewModelTests: QuickSpec {
                         }
                     })
                 })
-                
+
             })
-            
-            
+
         }
     }
 }
