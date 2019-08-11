@@ -9,16 +9,21 @@
 import UIKit
 
 class WeatherDetailTableViewCell: UITableViewCell {
+    @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var labelDescription: UILabel!
+
+    var detailInfo: DetailModel? {
+        didSet {
+            guard let data = detailInfo else {
+                return
+            }
+            labelTitle.text = data.title
+            labelDescription.text = data.description
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.contentView.backgroundColor = UIColor.viewBackgroundColor
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

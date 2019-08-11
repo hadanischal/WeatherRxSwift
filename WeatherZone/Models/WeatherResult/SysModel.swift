@@ -1,5 +1,5 @@
 //
-//  DetailModel.swift
+//  SysModel.swift
 //  WeatherZone
 //
 //  Created by Nischal Hada on 11/8/19.
@@ -8,7 +8,9 @@
 
 import Foundation
 
-struct DetailModel: Codable {
-    let title: String?
-    var description: String?
+struct SysModel: Codable {
+    let timezone: Int64?
+    let country: String?
+    let sunrise: Int64?
+    let sunset: Int64?
 }
