@@ -9,8 +9,8 @@
 import UIKit
 
 struct WeatherResult: Codable {
-    let main: MainModel?
-    let weather: [Weather]?
+    let main: MainModel? //for temprature
+    let weather: [Weather]? //for icon, description
     var name: String?
 }
 

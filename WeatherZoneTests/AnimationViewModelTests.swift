@@ -15,18 +15,18 @@ import Lottie
 @testable import WeatherZone
 
 class AnimationViewModelTests: QuickSpec {
-    
+
     override func spec() {
         var testViewModel: AnimationViewModel!
         var testScheduler: TestScheduler!
-        
+
         describe("AnimationViewModel") {
             beforeEach {
-                
+
                 testScheduler = TestScheduler(initialClock: 0)
                 testViewModel = AnimationViewModel()
             }
-            
+
             describe("animation value is set properly", {
                 it("sets the animation value", closure: {
                     let testObservable = testViewModel.animation
@@ -35,8 +35,8 @@ class AnimationViewModelTests: QuickSpec {
                 })
             })
         }
-        
+
     }
 }
 
-fileprivate let mockAnimation = Animation.named("programmingAnimation", subdirectory: "")
+private let mockAnimation = Animation.named("programmingAnimation", subdirectory: "")

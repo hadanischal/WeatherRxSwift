@@ -34,6 +34,7 @@ class CitySearchViewController: UIViewController, UITableViewDelegate, UITableVi
     func setupUI() {
         self.title = "Search City"
         self.tableView.backgroundColor = UIColor.viewBackgroundColor
+        self.tableView.hideEmptyCells()
         self.cancelButton.rx.tap
             .subscribe { [weak self] _  in
                 self?.dismiss(animated: true)

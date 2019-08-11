@@ -11,9 +11,9 @@ import RxSwift
 import RxCocoa
 
 class WeatherTableViewController: UITableViewController {
-    private let disposeBag = DisposeBag()
     var viewModel: CityListViewModelProtocol = CityListViewModel()
     private var weatherList = [WeatherResult]()
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,7 @@ class WeatherTableViewController: UITableViewController {
     func setupUI() {
         self.tableView.backgroundColor = UIColor.viewBackgroundColor
         self.tableView.separatorStyle = .none
+        self.tableView.hideEmptyCells()
     }
 
     // MARK: - Table view data source
@@ -60,6 +61,9 @@ class WeatherTableViewController: UITableViewController {
         return 80
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "segueWeatherDetail", sender: indexPath)
+    }
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,6 +82,15 @@ class WeatherTableViewController: UITableViewController {
                     citySearchVC.dismiss(animated: true)
                 })
             .disposed(by: disposeBag)
+        } else if segue.identifier == "segueWeatherDetail" {
+
+            guard let weatherDetailVC = segue.destination as? WeatherDetailViewController else {
+                    fatalError("Segue destination is not found")
+            }
+            guard let indexPath = sender as? IndexPath else {
+                fatalError("indexPath not found")
+            }
+            weatherDetailVC.weatherInfo = weatherList[indexPath.row]
         }
 
     }
