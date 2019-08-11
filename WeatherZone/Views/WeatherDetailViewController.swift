@@ -20,6 +20,9 @@ class WeatherDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var weatherInfo: WeatherResult!
+
+    private var viewModel: WeatherDetailDelegate!
+    private var detailList = [DetailModel]()
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -27,13 +30,24 @@ class WeatherDetailViewController: UIViewController {
         self.title = weatherInfo.name
         setupUI()
         setView()
+        setupViewModel()
     }
 
     func setupUI() {
         self.view.backgroundColor = UIColor.viewBackgroundColor
         self.tableView.backgroundColor = UIColor.viewBackgroundColor
-        self.tableView.separatorStyle = .none
         self.tableView.hideEmptyCells()
+    }
+
+    func setupViewModel() {
+        viewModel =  WeatherDetailViewModel(withWeatherResultModel: weatherInfo)
+        viewModel.detailList
+            .observeOn(MainScheduler.instance)
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [weak self] list in
+                self?.detailList = list
+                self?.tableView.reloadData()
+            }).disposed(by: disposeBag)
     }
 
     private func setView() {
@@ -60,7 +74,7 @@ class WeatherDetailViewController: UIViewController {
 extension WeatherDetailViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 1
+        return 80
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,16 +82,17 @@ extension WeatherDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return detailList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else {
-            fatalError("Cell does not exist")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherDetailTableViewCell", for: indexPath) as? WeatherDetailTableViewCell else {
+            fatalError("WeatherDetailTableViewCell does not exist")
         }
-        //        cell.dataValue = self.employeeList?.scheduled_today
-        return cell    }
+        cell.detailInfo = self.detailList[indexPath.row]
+        cell.selectionStyle = .none
+        return cell
+    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("tapped")

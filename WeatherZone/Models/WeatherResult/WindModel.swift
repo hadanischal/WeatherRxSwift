@@ -1,5 +1,5 @@
 //
-//  DetailModel.swift
+//  WindModel.swift
 //  WeatherZone
 //
 //  Created by Nischal Hada on 11/8/19.
@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct DetailModel: Codable {
-    let title: String?
-    var description: String?
+struct WindModel: Codable {
+    let speed: Double?
+    let deg: Double?
+    let gust: Double?
 }
