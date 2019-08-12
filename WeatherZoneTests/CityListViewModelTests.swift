@@ -216,6 +216,6 @@ private let cityList = CityListModel(id: 2147714, name: "Sydney", coord: coord, 
 
 private let mainModel = MainModel(temp: 18.52, pressure: 1003, humidity: 72, temp_min: 17.78, temp_max: 19.44)
 private let weather = Weather(id: 803, main: "Clouds", description: "broken clouds", icon: "04d")
-private let weatherResult = WeatherResult(main: mainModel, weather: [weather], name: "Sydney")
+private let weatherResult = WeatherResult(main: mainModel, weather: [weather], sys: nil, visibility: 10, wind: nil, name: "Sydney")
 
 private let citysWeatherResult = CityWeatherModel(cnt: 1, list: [weatherResult])

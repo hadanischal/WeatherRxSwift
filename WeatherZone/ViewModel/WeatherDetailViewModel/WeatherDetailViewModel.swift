@@ -49,8 +49,11 @@ class WeatherDetailViewModel: WeatherDetailDelegate {
     }
 
     private func updateDetailList() {
-        self.detailModel[WeatherDetail.sunrise.rawValue].description = "\(weatherResult.sys?.sunrise ?? 0)"// TODO: Implement Time interval
-        self.detailModel[WeatherDetail.sunset.rawValue].description = "\(weatherResult.sys?.sunset ?? 0)"
+        let sunrise = Date(timeIntervalSince1970: weatherResult.sys?.sunrise ?? 0.00)
+        let sunset = Date(timeIntervalSince1970: weatherResult.sys?.sunset ?? 0.00)
+
+        self.detailModel[WeatherDetail.sunrise.rawValue].description = sunrise.time
+        self.detailModel[WeatherDetail.sunset.rawValue].description = sunset.time
         self.detailModel[WeatherDetail.pressure.rawValue].description = "\(weatherResult.main?.pressure ?? 0)"
         self.detailModel[WeatherDetail.humidity.rawValue].description = "\(weatherResult.main?.humidity ?? 0)"
         self.detailModel[WeatherDetail.tempMin.rawValue].description = "\(weatherResult.main?.temp_min ?? 0)"

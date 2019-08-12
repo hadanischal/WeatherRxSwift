@@ -20,6 +20,12 @@
 		0434CFD422FFFC7A00555789 /* DetailListHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0434CFD322FFFC7A00555789 /* DetailListHandlerProtocol.swift */; };
 		0434CFD62300044000555789 /* SysModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0434CFD52300044000555789 /* SysModel.swift */; };
 		0434CFD8230009A100555789 /* WindModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0434CFD7230009A100555789 /* WindModel.swift */; };
+		0434CFE3230010A200555789 /* ApexRounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0434CFE0230010A200555789 /* ApexRounded-Medium.otf */; };
+		0434CFE4230010A200555789 /* ApexRounded-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0434CFE1230010A200555789 /* ApexRounded-Book.otf */; };
+		0434CFE5230010A200555789 /* ApexRounded-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0434CFE2230010A200555789 /* ApexRounded-Heavy.otf */; };
+		0434CFE72300116300555789 /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0434CFE62300116300555789 /* FontExtension.swift */; };
+		0434CFE9230015D400555789 /* NavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0434CFE8230015D400555789 /* NavigationControllerExtension.swift */; };
+		0434CFEB2300203000555789 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0434CFEA2300203000555789 /* DateExtension.swift */; };
 		043A31DD22FECE6700A4410E /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A31DC22FECE6700A4410E /* UITableView+Extensions.swift */; };
 		043B837722F5B6A1003707F5 /* ColourConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B837622F5B6A1003707F5 /* ColourConstant.swift */; };
 		043B837922F5BE10003707F5 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B837822F5BE10003707F5 /* MainModel.swift */; };
@@ -31,6 +37,7 @@
 		04B6391222FC53D30041FB0D /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B6391022FC53D30041FB0D /* UIAlertControllerExtension.swift */; };
 		04B6391322FC53D30041FB0D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B6391122FC53D30041FB0D /* UIViewControllerExtension.swift */; };
 		04B6391522FC54030041FB0D /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B6391422FC54010041FB0D /* AlertAction.swift */; };
+		04B6B56D23005AF600223781 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B6B56C23005AF600223781 /* ActivityIndicator.swift */; };
 		04D67FF022FD66EE006F8FBD /* AnimationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D67FEF22FD66EE006F8FBD /* AnimationViewModelTests.swift */; };
 		04F00B7922F6A3A600E80557 /* CitySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F00B7822F6A3A600E80557 /* CitySearchViewController.swift */; };
 		04F00B7C22F6A6F200E80557 /* CitySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F00B7B22F6A6F200E80557 /* CitySearchViewModel.swift */; };
@@ -104,6 +111,12 @@
 		0434CFD322FFFC7A00555789 /* DetailListHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListHandlerProtocol.swift; sourceTree = "<group>"; };
 		0434CFD52300044000555789 /* SysModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SysModel.swift; sourceTree = "<group>"; };
 		0434CFD7230009A100555789 /* WindModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindModel.swift; sourceTree = "<group>"; };
+		0434CFE0230010A200555789 /* ApexRounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ApexRounded-Medium.otf"; sourceTree = "<group>"; };
+		0434CFE1230010A200555789 /* ApexRounded-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ApexRounded-Book.otf"; sourceTree = "<group>"; };
+		0434CFE2230010A200555789 /* ApexRounded-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ApexRounded-Heavy.otf"; sourceTree = "<group>"; };
+		0434CFE62300116300555789 /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		0434CFE8230015D400555789 /* NavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerExtension.swift; sourceTree = "<group>"; };
+		0434CFEA2300203000555789 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		043A31DC22FECE6700A4410E /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		043B837622F5B6A1003707F5 /* ColourConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourConstant.swift; sourceTree = "<group>"; };
 		043B837822F5BE10003707F5 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
@@ -114,6 +127,7 @@
 		04B6391022FC53D30041FB0D /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		04B6391122FC53D30041FB0D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		04B6391422FC54010041FB0D /* AlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
+		04B6B56C23005AF600223781 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		04D67FEF22FD66EE006F8FBD /* AnimationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewModelTests.swift; sourceTree = "<group>"; };
 		04F00B7822F6A3A600E80557 /* CitySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchViewController.swift; sourceTree = "<group>"; };
 		04F00B7B22F6A6F200E80557 /* CitySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchViewModel.swift; sourceTree = "<group>"; };
@@ -216,6 +230,16 @@
 				0434CFC922FFE7CD00555789 /* WeatherDetailViewModel.swift */,
 			);
 			path = WeatherDetailViewModel;
+			sourceTree = "<group>";
+		};
+		0434CFDF2300109400555789 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0434CFE1230010A200555789 /* ApexRounded-Book.otf */,
+				0434CFE2230010A200555789 /* ApexRounded-Heavy.otf */,
+				0434CFE0230010A200555789 /* ApexRounded-Medium.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		046F7C1C22FAFDCC00860B62 /* AnimationViewModel */ = {
@@ -361,6 +385,7 @@
 		AFBF708C22BBB71400629344 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0434CFDF2300109400555789 /* Fonts */,
 				AF1F865422BC75DF00303C5B /* app_icon.png */,
 				04F00B8322F6AC5500E80557 /* cityList.json */,
 				AFBF708D22BBB76F00629344 /* StartCity.json */,
@@ -406,7 +431,6 @@
 		AFC972A322AE89D9006BE3DB /* WeatherZone */ = {
 			isa = PBXGroup;
 			children = (
-				043B837622F5B6A1003707F5 /* ColourConstant.swift */,
 				AFBF708C22BBB71400629344 /* Resources */,
 				AFBF707F22BB0EB700629344 /* APIHandler */,
 				AFC972DC22AE900B006BE3DB /* Extensions */,
@@ -462,11 +486,16 @@
 		AFC972DC22AE900B006BE3DB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				043B837622F5B6A1003707F5 /* ColourConstant.swift */,
 				04B6391022FC53D30041FB0D /* UIAlertControllerExtension.swift */,
 				04B6391122FC53D30041FB0D /* UIViewControllerExtension.swift */,
 				AFC972E222AE90CA006BE3DB /* URLRequest+Extensions.swift */,
 				AFC972E422AE90E0006BE3DB /* URL+Extensions.swift */,
 				043A31DC22FECE6700A4410E /* UITableView+Extensions.swift */,
+				0434CFE62300116300555789 /* FontExtension.swift */,
+				0434CFE8230015D400555789 /* NavigationControllerExtension.swift */,
+				0434CFEA2300203000555789 /* DateExtension.swift */,
+				04B6B56C23005AF600223781 /* ActivityIndicator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -535,6 +564,7 @@
 				AFC972C022AE89DB006BE3DB /* Frameworks */,
 				AFC972C122AE89DB006BE3DB /* Resources */,
 				BA957AD147A1064037A5F566 /* [CP] Embed Pods Frameworks */,
+				04B6B56A230057A500223781 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -594,13 +624,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0434CFE5230010A200555789 /* ApexRounded-Heavy.otf in Resources */,
 				0434CFD022FFF9D100555789 /* detailList.json in Resources */,
 				0423E7FB22F997E20084B4A4 /* programmingAnimation.json in Resources */,
 				AFC972D822AE8BA1006BE3DB /* .swiftlint.yml in Resources */,
 				AFC972D622AE8B87006BE3DB /* .gitignore in Resources */,
 				04F00B8422F6AC5500E80557 /* cityList.json in Resources */,
+				0434CFE3230010A200555789 /* ApexRounded-Medium.otf in Resources */,
 				AFC972B222AE89DB006BE3DB /* LaunchScreen.storyboard in Resources */,
 				AFC972AF22AE89DB006BE3DB /* Assets.xcassets in Resources */,
+				0434CFE4230010A200555789 /* ApexRounded-Book.otf in Resources */,
 				AF1F865522BC75DF00303C5B /* app_icon.png in Resources */,
 				AFC972AA22AE89D9006BE3DB /* Main.storyboard in Resources */,
 				AFBF708E22BBB76F00629344 /* StartCity.json in Resources */,
@@ -624,6 +657,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		04B6B56A230057A500223781 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeatherZone/Pods-WeatherZone-frameworks.sh\"\n\n";
+		};
 		2435BB91D86B770E39A75D17 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -760,6 +810,8 @@
 				043B837922F5BE10003707F5 /* MainModel.swift in Sources */,
 				AFC972E522AE90E0006BE3DB /* URL+Extensions.swift in Sources */,
 				0434CFCE22FFE93400555789 /* WeatherDetail.swift in Sources */,
+				04B6B56D23005AF600223781 /* ActivityIndicator.swift in Sources */,
+				0434CFE72300116300555789 /* FontExtension.swift in Sources */,
 				AFBF708622BB20E600629344 /* WeatherTableViewController.swift in Sources */,
 				AFBF708122BB0EF200629344 /* GetWeatherHandler.swift in Sources */,
 				AFC972DF22AE903F006BE3DB /* WeatherResult.swift in Sources */,
@@ -778,6 +830,7 @@
 				0434CFD8230009A100555789 /* WindModel.swift in Sources */,
 				AF334FAF22BBBC2300413DBA /* CityListHandlerProtocol.swift in Sources */,
 				0462C2AD22FAFE0D00893818 /* AnimationViewModel.swift in Sources */,
+				0434CFEB2300203000555789 /* DateExtension.swift in Sources */,
 				AFC972E822AE9461006BE3DB /* WeatherViewController.swift in Sources */,
 				0434CFCA22FFE7CD00555789 /* WeatherDetailViewModel.swift in Sources */,
 				AFC972AD22AE89D9006BE3DB /* WeatherZone.xcdatamodeld in Sources */,
@@ -790,6 +843,7 @@
 				AFC972E122AE904E006BE3DB /* Weather.swift in Sources */,
 				04B6391222FC53D30041FB0D /* UIAlertControllerExtension.swift in Sources */,
 				04F00B7C22F6A6F200E80557 /* CitySearchViewModel.swift in Sources */,
+				0434CFE9230015D400555789 /* NavigationControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,6 @@ import Foundation
 struct SysModel: Codable {
     let timezone: Int64?
     let country: String?
-    let sunrise: Int64?
-    let sunset: Int64?
+    let sunrise: Double?
+    let sunset: Double?
 }

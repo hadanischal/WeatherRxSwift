@@ -12,12 +12,18 @@ extension UIColor {
     static var viewBackgroundColor: UIColor {
         return UIColor(rgb: 0x5c9ac1)
     }
-
+    
     static var addCityViewBackgroundColor: UIColor {
         return UIColor(rgb: 0xEAE8EA)
     }
+    static var barTintColor: UIColor {
+        return UIColor(rgb: 0x5c9ac1)
+    }
+    
+    static var titleTintColor: UIColor {
+        return UIColor.white
+    }
 }
-
 extension UIColor {
     convenience init(rgb: UInt) {
         self.init(
