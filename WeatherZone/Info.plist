@@ -46,5 +46,11 @@
         <key>NSAllowsArbitraryLoads</key>
         <true/>
     </dict>
+    <key>UIAppFonts</key>
+    <array>
+        <string>ApexRounded-Medium.otf</string>
+        <string>ApexRounded-Heavy.otf</string>
+        <string>ApexRounded-Book.otf</string>
+    </array>
 </dict>
 </plist>

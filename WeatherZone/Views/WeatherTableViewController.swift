@@ -19,6 +19,7 @@ class WeatherTableViewController: UITableViewController {
         super.viewDidLoad()
         self.title = "City List"
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.navigationController?.setCustomStyle()
         self.setupUI()
 
         self.viewModel.weatherList

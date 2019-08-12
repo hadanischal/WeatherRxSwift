@@ -37,5 +37,7 @@ class CityListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.contentView.backgroundColor = .viewBackgroundColor
+        self.labelCityName.font = .body1
+        self.labelCityTemperature.font = .body1
     }
 }

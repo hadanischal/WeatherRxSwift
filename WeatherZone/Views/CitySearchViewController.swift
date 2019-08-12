@@ -22,11 +22,12 @@ class CitySearchViewController: UIViewController, UITableViewDelegate, UITableVi
 
     private var cityList = [CityListModel]()
     private var viewModel: CitySearchViewModelProtocol!
-
+//    private let activityIndicator = ActivityIndicator()
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setCustomStyle()
         self.setupUI()
         self.setupViewModel()
     }
@@ -34,6 +35,10 @@ class CitySearchViewController: UIViewController, UITableViewDelegate, UITableVi
     func setupUI() {
         self.title = "Search City"
         self.tableView.backgroundColor = UIColor.viewBackgroundColor
+        //change UISearchBar font
+        UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.body2
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.body2
+
         self.tableView.hideEmptyCells()
         self.cancelButton.rx.tap
             .subscribe { [weak self] _  in
@@ -43,6 +48,7 @@ class CitySearchViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func setupViewModel() {
         viewModel = CitySearchViewModel()
+        
         viewModel.cityList
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] list in
@@ -71,6 +77,8 @@ class CitySearchViewController: UIViewController, UITableViewDelegate, UITableVi
         let city = self.cityList[indexPath.row]
         cell.textLabel?.text = city.name
         cell.detailTextLabel?.text = city.country
+        cell.textLabel?.font = .body2
+        cell.detailTextLabel?.font = .body3
         return cell
     }
 
