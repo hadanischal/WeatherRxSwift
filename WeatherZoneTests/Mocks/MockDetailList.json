@@ -1,0 +1,43 @@
+[
+    {
+        "id": 2147714,
+        "title": "Sunrise",
+        "description": "AU",
+    },
+    {
+        "id": 4163971,
+        "title": "sunset",
+        "description": "AU",
+    },
+    {
+        "id": 7839562,
+        "title": "pressure",
+        "description": "AU",
+    },
+    {
+        "id": 2063523,
+        "title": "humidity",
+        "description": "AU",
+    },
+    {
+        "id": 2165087,
+        "title": "Temprature Min",
+        "description": "AU",
+    },
+    {
+        "id": 2147291,
+        "title": "Temprature Max",
+        "description": "AU",
+    },
+    {
+        "id": 7839562,
+        "title": "wind",
+        "description": "AU",
+    },
+    {
+        "id": 2063525,
+        "title": "visibility",
+        "description": "AU",
+    },
+]
+

@@ -21,4 +21,7 @@ ${PODS_ROOT}/Cuckoo/run generate --testable "WeatherZone" \
 "$INPUT_DIR/APIHandler/GetWeatherHandler.swift" \
 "$INPUT_DIR/APIHandler/CityListHandlerProtocol.swift" \
 "$INPUT_DIR/APIHandler/CityListHandlerProtocol.swift" \
+"$INPUT_DIR/APIHandler/DetailListHandlerProtocol.swift" \
+"$INPUT_DIR/APIHandler/DetailListHandler.swift" \
+
 # ... and so forth
