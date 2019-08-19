@@ -41,6 +41,7 @@ class CitySearchViewModelTests: QuickSpec {
                         })
                     }
                     it("calls to the CityListHandler to get city info", closure: {
+                        testViewModel.getCityList()
                         verify(mockCityListHandler).getCityInfo(withFilename: any())
                     })
 
@@ -90,6 +91,7 @@ class CitySearchViewModelTests: QuickSpec {
                         })
                     }
                     it("calls to the CityListHandler to get city info", closure: {
+                        testViewModel.getCityList()
                         verify(mockCityListHandler).getCityInfo(withFilename: any())
                     })
                     it("doesnt emits weather list to the UI", closure: {

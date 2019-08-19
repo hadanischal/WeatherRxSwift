@@ -21,16 +21,8 @@ class WeatherTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.navigationController?.setCustomStyle()
         self.setupUI()
+        self.setupViewModel()
 
-        self.viewModel.weatherList
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] list in
-                self?.weatherList = list
-                self?.tableView.reloadData()
-            }, onError: { error in
-                print("error:\(error)")
-            })
-            .disposed(by: disposeBag)
     }
 
     func setupUI() {
@@ -39,6 +31,26 @@ class WeatherTableViewController: UITableViewController {
         self.tableView.hideEmptyCells()
     }
 
+    func setupViewModel() {
+        self.viewModel.weatherList
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] list in
+                self?.weatherList = list
+                self?.tableView.reloadData()
+                }, onError: { error in
+                    print("error:\(error)")
+            })
+            .disposed(by: disposeBag)
+
+        let appName = Bundle.main.displayName ?? "This app"
+
+        self.viewModel.errorMessage
+        .asDriver(onErrorJustReturn: "")
+            .drive(onNext: { [weak self] message in
+                self?.showAlertView(withTitle: appName, andMessage: message)
+            }).disposed(by: disposeBag)
+
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -79,8 +91,8 @@ class WeatherTableViewController: UITableViewController {
                 .selectedCity?
                 .observeOn(MainScheduler.asyncInstance)
                 .subscribe(onNext: { [weak self] cityModel in
-                    self?.viewModel.fetchWeatherFor(selectedCity: cityModel)
                     citySearchVC.dismiss(animated: true)
+                    self?.viewModel.fetchWeatherFor(selectedCity: cityModel)
                 })
             .disposed(by: disposeBag)
         } else if segue.identifier == "segueWeatherDetail" {

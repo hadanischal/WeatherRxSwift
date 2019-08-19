@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 
 class CitySearchViewModel: CitySearchViewModelProtocol {
     //input
@@ -16,7 +17,11 @@ class CitySearchViewModel: CitySearchViewModelProtocol {
 
     //output
     var cityList: Observable<[CityListModel]>
+    var isLoading: Observable<Bool>
+
     private let cityListSubject = PublishSubject<[CityListModel]>()
+    private let loadingSubject = BehaviorRelay<Bool>(value: true)
+
     private var localCityList: [CityListModel]
     private let disposeBag = DisposeBag()
 
@@ -28,26 +33,35 @@ class CitySearchViewModel: CitySearchViewModelProtocol {
 
         self.cityList = cityListSubject.asObservable()
         self.localCityList = []
-        self.getCityList()
+        self.isLoading = loadingSubject.asObservable()
+
+//        self.getCityList()
     }
 
     func getCityList() {
+        self.loadingSubject.accept(true)
+
         self.cityListHandler
             .getCityInfo(withFilename: "cityList")
             .subscribeOn(backgroundScheduler)
             .subscribe(onNext: { [weak self] cityList in
                 self?.cityListSubject.onNext(cityList)
                 self?.localCityList = cityList
+                self?.loadingSubject.accept(false)
                 }, onError: { error in
                     print("error:", error)
             }).disposed(by: disposeBag)
     }
 
     func searchCityWithName(withName name: Observable<String>) {
+        self.loadingSubject.accept(true)
+
         name
             .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] searchQuery in
+                self?.loadingSubject.accept(false)
+
                 if searchQuery.isEmpty {
                     self?.cityListSubject.onNext([])
                 } else {

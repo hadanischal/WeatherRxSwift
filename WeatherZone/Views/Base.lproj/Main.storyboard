@@ -56,6 +56,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ce3-Eo-yYa"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kMd-eo-2kJ">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="37" id="2lL-DQ-BOz"/>
+                                    <constraint firstAttribute="height" constant="37" id="8VQ-Ib-Us1"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -65,7 +72,9 @@
                             <constraint firstItem="Yyz-tX-PRG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V6L-E1-WcM"/>
                             <constraint firstItem="lIa-MI-cIw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZpM-Lr-OPV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="lIa-MI-cIw" secondAttribute="bottom" id="fDH-CT-4Ip"/>
+                            <constraint firstItem="kMd-eo-2kJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jyF-CL-KCO"/>
                             <constraint firstItem="lIa-MI-cIw" firstAttribute="top" secondItem="Yyz-tX-PRG" secondAttribute="bottom" id="wAN-5d-nMB"/>
+                            <constraint firstItem="kMd-eo-2kJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="x0n-rU-zfy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -73,6 +82,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" image="iconsCancel" id="bLJ-oi-snP"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="kMd-eo-2kJ" id="LzZ-Gm-m99"/>
                         <outlet property="cancelButton" destination="bLJ-oi-snP" id="JPD-aT-wDe"/>
                         <outlet property="searchBar" destination="Yyz-tX-PRG" id="0GY-7A-Ldw"/>
                         <outlet property="tableView" destination="lIa-MI-cIw" id="eLa-Gc-Nii"/>
@@ -165,14 +175,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="VLm-Pc-7Wk">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="ck2-A3-Jb1">
-                            <connections>
-                                <segue destination="HRt-rG-lCf" kind="presentation" identifier="segueCitySearch" id="PQs-Uj-BYU"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vWg-ch-zq4">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="vWg-ch-zq4">
                             <connections>
                                 <segue destination="qxM-BA-J75" kind="show" id="rK4-a8-cxo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="ck2-A3-Jb1">
+                            <connections>
+                                <segue destination="HRt-rG-lCf" kind="presentation" identifier="segueCitySearch" id="PQs-Uj-BYU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

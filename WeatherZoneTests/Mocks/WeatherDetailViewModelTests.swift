@@ -16,14 +16,14 @@ import Cuckoo
 @testable import WeatherZone
 
 class WeatherDetailViewModelTests: QuickSpec {
-    
+
     override func spec() {
         var testViewModel: WeatherDetailViewModel!
         var mockDetailListHandler: MockDetailListHandlerProtocol!
         var testScheduler: TestScheduler!
         let mockDetailList = MockData().stubDetailModelList()
         let mockWeatherResult = MockData().stubWeatherResult()
-        
+
         describe("WeatherDetailViewModel") {
             beforeEach {
                 testScheduler = TestScheduler(initialClock: 0)
@@ -34,7 +34,7 @@ class WeatherDetailViewModelTests: QuickSpec {
                 testViewModel = WeatherDetailViewModel(withDetailListHandler: mockDetailListHandler, withWeatherResultModel: mockWeatherResult, withSchedulerType: MainScheduler.instance)
             }
             describe("Get detail information List from json file", {
-                
+
                 context("when get request succeed ", {
                     beforeEach {
                         stub(mockDetailListHandler, block: { stub in
@@ -44,7 +44,7 @@ class WeatherDetailViewModelTests: QuickSpec {
                     it("calls to the CityListHandler to get city info", closure: {
                         verify(mockDetailListHandler).getDetailInfo(withFilename: any())
                     })
-                    
+
                     it("emits weather changed for detail to the UI", closure: {
                         testScheduler.scheduleAt(300, action: {
                             testViewModel.getDetailResult()
@@ -52,11 +52,11 @@ class WeatherDetailViewModelTests: QuickSpec {
                         let testObservable = testViewModel.detailList
                         let res = testScheduler.start { testObservable }
                         expect(res.events.count).to(equal(1))
-                        
+
                         let expectedValue = mockDetailList[0]
                         if let firsElement = res.events.first?.value.element {
                             expect(firsElement.count).to(equal(8))
-                            
+
                             if firsElement.count > 0 {
                                 // Success
                                 expect(firsElement[0].title).to(equal(expectedValue.title))
@@ -67,10 +67,10 @@ class WeatherDetailViewModelTests: QuickSpec {
                         } else {
                             fail("Expected city list, got \(res.events) events)")
                         }
-                        
+
                     })
                 })
-                
+
                 context("when get detail information List fails ", {
                     beforeEach {
                         stub(mockDetailListHandler, block: { stub in
@@ -80,7 +80,7 @@ class WeatherDetailViewModelTests: QuickSpec {
                     it("calls to the CityListHandler to get city info", closure: {
                         verify(mockDetailListHandler).getDetailInfo(withFilename: any())
                     })
-                    
+
                     it("emits weather changed for detail to the UI", closure: {
                         testScheduler.scheduleAt(300, action: {
                             testViewModel.getDetailResult()
@@ -90,10 +90,10 @@ class WeatherDetailViewModelTests: QuickSpec {
                         expect(res.events.count).to(equal(0))
                     })
                 })
-                
+
             })
-            
+
         }
-        
+
     }
 }

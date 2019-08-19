@@ -12,4 +12,5 @@ protocol CityListViewModelProtocol {
     var weatherList: Observable<[WeatherResult]> { get }
     func getCityListFromFile()
     func fetchWeatherFor(selectedCity cityName: CityListModel)
+    var errorMessage: Observable<String> { get }
 }

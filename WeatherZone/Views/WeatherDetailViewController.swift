@@ -60,8 +60,9 @@ class WeatherDetailViewController: UIViewController {
             weather.count > 0 {
             let weatherData = weather[0]
 
-            let url = URL.iconURL(weatherData.icon)
-            self.weatherImageView.kf.setImage(with: url)
+            if let url = URL.iconURL(weatherData.icon) {
+                self.weatherImageView.setImage(url: url)
+            }
             self.labelMainName.text = weatherData.main
             self.labelDescription.text = weatherData.description
         }

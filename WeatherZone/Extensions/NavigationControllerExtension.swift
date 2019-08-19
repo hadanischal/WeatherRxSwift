@@ -9,7 +9,7 @@
 import UIKit
 
 class NavigationController: UINavigationController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setCustomStyle()
@@ -24,10 +24,10 @@ extension UINavigationController {
         //To tint the bar's background
         navigationBar.barTintColor = .barTintColor
 //        navigationItem.hidesBackButton = true
-        
+
         navigationBar.titleTextAttributes = [.font: UIFont.navigationBarTitle,
                                              .foregroundColor: UIColor.titleTintColor]
-        
+
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.navigationBarButtonItem], for: UIControl.State.normal)
 
         view.backgroundColor = .barTintColor

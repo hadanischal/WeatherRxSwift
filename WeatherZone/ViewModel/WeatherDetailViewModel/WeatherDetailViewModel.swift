@@ -60,7 +60,7 @@ class WeatherDetailViewModel: WeatherDetailDelegate {
         self.detailModel[WeatherDetail.tempMax.rawValue].description = "\(weatherResult.main?.temp_max ?? 0)"
         self.detailModel[WeatherDetail.wind.rawValue].description = "\(weatherResult.wind?.speed ?? 0)"
         self.detailModel[WeatherDetail.visibility.rawValue].description = "\(weatherResult.visibility ?? 0)"
-        
+
         self.detailSubject.onNext(detailModel)
     }
 
