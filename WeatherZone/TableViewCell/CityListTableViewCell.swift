@@ -27,8 +27,9 @@ class CityListTableViewCell: UITableViewCell {
                 let weather = data.weather,
                 weather.count > 0 {
                 let imageIcon = weather[0].icon
-                let url = URL.iconURL(imageIcon)
-                self.weatherImageView.kf.setImage(with: url)
+                if let url = URL.iconURL(imageIcon) {
+                self.weatherImageView.setImage(url: url)
+                }
             }
 
         }

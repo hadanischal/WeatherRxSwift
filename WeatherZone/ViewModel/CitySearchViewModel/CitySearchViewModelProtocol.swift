@@ -12,4 +12,5 @@ protocol CitySearchViewModelProtocol {
     var cityList: Observable<[CityListModel]> { get }
     func getCityList()
     func searchCityWithName(withName name: Observable<String>)
+    var isLoading: Observable<Bool> { get }
 }

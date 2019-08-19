@@ -18,7 +18,10 @@ class CityListViewModel: CityListViewModelProtocol {
     //output
     var cityList: [CityListModel]!
     var weatherList: Observable<[WeatherResult]>
+    var errorMessage: Observable<String>
+
     let weatherListBehaviorRelay: BehaviorRelay<[WeatherResult]> = BehaviorRelay(value: [])
+    let errorSubject = PublishSubject<String>()
 
     private let disposeBag = DisposeBag()
 
@@ -27,6 +30,8 @@ class CityListViewModel: CityListViewModelProtocol {
         self.cityListHandler = cityListHandler
         self.weatherHandler = weatherHandler
         self.weatherList = weatherListBehaviorRelay.asObservable()
+        self.errorMessage = errorSubject.asObserver()
+
         self.cityList = []
         self.syncTask()
         self.getCityListFromFile()
@@ -51,6 +56,7 @@ class CityListViewModel: CityListViewModelProtocol {
                 self?.getWeatherInfoForCityList()
                 }, onError: { error in
                     print("getCityInfo error :", error)
+                    self.errorSubject.onNext("Unable to get city list.")
             }).disposed(by: disposeBag)
     }
 
@@ -67,6 +73,7 @@ class CityListViewModel: CityListViewModelProtocol {
                 }
                 }, onError: { error in
                     print("WeatherInfoForCityList error :", error)
+                    self.errorSubject.onNext("Unable to get weather information for city list.")
             }).disposed(by: disposeBag)
     }
 
@@ -95,7 +102,10 @@ class CityListViewModel: CityListViewModelProtocol {
 
                     }, onError: { error in
                         print("selectedCity error :", error)
+                        self.errorSubject.onNext("Unable to get weather information for selected city.")
                 }).disposed(by: disposeBag)
+        } else {
+            self.errorSubject.onNext("City already added in city list.")
         }
 
     }

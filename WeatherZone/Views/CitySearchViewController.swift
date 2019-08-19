@@ -13,8 +13,9 @@ import RxCocoa
 class CitySearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+
     private let selectedCitySubject = PublishSubject<CityListModel>()
     var selectedCity: Observable<CityListModel>? {
         return selectedCitySubject.asObserver()
@@ -22,7 +23,6 @@ class CitySearchViewController: UIViewController, UITableViewDelegate, UITableVi
 
     private var cityList = [CityListModel]()
     private var viewModel: CitySearchViewModelProtocol!
-//    private let activityIndicator = ActivityIndicator()
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -44,11 +44,12 @@ class CitySearchViewController: UIViewController, UITableViewDelegate, UITableVi
             .subscribe { [weak self] _  in
                 self?.dismiss(animated: true)
         }.disposed(by: disposeBag)
+
     }
 
     func setupViewModel() {
         viewModel = CitySearchViewModel()
-        
+
         viewModel.cityList
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] list in
@@ -56,8 +57,11 @@ class CitySearchViewController: UIViewController, UITableViewDelegate, UITableVi
                 self?.tableView?.reloadData()
             }).disposed(by: disposeBag)
 
+        viewModel.isLoading.bind(to: activityIndicatorView.rx.isAnimating).disposed(by: disposeBag)
+
         let searchQuery = searchBar.rx.text.orEmpty.asObservable()
         viewModel.searchCityWithName(withName: searchQuery)
+        viewModel.getCityList()
     }
 
     // MARK: - Table view data source

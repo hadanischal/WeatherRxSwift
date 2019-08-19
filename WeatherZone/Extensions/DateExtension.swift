@@ -9,7 +9,7 @@
 import Foundation
 
 extension Date {
-    
+
     public var hour: Int {
         get {
             return Calendar.current.component(.hour, from: self)
@@ -17,7 +17,7 @@ extension Date {
         set {
             let allowedRange = Calendar.current.range(of: .hour, in: .day, for: self)!
             guard allowedRange.contains(newValue) else { return }
-            
+
             let currentHour = Calendar.current.component(.hour, from: self)
             let hoursToAdd = newValue - currentHour
             if let date = Calendar.current.date(byAdding: .hour, value: hoursToAdd, to: self) {
@@ -25,7 +25,7 @@ extension Date {
             }
         }
     }
-    
+
     public var time: String {
         get {
             let dateFormatter = DateFormatter()
@@ -34,6 +34,6 @@ extension Date {
             let dataString = dateFormatter.string(from: self)
             return dataString
         }
-    }    
-    
+    }
+
 }
