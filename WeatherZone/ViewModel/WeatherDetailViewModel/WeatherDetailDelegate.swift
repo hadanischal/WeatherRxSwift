@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 
+//swiftlint:disable class_delegate_protocol
 protocol WeatherDetailDelegate {
     var detailList: Observable<[DetailModel]> { get }
     func getDetailResult()

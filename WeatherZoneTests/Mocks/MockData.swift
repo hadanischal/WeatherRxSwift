@@ -56,7 +56,7 @@ class MockData {
         do {
             let data = try Data(contentsOf: url)
             return data
-        } catch (_) {
+        } catch _ {
             XCTFail("unable to read json")
             return nil
         }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+//swiftlint:disable identifier_name
 struct CityListModel: Codable {
     let id: Int?
     let name: String?

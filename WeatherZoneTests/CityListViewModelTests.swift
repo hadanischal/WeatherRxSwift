@@ -15,6 +15,7 @@ import RxBlocking
 import RxSwift
 @testable import WeatherZone
 
+//swiftlint:disable function_body_length
 class CityListViewModelTests: QuickSpec {
 
     override func spec() {
@@ -35,7 +36,8 @@ class CityListViewModelTests: QuickSpec {
                     when(stub.getWeatherInfo(by: any())).thenReturn(Observable.just(weatherResult))
                     when(stub.getWeatherInfo(byCityIDs: any())).thenReturn(Observable.just(citysWeatherResult))
                 })
-                testViewModel = CityListViewModel(withCityList: mockCityListHandler, withGetWeather: mockGetWeatherHandler)
+                testViewModel = CityListViewModel(withCityList: mockCityListHandler,
+                                                  withGetWeather: mockGetWeatherHandler)
             }
 
             describe("Get weather List from server", {
@@ -66,7 +68,7 @@ class CityListViewModelTests: QuickSpec {
                         if let firsElement = res.events.first?.value.element {
                             expect(firsElement.count).to(equal(1))
 
-                            if firsElement.count > 0 {
+                            if !firsElement.isEmpty {
                                 // Success
                                 expect(firsElement[0].name).to(equal(expectedValue.name))
                                 expect(firsElement[0].main?.pressure).to(equal(mainModel.pressure))
@@ -157,7 +159,7 @@ class CityListViewModelTests: QuickSpec {
                         if let firsElement = res.events.first?.value.element {
                             expect(firsElement.count).to(equal(1))
 
-                            if firsElement.count > 0 {
+                            if !firsElement.isEmpty {
                                 // Success
                                 expect(firsElement[0].name).to(equal(expectedValue.name))
                                 expect(firsElement[0].main?.pressure).to(equal(mainModel.pressure))

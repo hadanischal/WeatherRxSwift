@@ -57,7 +57,7 @@ class WeatherDetailViewController: UIViewController {
         }
         if
             let weather = weatherInfo.weather,
-            weather.count > 0 {
+            !weather.isEmpty {
             let weatherData = weather[0]
 
             if let url = URL.iconURL(weatherData.icon) {

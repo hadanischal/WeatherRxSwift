@@ -57,7 +57,7 @@ class WeatherDetailViewModelTests: QuickSpec {
                         if let firsElement = res.events.first?.value.element {
                             expect(firsElement.count).to(equal(8))
 
-                            if firsElement.count > 0 {
+                            if !firsElement.isEmpty {
                                 // Success
                                 expect(firsElement[0].title).to(equal(expectedValue.title))
                                 expect(firsElement[0].description).to(equal("6:32 AM"))
