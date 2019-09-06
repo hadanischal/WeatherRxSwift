@@ -82,7 +82,7 @@ class CityListViewModel: CityListViewModelProtocol {
     func fetchWeatherFor(selectedCity city: CityListModel) {
         let foundItems = self.cityList.filter {$0.id == city.id }
 
-        if foundItems.count == 0, //add city if its not in list
+        if foundItems.isEmpty, //add city if its not in list
             let cityId = city.name {
 
             self.cityList.append(city)

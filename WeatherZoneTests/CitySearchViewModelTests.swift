@@ -15,6 +15,7 @@ import RxBlocking
 import RxSwift
 @testable import WeatherZone
 
+//swiftlint:disable function_body_length
 class CitySearchViewModelTests: QuickSpec {
 
     override func spec() {
@@ -66,7 +67,7 @@ class CitySearchViewModelTests: QuickSpec {
                         if let firsElement = res.events.first?.value.element {
                             expect(firsElement.count).to(equal(1))
 
-                            if firsElement.count > 0 {
+                            if !firsElement.isEmpty {
                                 // Success
                                 expect(firsElement[0].name).to(equal(expectedValue.name))
                                 expect(firsElement[0].country).to(equal(expectedValue.country))
@@ -140,7 +141,7 @@ class CitySearchViewModelTests: QuickSpec {
                         if let firsElement = res.events.first?.value.element {
                             expect(firsElement.count).to(equal(1))
 
-                            if firsElement.count > 0 {
+                            if !firsElement.isEmpty {
                                 // Success
                                 expect(firsElement[0].name).to(equal(expectedValue.name))
                                 expect(firsElement[0].country).to(equal(expectedValue.country))
@@ -188,7 +189,7 @@ class CitySearchViewModelTests: QuickSpec {
                         if let firsElement = res.events.last?.value.element {
                             expect(firsElement.count).to(equal(1))
 
-                            if firsElement.count > 0 {
+                            if !firsElement.isEmpty {
                                 // Success
                                 expect(firsElement[0].name).to(equal(expectedValue.name))
                                 expect(firsElement[0].country).to(equal(expectedValue.country))

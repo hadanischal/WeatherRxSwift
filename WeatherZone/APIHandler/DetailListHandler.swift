@@ -22,7 +22,7 @@ class DetailListHandler: DetailListHandlerProtocol {
                     let jsonData = try decoder.decode([DetailModel].self, from: data)
                     observer.on(.next(jsonData))
                     observer.on(.completed)
-                } catch (let error) {
+                } catch let error {
                     print("error:\(error)")
                     observer.on(.error(error))
                 }

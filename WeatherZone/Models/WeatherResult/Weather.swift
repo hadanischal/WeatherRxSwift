@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//swiftlint:disable identifier_name
 struct Weather: Codable {
     let id: Int
     let main: String

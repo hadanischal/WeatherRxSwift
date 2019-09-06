@@ -8,6 +8,7 @@
 
 import Foundation
 
+// swiftlint:disable all
 struct MainModel: Codable {
     let temp: Double
     let pressure: Double

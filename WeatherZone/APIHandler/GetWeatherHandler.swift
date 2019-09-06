@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+//swiftlint:disable line_length
 class GetWeatherHandler: GetWeatherHandlerProtocol {
     init() {}
 
