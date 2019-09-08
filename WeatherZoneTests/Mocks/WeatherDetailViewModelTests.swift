@@ -31,7 +31,9 @@ class WeatherDetailViewModelTests: QuickSpec {
                 stub(mockDetailListHandler, block: { stub in
                     when(stub.getDetailInfo(withFilename: any())).thenReturn(Observable.just(mockDetailList))
                 })
-                testViewModel = WeatherDetailViewModel(withDetailListHandler: mockDetailListHandler, withWeatherResultModel: mockWeatherResult, withSchedulerType: MainScheduler.instance)
+                testViewModel = WeatherDetailViewModel(withDetailListHandler: mockDetailListHandler,
+                                                       withWeatherResultModel: mockWeatherResult,
+                                                       withSchedulerType: MainScheduler.instance)
             }
             describe("Get detail information List from json file", {
 

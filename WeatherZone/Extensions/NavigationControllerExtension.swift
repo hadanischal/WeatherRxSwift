@@ -28,7 +28,9 @@ extension UINavigationController {
         navigationBar.titleTextAttributes = [.font: UIFont.navigationBarTitle,
                                              .foregroundColor: UIColor.titleTintColor]
 
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.navigationBarButtonItem], for: UIControl.State.normal)
+        let attribute = [NSAttributedString.Key.font: UIFont.navigationBarButtonItem]
+
+        UIBarButtonItem.appearance().setTitleTextAttributes(attribute, for: UIControl.State.normal)
 
         view.backgroundColor = .barTintColor
     }
