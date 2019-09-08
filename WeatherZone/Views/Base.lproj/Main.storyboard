@@ -442,23 +442,10 @@
                     <view key="view" contentMode="scaleToFill" id="vUm-VA-8WH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSi-t2-974" customClass="AnimationView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="eSi-t2-974" firstAttribute="height" secondItem="vUm-VA-8WH" secondAttribute="height" id="Mfr-0J-O4l"/>
-                            <constraint firstItem="eSi-t2-974" firstAttribute="centerX" secondItem="vUm-VA-8WH" secondAttribute="centerX" id="stT-be-Gs2"/>
-                            <constraint firstItem="eSi-t2-974" firstAttribute="centerY" secondItem="vUm-VA-8WH" secondAttribute="centerY" id="udp-c9-7eq"/>
-                            <constraint firstItem="eSi-t2-974" firstAttribute="width" secondItem="vUm-VA-8WH" secondAttribute="width" id="ux7-45-gIh"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="scy-Ds-lze"/>
                     </view>
                     <connections>
-                        <outlet property="animationView1" destination="eSi-t2-974" id="x93-2S-Xm4"/>
                         <segue destination="AZA-rD-oAJ" kind="show" identifier="segueWeatherListView" id="pfb-ZW-zEa"/>
                     </connections>
                 </viewController>

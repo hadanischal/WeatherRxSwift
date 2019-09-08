@@ -30,6 +30,7 @@
 		043B837722F5B6A1003707F5 /* ColourConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B837622F5B6A1003707F5 /* ColourConstant.swift */; };
 		043B837922F5BE10003707F5 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043B837822F5BE10003707F5 /* MainModel.swift */; };
 		043B837B22F5C5B0003707F5 /* WeatherZoneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC972C722AE89DB006BE3DB /* WeatherZoneUITests.swift */; };
+		043FB98723250C8200653857 /* LottieAnimationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043FB98623250C8200653857 /* LottieAnimationHelper.swift */; };
 		044A995722F8428900556E1C /* CitySearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A995622F8428900556E1C /* CitySearchViewModelTests.swift */; };
 		0462C2AD22FAFE0D00893818 /* AnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0462C2AC22FAFE0D00893818 /* AnimationViewModel.swift */; };
 		0462C2AF22FAFE1C00893818 /* AnimationViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0462C2AE22FAFE1C00893818 /* AnimationViewModelProtocol.swift */; };
@@ -124,6 +125,7 @@
 		043A31DC22FECE6700A4410E /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		043B837622F5B6A1003707F5 /* ColourConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourConstant.swift; sourceTree = "<group>"; };
 		043B837822F5BE10003707F5 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		043FB98623250C8200653857 /* LottieAnimationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimationHelper.swift; sourceTree = "<group>"; };
 		044A995622F8428900556E1C /* CitySearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchViewModelTests.swift; sourceTree = "<group>"; };
 		0462C2AC22FAFE0D00893818 /* AnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewModel.swift; sourceTree = "<group>"; };
 		0462C2AE22FAFE1C00893818 /* AnimationViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -248,6 +250,22 @@
 				0434CFE0230010A200555789 /* ApexRounded-Medium.otf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		043FB98423250C2A00653857 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				043FB98523250C3300653857 /* LottieAnimation */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		043FB98523250C3300653857 /* LottieAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				043FB98623250C8200653857 /* LottieAnimationHelper.swift */,
+			);
+			path = LottieAnimation;
 			sourceTree = "<group>";
 		};
 		046F7C1C22FAFDCC00860B62 /* AnimationViewModel */ = {
@@ -441,6 +459,7 @@
 		AFC972A322AE89D9006BE3DB /* WeatherZone */ = {
 			isa = PBXGroup;
 			children = (
+				043FB98423250C2A00653857 /* Utility */,
 				AFBF708C22BBB71400629344 /* Resources */,
 				AFBF707F22BB0EB700629344 /* APIHandler */,
 				AFC972DC22AE900B006BE3DB /* Extensions */,
@@ -854,6 +873,7 @@
 				0434CFC722FFE58F00555789 /* DetailModel.swift in Sources */,
 				AF1F865122BC5ADA00303C5B /* CityWeatherModel.swift in Sources */,
 				048C3DB8230ACEEB00401215 /* BundleExtension.swift in Sources */,
+				043FB98723250C8200653857 /* LottieAnimationHelper.swift in Sources */,
 				04F00B7922F6A3A600E80557 /* CitySearchViewController.swift in Sources */,
 				043A31DD22FECE6700A4410E /* UITableView+Extensions.swift in Sources */,
 				0434CFD222FFFC6000555789 /* DetailListHandler.swift in Sources */,
