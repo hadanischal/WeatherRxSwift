@@ -5,3 +5,12 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
 - Carthage
 - Pods
 - WeatherZoneTests/Mocks/GeneratedMocks.swift
+- WeatherZoneTests/
+
+file_length:
+    warning: 500
+    error: 1200
+
+line_length:
+    warning: 200
+    error: 300
