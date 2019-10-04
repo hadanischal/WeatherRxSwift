@@ -27,13 +27,11 @@ extension Date {
     }
 
     public var time: String {
-        get {
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .none
             dateFormatter.timeStyle = .short
             let dataString = dateFormatter.string(from: self)
             return dataString
-        }
     }
 
 }
