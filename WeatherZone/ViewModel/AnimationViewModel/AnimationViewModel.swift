@@ -15,7 +15,7 @@ class AnimationViewModel: AnimationViewModelProtocol {
     var animation: Observable<Animation?>
 
     init() {
-        let programmingAnimation = Animation.named("programmingAnimation", subdirectory: "")
+        let programmingAnimation = Animation.named("weather-app-animation", subdirectory: "")
         animation = Observable.just(programmingAnimation)
     }
 }

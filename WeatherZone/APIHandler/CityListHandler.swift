@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import CocoaLumberjack
 
 final class CityListHandler: CityListHandlerProtocol {
 
@@ -27,7 +28,7 @@ final class CityListHandler: CityListHandlerProtocol {
                 observer.on(.next(jsonData))
                 observer.on(.completed)
             } catch let error {
-                print("error:\(error)")
+                DDLogError("error: \(error)")
                 observer.on(.error(error))
             }
             return Disposables.create()

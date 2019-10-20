@@ -1,5 +1,5 @@
 //
-//  WeatherDetailDelegate.swift
+//  WeatherDetailDataSource.swift
 //  WeatherZone
 //
 //  Created by Nischal Hada on 11/8/19.
@@ -9,8 +9,7 @@
 import Foundation
 import RxSwift
 
-//swiftlint:disable class_delegate_protocol
-protocol WeatherDetailDelegate {
+protocol WeatherDetailDataSource {
     var detailList: Observable<[DetailModel]> { get }
     func getDetailResult()
 }

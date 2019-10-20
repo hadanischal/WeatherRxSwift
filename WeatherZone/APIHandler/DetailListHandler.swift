@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import CocoaLumberjack
 
 class DetailListHandler: DetailListHandlerProtocol {
     init() {}
@@ -23,7 +24,7 @@ class DetailListHandler: DetailListHandlerProtocol {
                     observer.on(.next(jsonData))
                     observer.on(.completed)
                 } catch let error {
-                    print("error:\(error)")
+                    DDLogError("error : \(error)")
                     observer.on(.error(error))
                 }
             }

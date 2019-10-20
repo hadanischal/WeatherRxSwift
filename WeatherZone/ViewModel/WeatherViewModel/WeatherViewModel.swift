@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import CocoaLumberjack
 
 class WeatherViewModel: WeatherViewModelProtocol {
     private let getWeatherHandler: GetWeatherHandlerProtocol
@@ -26,7 +27,7 @@ class WeatherViewModel: WeatherViewModelProtocol {
         getWeatherHandler.getWeatherInfo(by: city)
             .retry(3)
             .catchError { error -> Observable<WeatherResult?> in
-                print(error.localizedDescription)
+                DDLogInfo(error.localizedDescription)
                 return Observable.just(WeatherResult.empty)
             }
             .subscribe(onNext: { [weak self] result in
@@ -34,7 +35,7 @@ class WeatherViewModel: WeatherViewModelProtocol {
                     self?.weatherListSubject.onNext(result)
                 }
                 }, onError: { error in
-                    print("VM error :", error)
+                    DDLogError("getWeatherInfo onError: \(error)")
             })
             .disposed(by: disposeBag)
     }

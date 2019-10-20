@@ -19,6 +19,7 @@ target 'WeatherZone' do
   pod 'Kingfisher', '~> 5.0'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'lottie-ios', '~> 3.1.2'
+  pod 'CocoaLumberjack/Swift'
 
   target 'WeatherZoneTests' do
     inherit! :search_paths

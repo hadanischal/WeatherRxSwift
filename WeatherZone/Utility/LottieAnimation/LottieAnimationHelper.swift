@@ -9,6 +9,7 @@
 import Foundation
 import Lottie
 import RxSwift
+import CocoaLumberjack
 
 class LottieAnimationHelper {
     let animationView = AnimationView()
@@ -25,11 +26,11 @@ class LottieAnimationHelper {
                                loopMode: LottieLoopMode.playOnce,
                                completion: { (finished) in
                                 if finished {
-                                    print("Animation Complete")
+                                    DDLogInfo("Animation Complete")
                                     completable(.completed)
                                 } else {
                                     completable(.error(RxError.noElements))
-                                    print("Animation cancelled")
+                                    DDLogInfo("Animation cancelled")
                                 }
             })
             return Disposables.create()
