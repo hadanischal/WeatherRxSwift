@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import CocoaLumberjack
 
 class WeatherViewController: UIViewController {
 
@@ -36,8 +37,7 @@ class WeatherViewController: UIViewController {
             .subscribe(onNext: { [weak self] weather in
                 self?.displayWeather(weather)
                 }, onError: { error in
-                    print("on error ")
-                    print(error)
+                    DDLogError("onError: \(error)")
             })
             .disposed(by: disposeBag)
 

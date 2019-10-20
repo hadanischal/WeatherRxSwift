@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import CocoaLumberjack
 
 class WeatherTableViewController: UITableViewController {
     var viewModel: CityListViewModelProtocol = CityListViewModel()
@@ -17,18 +18,22 @@ class WeatherTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "City List"
-        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
-        self.navigationController?.setCustomStyle()
-        self.setupUI()
-        self.setupViewModel()
+        setupUI()
+        setupViewModel()
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
     }
 
     func setupUI() {
-        self.tableView.backgroundColor = UIColor.viewBackgroundColor
-        self.tableView.separatorStyle = .none
-        self.tableView.hideEmptyCells()
+        title = "City List"
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        navigationController?.setCustomStyle()
+        tableView.backgroundColor = UIColor.viewBackgroundColor
+        tableView.separatorStyle = .none
+        tableView.hideEmptyCells()
     }
 
     func setupViewModel() {
@@ -38,7 +43,7 @@ class WeatherTableViewController: UITableViewController {
                 self?.weatherList = list
                 self?.tableView.reloadData()
                 }, onError: { error in
-                    print("error:\(error)")
+                    DDLogError("onError: \(error)")
             })
             .disposed(by: disposeBag)
 
@@ -49,8 +54,8 @@ class WeatherTableViewController: UITableViewController {
             .drive(onNext: { [weak self] message in
                 self?.showAlertView(withTitle: appName, andMessage: message)
             }).disposed(by: disposeBag)
-
     }
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -62,9 +67,7 @@ class WeatherTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityListTableViewCell", for: indexPath) as? CityListTableViewCell else {
-            fatalError("CityListTableViewCell does not exist")
-        }
+        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as CityListTableViewCell
         cell.model = self.weatherList[indexPath.row]
         cell.selectionStyle = .none
         return cell

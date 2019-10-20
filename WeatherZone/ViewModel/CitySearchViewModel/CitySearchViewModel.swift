@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import CocoaLumberjack
 
 class CitySearchViewModel: CitySearchViewModelProtocol {
     //input
@@ -49,7 +50,7 @@ class CitySearchViewModel: CitySearchViewModelProtocol {
                 self?.localCityList = cityList
                 self?.loadingSubject.accept(false)
                 }, onError: { error in
-                    print("error:", error)
+                    DDLogError("onError: \(error)")
             }).disposed(by: disposeBag)
     }
 

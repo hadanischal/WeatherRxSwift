@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Lottie
+import CocoaLumberjack
 
 class AnimationViewController: UIViewController {
     var viewModel: AnimationViewModelProtocol = AnimationViewModel()
@@ -34,7 +35,7 @@ class AnimationViewController: UIViewController {
                 if let animation = lottieAnimation {
                     self?.lottieAnimation(withAnimation: animation)
                 } else {
-                    print("Lottie file not found")
+                    DDLogInfo("Lottie file not found")
                     self?.displayRootView()
                 }
 
@@ -49,16 +50,22 @@ class AnimationViewController: UIViewController {
             .subscribe(onCompleted: { [weak self] in
                 self?.displayRootView()
                 }, onError: { error in
-                    print("getCityInfo error :", error)
+                    DDLogError("onError: \(error)")
             }).disposed(by: disposeBag)
 
     }
 
     private func displayRootView() {
-        let delayInSeconds = 1.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds) { [weak self] in
-            // DispatchQueue.main.async { [weak self] in
-            self?.performSegue(withIdentifier: "segueWeatherListView", sender: nil)
+        DispatchQueue.main.async {
+            if let window = UIApplication.shared.keyWindow {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                guard let viewController = storyboard.instantiateViewController(withIdentifier: "WeatherTableViewController") as? WeatherTableViewController else {
+                    assertionFailure("viewController not found")
+                    return
+                }
+                let navigationController = NavigationController(rootViewController: viewController)
+                window.rootViewController = navigationController
+            }
         }
     }
 

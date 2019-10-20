@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import CocoaLumberjack
 
 class CityListViewModel: CityListViewModelProtocol {
     //input
@@ -40,22 +41,22 @@ class CityListViewModel: CityListViewModelProtocol {
     private func syncTask() {
         let scheduler = SerialDispatchQueueScheduler(qos: .default)
         Observable<Int>.interval(.seconds(200), scheduler: scheduler)
-            .subscribe { [weak self] event in
-                print(event)
+            .subscribe(onNext: { [weak self] _ in
                 self?.getWeatherInfoForCityList()
-            }.disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
 
     // MARK: - Get Citylist from jsonfile
 
-     func getCityListFromFile() {
+    func getCityListFromFile() {
         self.cityListHandler
             .getCityInfo(withFilename: "StartCity")
             .subscribe(onNext: { [weak self] cityListModel in
                 self?.cityList = cityListModel
                 self?.getWeatherInfoForCityList()
                 }, onError: { error in
-                    print("getCityInfo error :", error)
+                    DDLogError("getCityInfo onError: \(error)")
                     self.errorSubject.onNext("Unable to get city list.")
             }).disposed(by: disposeBag)
     }
@@ -72,7 +73,7 @@ class CityListViewModel: CityListViewModelProtocol {
                     self?.weatherListBehaviorRelay.accept(weatherList)
                 }
                 }, onError: { error in
-                    print("WeatherInfoForCityList error :", error)
+                    DDLogError("WeatherInfoForCityList onError: \(error)")
                     self.errorSubject.onNext("Unable to get weather information for city list.")
             }).disposed(by: disposeBag)
     }
@@ -89,19 +90,19 @@ class CityListViewModel: CityListViewModelProtocol {
 
             self.weatherHandler
                 .getWeatherInfo(by: "\(cityId)")
+                .filter { $0 != nil}
+                .map { $0!}
                 .subscribe(onNext: { [weak self] weatherResult in
+                    if let weatherRelayValue = self?.weatherListBehaviorRelay.value {
 
-                    if
-                        let weatherValue = weatherResult,
-                        let weatherRelayValue = self?.weatherListBehaviorRelay.value
-                    {
                         var weatherListAppended = weatherRelayValue
-                        weatherListAppended.append(weatherValue)
+                        weatherListAppended.append(weatherResult)
+
                         self?.weatherListBehaviorRelay.accept(weatherListAppended)
                     }
 
                     }, onError: { error in
-                        print("selectedCity error :", error)
+                        DDLogError("selectedCity onError: \(error)")
                         self.errorSubject.onNext("Unable to get weather information for selected city.")
                 }).disposed(by: disposeBag)
         } else {

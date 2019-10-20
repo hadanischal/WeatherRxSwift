@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import CocoaLumberjack
 
 class WeatherDetailViewController: UIViewController {
 
@@ -21,7 +22,7 @@ class WeatherDetailViewController: UIViewController {
 
     var weatherInfo: WeatherResult!
 
-    private var viewModel: WeatherDetailDelegate!
+    private var viewModel: WeatherDetailDataSource!
     private var detailList = [DetailModel]()
     private let disposeBag = DisposeBag()
 
@@ -87,15 +88,13 @@ extension WeatherDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherDetailTableViewCell", for: indexPath) as? WeatherDetailTableViewCell else {
-            fatalError("WeatherDetailTableViewCell does not exist")
-        }
+        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as WeatherDetailTableViewCell
         cell.detailInfo = self.detailList[indexPath.row]
         cell.selectionStyle = .none
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("tapped")
+        DDLogInfo("tapped")
     }
 }

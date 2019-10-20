@@ -8,8 +8,9 @@
 
 import Foundation
 import RxSwift
+import CocoaLumberjack
 
-class WeatherDetailViewModel: WeatherDetailDelegate {
+class WeatherDetailViewModel: WeatherDetailDataSource {
 
     //input
     private let detailListHandler: DetailListHandlerProtocol
@@ -44,7 +45,7 @@ class WeatherDetailViewModel: WeatherDetailDelegate {
                 self?.detailModel = detailList
                 self?.updateDetailList()
                  }, onError: { error in
-                    print("error:", error)
+                    DDLogError("onError: \(error)")
             }).disposed(by: disposeBag)
     }
 
