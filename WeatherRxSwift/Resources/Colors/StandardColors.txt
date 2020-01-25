@@ -1,0 +1,24 @@
+charcoal100        : #131415
+textFieldBaground  : #292a2b
+charcoal90         : #1e2a2c
+charcoal70         : #50595B
+black100trans80    : #000000CC
+neon100            : #01FFFF
+green537           : #58b537
+rarthGreen100      : #33FF99
+primary            : #07BCDC
+
+darkRed            : #D93D5A
+coral              : #F46F60
+whiteSmoke         : #F5F5F5
+headerColour       : #1D1E1F
+headerBuy          : #0D2A34
+
+sellUnselected     : #1A1200
+buyUnselected      : #0C2933
+
+turquoiseSurf      : #00c5cd
+brightOrange       : #ee9d39
+cancelButtonColour : #4c4d4e
+
+
