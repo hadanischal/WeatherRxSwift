@@ -1,0 +1,53 @@
+#run 'swiftgen' in app project (WORKSPACE/App) and it will update the UIColors.swift file
+#Update colors using StandardColors.txt
+
+xcassets:
+  inputs:
+    - ./WeatherRxSwift/Resources/Assets.xcassets
+    - ./WeatherRxSwift/Resources/Icons.xcassets
+  outputs:
+    - templateName: swift4
+      output: ./WeatherRxSwift/Generated/SwiftGen/Assets/Assets.swift
+
+fonts:
+  inputs:
+    - ./WeatherRxSwift/Resources/Fonts
+  outputs:
+    - templateName: swift4
+      output: ./WeatherRxSwift/Generated/SwiftGen/Fonts/GeneratedFonts.swift
+      
+ib:
+  inputs:
+    - ./WeatherRxSwift/Base.lproj/LaunchScreen.storyboard
+    - ./WeatherRxSwift/Base.lproj/Main.storyboard
+
+  outputs:
+    - templateName: scenes-swift4
+      output: ./WeatherRxSwift/Generated/SwiftGen/Storyboards/StoryboardScenes.swift
+    - templateName: segues-swift4
+      output: ./WeatherRxSwift/Generated/SwiftGen/Storyboards/StoryboardSegues.swift
+    
+colors:
+  inputs:
+    - ./WeatherRxSwift/Resources/Colors/StandardColors.txt
+  outputs:
+    templateName: swift4
+    output: ./WeatherRxSwift/Generated/SwiftGen/Colors/GeneratedColors.swift
+    
+    
+strings:
+  inputs:
+    - ./WeatherRxSwift/Resources/Strings/DashBoard.strings
+    - ./WeatherRxSwift/Resources/Strings/Mock.strings
+  outputs:
+    - templateName: structured-swift4
+      output: ./WeatherRxSwift/Generated/SwiftGen/Strings/GeneratedStrings.swift
+
+json:
+  inputs:
+    - ./WeatherRxSwift/Resources/JsonFile/detailList.json
+    - ./WeatherRxSwift/Resources/JsonFile/StartCity.json
+
+  outputs:
+    - templateName: runtime-swift4
+      output: ./WeatherRxSwift/Generated/SwiftGen/JSONFiles/GeneratedJSONFiles.swift

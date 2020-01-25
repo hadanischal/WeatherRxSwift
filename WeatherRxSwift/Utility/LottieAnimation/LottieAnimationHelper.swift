@@ -5,6 +5,7 @@
 //  Created by Nischal Hada on 8/9/19.
 //  Copyright © 2019 NischalHada. All rights reserved.
 //
+//swiftlint:disable all
 
 import Foundation
 import Lottie
@@ -15,7 +16,7 @@ class LottieAnimationHelper {
     /// *** Keypath Setting
     private let animationKeypathSwitchOutline = AnimationKeypath(keypath: "Switch Outline Outlines.**.Fill 1.Color")
     private let animationKeypathCheckmarkOutline = AnimationKeypath(keypath: "Checkmark Outlines 2.**.Stroke 1.Color")
-    private let redValueProvider = ColorValueProvider(Color(r: 1, g: 0.2, b: 0.3, a: 1))
+    //private let redValueProvider = ColorValueProvider(Color(r: 1, g: 0.2, b: 0.3, a: 1))
 
     func playAnimation() -> Completable {
 
@@ -52,10 +53,10 @@ class LottieAnimationHelper {
         animationView.setContentCompressionResistancePriority(.fittingSizeLevel, for: .horizontal)
 
         /// *** Keypath Setting
-        animationView.setValueProvider(redValueProvider,
-                                       keypath: animationKeypathSwitchOutline)
-        animationView.setValueProvider(redValueProvider,
-                                       keypath: animationKeypathCheckmarkOutline)
+//        animationView.setValueProvider(redValueProvider,
+//                                       keypath: animationKeypathSwitchOutline)
+//        animationView.setValueProvider(redValueProvider,
+//                                       keypath: animationKeypathCheckmarkOutline)
     }
 
 }
