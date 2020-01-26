@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0400327823DBD4FB003D53DD /* weather-app-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0400327723DBD4FB003D53DD /* weather-app-animation.json */; };
 		040E95E423DB047F002BAB43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E95E323DB047F002BAB43 /* AppDelegate.swift */; };
 		040E95E623DB047F002BAB43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E95E523DB047F002BAB43 /* SceneDelegate.swift */; };
 		040E95E823DB047F002BAB43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E95E723DB047F002BAB43 /* ViewController.swift */; };
@@ -131,6 +132,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0400327723DBD4FB003D53DD /* weather-app-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "weather-app-animation.json"; sourceTree = "<group>"; };
 		040E95E023DB047F002BAB43 /* WeatherRxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherRxSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		040E95E323DB047F002BAB43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		040E95E523DB047F002BAB43 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -728,6 +730,7 @@
 		04EA1C9E23DB0CB600D535A6 /* BuildScripts */ = {
 			isa = PBXGroup;
 			children = (
+				0400327723DBD4FB003D53DD /* weather-app-animation.json */,
 				04EA1C9C23DB0C9F00D535A6 /* .swiftlint.yml */,
 				0437187023DBA09400756CEA /* generate-swiftgen.sh */,
 				0437187123DBA09500756CEA /* swiftgen.yml */,
@@ -771,6 +774,8 @@
 				040E95DD23DB047F002BAB43 /* Frameworks */,
 				040E95DE23DB047F002BAB43 /* Resources */,
 				8EA606CEA2F80FDD6AC7D0DB /* [CP] Embed Pods Frameworks */,
+				0400327523DBD11F003D53DD /* SwiftGen Script */,
+				0400327623DBD135003D53DD /* Swiftlint Script */,
 			);
 			buildRules = (
 			);
@@ -882,6 +887,7 @@
 				040E969B23DB061B002BAB43 /* ApexRounded-Heavy.otf in Resources */,
 				040E969723DB061B002BAB43 /* cityList.json in Resources */,
 				040E95F323DB0482002BAB43 /* LaunchScreen.storyboard in Resources */,
+				0400327823DBD4FB003D53DD /* weather-app-animation.json in Resources */,
 				040E95F023DB0482002BAB43 /* Assets.xcassets in Resources */,
 				0437187323DBA09500756CEA /* swiftgen.yml in Resources */,
 			);
@@ -908,6 +914,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0400327523DBD11F003D53DD /* SwiftGen Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftGen Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen\n";
+		};
+		0400327623DBD135003D53DD /* Swiftlint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swiftlint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+		};
 		41596566FC92FB73D5D5AE7F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
