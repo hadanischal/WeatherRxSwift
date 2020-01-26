@@ -57,11 +57,7 @@ final class AnimationViewController: UIViewController {
     private func displayRootView() {
         DispatchQueue.main.async {
             if let window = UIApplication.shared.keyWindow {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                guard let viewController = storyboard.instantiateViewController(withIdentifier: "WeatherTableViewController") as? WeatherTableViewController else {
-                    assertionFailure("viewController not found")
-                    return
-                }
+                let viewController = StoryboardScene.Main.weatherTableViewController.instantiate()
                 let navigationController = NavigationController(rootViewController: viewController)
                 window.rootViewController = navigationController
             }

@@ -77,13 +77,16 @@ final class WeatherTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "segueWeatherDetail", sender: indexPath)
+        self.perform(segue: StoryboardSegue.Main.segueWeatherDetail, sender: indexPath)
     }
+    
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let storyboardSegue = StoryboardSegue.Main(segue) else { return }
 
-        if segue.identifier == "segueCitySearch" {
+        switch storyboardSegue {
+        case .segueCitySearch:
             guard let navC = segue.destination as? UINavigationController,
                 let citySearchVC = navC.viewControllers.first as? CitySearchViewController else {
                     fatalError("Segue destination is not found")
@@ -96,18 +99,19 @@ final class WeatherTableViewController: UITableViewController {
                     citySearchVC.dismiss(animated: true)
                     self?.viewModel.fetchWeatherFor(selectedCity: cityModel)
                 })
-            .disposed(by: disposeBag)
-        } else if segue.identifier == "segueWeatherDetail" {
+                .disposed(by: disposeBag)
 
-            guard let weatherDetailVC = segue.destination as? WeatherDetailViewController else {
+        case .segueWeatherDetail:
+            guard let weatherDetailVC = segue.destination as? WeatherDetailViewController,
+                let indexPath = sender as? IndexPath
+                else {
                     fatalError("Segue destination is not found")
             }
-            guard let indexPath = sender as? IndexPath else {
-                fatalError("indexPath not found")
-            }
             weatherDetailVC.weatherInfo = weatherList[indexPath.row]
-        }
+        case .segueWeatherListView:
+            break
 
+        }
     }
 
 }

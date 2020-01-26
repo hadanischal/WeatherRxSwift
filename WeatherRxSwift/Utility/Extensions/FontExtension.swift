@@ -9,14 +9,14 @@
 import UIKit
 
 extension UIFont {
-    class func boldFont(size: CGFloat) -> UIFont {
-        return UIFont(name: "ApexRounded-Heavy", size: size)!
+    static func boldFont(size: CGFloat) -> UIFont {
+        return UIFont(font: FontFamily.ApexRounded.heavy, size: size)
     }
-    class func regularFont(size: CGFloat) -> UIFont {
-        return UIFont(name: "ApexRounded-Medium", size: size)!
+    static func regularFont(size: CGFloat) -> UIFont {
+        return UIFont(font: FontFamily.ApexRounded.medium, size: size)
     }
-    class func lightFont(size: CGFloat) -> UIFont {
-        return UIFont(name: "ApexRounded-Book", size: size)!
+    static func lightFont(size: CGFloat) -> UIFont {
+        return UIFont(font: FontFamily.ApexRounded.book, size: size)
     }
 }
 
