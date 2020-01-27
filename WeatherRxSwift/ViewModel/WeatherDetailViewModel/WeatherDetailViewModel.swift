@@ -26,8 +26,7 @@ final class WeatherDetailViewModel: WeatherDetailDataSource {
 
     init(withDetailListHandler detailListHandler: DetailListHandlerProtocol = DetailListHandler(),
          withWeatherResultModel weatherResult: WeatherResult,
-         withSchedulerType backgroundScheduler: SchedulerType = ConcurrentDispatchQueueScheduler(qos: .background)
-        ) {
+         withSchedulerType backgroundScheduler: SchedulerType = ConcurrentDispatchQueueScheduler(qos: .background)) {
         self.detailListHandler = detailListHandler
         self.backgroundScheduler = backgroundScheduler
         self.weatherResult = weatherResult
