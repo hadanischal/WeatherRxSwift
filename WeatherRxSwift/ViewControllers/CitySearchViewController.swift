@@ -22,7 +22,7 @@ final class CitySearchViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     private var cityList = [CityListModel]()
-    private var viewModel: CitySearchViewModelProtocol!
+    private var viewModel: CitySearchDataSource!
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {

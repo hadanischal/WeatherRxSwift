@@ -10,7 +10,14 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class CitySearchViewModel: CitySearchViewModelProtocol {
+protocol CitySearchDataSource {
+    var cityList: Observable<[CityListModel]> { get }
+    var isLoading: Observable<Bool> { get }
+    func getCityList()
+    func searchCityWithName(withName name: Observable<String>)
+}
+
+final class CitySearchViewModel: CitySearchDataSource {
     //input
     private let cityListHandler: CityListHandlerProtocol
     private let backgroundScheduler: SchedulerType
@@ -26,16 +33,13 @@ final class CitySearchViewModel: CitySearchViewModelProtocol {
     private let disposeBag = DisposeBag()
 
     init(withCityList cityListHandler: CityListHandlerProtocol = CityListHandler(),
-         withSchedulerType backgroundScheduler: SchedulerType = ConcurrentDispatchQueueScheduler(qos: .background)
-        ) {
+         withSchedulerType backgroundScheduler: SchedulerType = ConcurrentDispatchQueueScheduler(qos: .background)) {
         self.cityListHandler = cityListHandler
         self.backgroundScheduler = backgroundScheduler
 
         self.cityList = cityListSubject.asObservable()
         self.localCityList = []
         self.isLoading = loadingSubject.asObservable()
-
-//        self.getCityList()
     }
 
     func getCityList() {
