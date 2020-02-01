@@ -5,6 +5,7 @@
 //  Created by Nischal Hada on 10/8/19.
 //  Copyright © 2019 NischalHada. All rights reserved.
 //
+//pecker:ignore all
 
 import UIKit
 

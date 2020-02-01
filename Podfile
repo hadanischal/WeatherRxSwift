@@ -17,7 +17,8 @@ target 'WeatherRxSwift' do
   pod 'Kingfisher', '~> 5.13.0'
   pod 'SkyFloatingLabelTextField', '~> 3.8'
   pod 'lottie-ios', '~> 3.1.5'
-  
+  pod 'Pecker'
+
   target 'WeatherRxSwiftTests' do
     inherit! :search_paths
     # Pods for testing

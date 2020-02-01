@@ -33,13 +33,13 @@ final class WeatherDetailViewController: UIViewController {
         setupViewModel()
     }
 
-    func setupUI() {
+    private func setupUI() {
         self.view.backgroundColor = UIColor.viewBackgroundColor
         self.tableView.backgroundColor = UIColor.viewBackgroundColor
         self.tableView.hideEmptyCells()
     }
 
-    func setupViewModel() {
+    private func setupViewModel() {
         viewModel =  WeatherDetailViewModel(withWeatherResultModel: weatherInfo)
         viewModel.detailList
             .observeOn(MainScheduler.instance)

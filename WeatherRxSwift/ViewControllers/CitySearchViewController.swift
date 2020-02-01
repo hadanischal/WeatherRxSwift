@@ -32,7 +32,7 @@ final class CitySearchViewController: UIViewController, UITableViewDelegate, UIT
         self.setupViewModel()
     }
 
-    func setupUI() {
+    private func setupUI() {
         self.title = "Search City"
         self.tableView.backgroundColor = UIColor.viewBackgroundColor
         //change UISearchBar font
@@ -47,7 +47,7 @@ final class CitySearchViewController: UIViewController, UITableViewDelegate, UIT
 
     }
 
-    func setupViewModel() {
+    private func setupViewModel() {
         viewModel = CitySearchViewModel()
 
         viewModel.cityList
