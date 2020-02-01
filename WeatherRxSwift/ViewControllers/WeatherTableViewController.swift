@@ -26,7 +26,7 @@ final class WeatherTableViewController: UITableViewController {
         print("viewWillAppear")
     }
 
-    func setupUI() {
+    private func setupUI() {
         title = "City List"
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         navigationController?.setCustomStyle()
@@ -35,7 +35,7 @@ final class WeatherTableViewController: UITableViewController {
         tableView.hideEmptyCells()
     }
 
-    func setupViewModel() {
+    private func setupViewModel() {
         self.viewModel.weatherList
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] list in
@@ -79,7 +79,7 @@ final class WeatherTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.perform(segue: StoryboardSegue.Main.segueWeatherDetail, sender: indexPath)
     }
-    
+
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

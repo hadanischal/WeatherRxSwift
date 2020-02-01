@@ -10,7 +10,6 @@
 		0400327823DBD4FB003D53DD /* weather-app-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 0400327723DBD4FB003D53DD /* weather-app-animation.json */; };
 		040E95E423DB047F002BAB43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E95E323DB047F002BAB43 /* AppDelegate.swift */; };
 		040E95E623DB047F002BAB43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E95E523DB047F002BAB43 /* SceneDelegate.swift */; };
-		040E95E823DB047F002BAB43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E95E723DB047F002BAB43 /* ViewController.swift */; };
 		040E95EE23DB047F002BAB43 /* WeatherRxSwift.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 040E95EC23DB047F002BAB43 /* WeatherRxSwift.xcdatamodeld */; };
 		040E95F023DB0482002BAB43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 040E95EF23DB0482002BAB43 /* Assets.xcassets */; };
 		040E95F323DB0482002BAB43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040E95F123DB0482002BAB43 /* LaunchScreen.storyboard */; };
@@ -85,6 +84,7 @@
 		0437189523DBA13900756CEA /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0437188F23DBA13900756CEA /* Icons.xcassets */; };
 		0437189823DBCAD400756CEA /* Mock.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0437189723DBCAD400756CEA /* Mock.strings */; };
 		0437189A23DBCAEC00756CEA /* DashBoard.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0437189923DBCAEC00756CEA /* DashBoard.strings */; };
+		0453F96C23E5090700404F3B /* .pecker.yml in Resources */ = {isa = PBXBuildFile; fileRef = 0453F96B23E5090700404F3B /* .pecker.yml */; };
 		04EA1C6C23DB094100D535A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04EA1C6A23DB094100D535A6 /* Main.storyboard */; };
 		04EA1C7223DB0B9D00D535A6 /* CitySearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA1C6D23DB0B9D00D535A6 /* CitySearchViewModelTests.swift */; };
 		04EA1C7323DB0B9D00D535A6 /* AnimationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA1C6E23DB0B9D00D535A6 /* AnimationViewModelTests.swift */; };
@@ -135,7 +135,6 @@
 		040E95E023DB047F002BAB43 /* WeatherRxSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherRxSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		040E95E323DB047F002BAB43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		040E95E523DB047F002BAB43 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		040E95E723DB047F002BAB43 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		040E95ED23DB047F002BAB43 /* WeatherRxSwift.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherRxSwift.xcdatamodel; sourceTree = "<group>"; };
 		040E95EF23DB0482002BAB43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		040E95F223DB0482002BAB43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -215,6 +214,7 @@
 		0437188F23DBA13900756CEA /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		0437189723DBCAD400756CEA /* Mock.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Mock.strings; sourceTree = "<group>"; };
 		0437189923DBCAEC00756CEA /* DashBoard.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = DashBoard.strings; sourceTree = "<group>"; };
+		0453F96B23E5090700404F3B /* .pecker.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .pecker.yml; sourceTree = "<group>"; };
 		04EA1C6B23DB094100D535A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04EA1C6D23DB0B9D00D535A6 /* CitySearchViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySearchViewModelTests.swift; sourceTree = "<group>"; };
 		04EA1C6E23DB0B9D00D535A6 /* AnimationViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationViewModelTests.swift; sourceTree = "<group>"; };
@@ -313,7 +313,6 @@
 				0437187423DBA0B100756CEA /* Generated */,
 				040E95E323DB047F002BAB43 /* AppDelegate.swift */,
 				040E95E523DB047F002BAB43 /* SceneDelegate.swift */,
-				040E95E723DB047F002BAB43 /* ViewController.swift */,
 				04EA1C6A23DB094100D535A6 /* Main.storyboard */,
 				040E95F123DB0482002BAB43 /* LaunchScreen.storyboard */,
 				040E95F423DB0482002BAB43 /* Info.plist */,
@@ -732,6 +731,7 @@
 				0437187023DBA09400756CEA /* generate-swiftgen.sh */,
 				0437187123DBA09500756CEA /* swiftgen.yml */,
 				04EA1C8A23DB0BFF00D535A6 /* Cuckoo-GeneratedMocks.sh */,
+				0453F96B23E5090700404F3B /* .pecker.yml */,
 			);
 			name = BuildScripts;
 			sourceTree = "<group>";
@@ -773,6 +773,7 @@
 				8EA606CEA2F80FDD6AC7D0DB /* [CP] Embed Pods Frameworks */,
 				0400327523DBD11F003D53DD /* SwiftGen Script */,
 				0400327623DBD135003D53DD /* Swiftlint Script */,
+				0453F96A23E5085500404F3B /* Pecker Script */,
 			);
 			buildRules = (
 			);
@@ -872,6 +873,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				040E969923DB061B002BAB43 /* ApexRounded-Book.otf in Resources */,
+				0453F96C23E5090700404F3B /* .pecker.yml in Resources */,
 				0437189223DBA13900756CEA /* StandardColors.txt in Resources */,
 				04EA1C6C23DB094100D535A6 /* Main.storyboard in Resources */,
 				0437187223DBA09500756CEA /* generate-swiftgen.sh in Resources */,
@@ -946,6 +948,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n\n";
+		};
+		0453F96A23E5085500404F3B /* Pecker Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Pecker Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which pecker >/dev/null; then\n  pecker\nelse\n  echo \"warning: Pecker not installed, download from https://github.com/woshiccm/Pecker\"\nfi\n";
 		};
 		41596566FC92FB73D5D5AE7F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1098,7 +1118,6 @@
 				040E967323DB061B002BAB43 /* UIViewControllerExtension.swift in Sources */,
 				040E967923DB061B002BAB43 /* UITableView+Extensions.swift in Sources */,
 				040E969523DB061B002BAB43 /* SysModel.swift in Sources */,
-				040E95E823DB047F002BAB43 /* ViewController.swift in Sources */,
 				040E968323DB061B002BAB43 /* WeatherViewModel.swift in Sources */,
 				040E966823DB061B002BAB43 /* CityListHandlerProtocol.swift in Sources */,
 				040E968023DB061B002BAB43 /* WeatherDetailTableViewCell.swift in Sources */,

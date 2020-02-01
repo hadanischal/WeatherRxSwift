@@ -20,15 +20,15 @@ internal enum StoryboardScene {
   internal enum Main: StoryboardType {
     internal static let storyboardName = "Main"
 
-    internal static let initialScene = InitialSceneType<AnimationViewController>(storyboard: Main.self)
+    internal static let initialScene = InitialSceneType<WeatherRxSwift.AnimationViewController>(storyboard: Main.self)
 
-    internal static let citySearchViewController = SceneType<CitySearchViewController>(storyboard: Main.self, identifier: "CitySearchViewController")
+    internal static let citySearchViewController = SceneType<WeatherRxSwift.CitySearchViewController>(storyboard: Main.self, identifier: "CitySearchViewController")
 
-    internal static let weatherDetailViewController = SceneType<WeatherDetailViewController>(storyboard: Main.self, identifier: "WeatherDetailViewController")
+    internal static let weatherDetailViewController = SceneType<WeatherRxSwift.WeatherDetailViewController>(storyboard: Main.self, identifier: "WeatherDetailViewController")
 
-    internal static let weatherTableViewController = SceneType<WeatherTableViewController>(storyboard: Main.self, identifier: "WeatherTableViewController")
+    internal static let weatherTableViewController = SceneType<WeatherRxSwift.WeatherTableViewController>(storyboard: Main.self, identifier: "WeatherTableViewController")
 
-    internal static let weatherViewController = SceneType<WeatherViewController>(storyboard: Main.self, identifier: "WeatherViewController")
+    internal static let weatherViewController = SceneType<WeatherRxSwift.WeatherViewController>(storyboard: Main.self, identifier: "WeatherViewController")
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name

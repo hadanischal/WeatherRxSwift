@@ -5,6 +5,7 @@ PODS:
   - Kingfisher/Core (5.13.0)
   - lottie-ios (3.1.5)
   - Nimble (8.0.5)
+  - Pecker (0.1.0)
   - PKHUD (5.3.0)
   - Quick (2.1.0)
   - RxBlocking (5.0.1):
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - Kingfisher (~> 5.13.0)
   - lottie-ios (~> 3.1.5)
   - Nimble (~> 8)
+  - Pecker
   - PKHUD (~> 5.0)
   - Quick (~> 2.1.0)
   - RxBlocking (~> 5.0)
@@ -44,6 +46,7 @@ SPEC REPOS:
     - Kingfisher
     - lottie-ios
     - Nimble
+    - Pecker
     - PKHUD
     - Quick
     - RxBlocking
@@ -61,6 +64,7 @@ SPEC CHECKSUMS:
   Kingfisher: 0d334cada987fcddbe9b5cec516406e1ee9d4748
   lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
   Nimble: 4ab1aeb9b45553c75b9687196b0fa0713170a332
+  Pecker: 4888785f837260be662323a032a513fa9a20a285
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   Quick: 4be43f6634acfa727dd106bdf3929ce125ffa79d
   RxBlocking: c5e090f42d046df8b0e7752742510f349963710f
@@ -73,6 +77,6 @@ SPEC CHECKSUMS:
   SwiftLint: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
   SwiftRichString: f649547c3c18f1dc271dfe398cb9b7c498d5da50
 
-PODFILE CHECKSUM: 729ab9d92c3bb835bad8cd8d2ddf1298a9483f17
+PODFILE CHECKSUM: 209c369e10a58962c203a825e1d444b2d8ef4ffb
 
 COCOAPODS: 1.8.4

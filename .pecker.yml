@@ -1,0 +1,31 @@
+reporter: "xcode"
+
+disabled_rules:
+  - skip_public
+
+included: # paths to include during detecting. `--path` is ignored if present.
+  - ./
+  
+excluded: # paths to ignore during detecting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+  - WeatherRxSwiftTests
+  - WeatherRxSwiftUITests
+  - WeatherRxSwift/Generated/SwiftGen
+
+
+blacklist_files: # files to ignore during detecting, only need to add file name, the file extension default is swift.
+  - HomeViewController
+  - ViewController
+
+blacklist_symbols: # symbols to ignore during detecting, contains class, struct, enum, etc.
+  - AppDelegate
+  - viewDidLoad
+
+blacklist_superclass: # all the class inherit from class specified in the list will ignore
+    - UITableViewCell
+
+output_file: "/Users/ming/Desktop/PeckerResultDirectory"
+
+# // pecker:ignore
+# // pecker:ignore all
