@@ -25,9 +25,6 @@ internal struct ColorName {
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ee9d39"></span>
   /// Alpha: 100% <br/> (0xee9d39ff)
   internal static let brightOrange = ColorName(rgbaValue: 0xee9d39ff)
-  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#0c2933"></span>
-  /// Alpha: 100% <br/> (0x0c2933ff)
-  internal static let buyUnselected = ColorName(rgbaValue: 0x0c2933ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#4c4d4e"></span>
   /// Alpha: 100% <br/> (0x4c4d4eff)
   internal static let cancelButtonColour = ColorName(rgbaValue: 0x4c4d4eff)
@@ -64,9 +61,6 @@ internal struct ColorName {
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#33ff99"></span>
   /// Alpha: 100% <br/> (0x33ff99ff)
   internal static let rarthGreen100 = ColorName(rgbaValue: 0x33ff99ff)
-  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#1a1200"></span>
-  /// Alpha: 100% <br/> (0x1a1200ff)
-  internal static let sellUnselected = ColorName(rgbaValue: 0x1a1200ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#292a2b"></span>
   /// Alpha: 100% <br/> (0x292a2bff)
   internal static let textFieldBaground = ColorName(rgbaValue: 0x292a2bff)

@@ -10,7 +10,15 @@ import UIKit
 
 extension UIColor {
     static var viewBackgroundColor: UIColor {
-        return UIColor(rgb: 0x5c9ac1)
+        return Asset.ColorsAssets.viewBackgroundColor.color
+    }
+
+    static var titleColor: UIColor {
+        return Asset.ColorsAssets.titleColor.color
+    }
+
+    static var descriptionColor: UIColor {
+        return Asset.ColorsAssets.descriptionColor.color
     }
 
     static var addCityViewBackgroundColor: UIColor {

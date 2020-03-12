@@ -5,3 +5,9 @@
   Created by Nischal Hada on 25/1/20.
   Copyright © 2020 Nischal Hada. All rights reserved.
 */
+
+/*WeatherViewController*/
+"TITLE_ADD_CITY" = "Add City";
+
+/*SettingsViewController*/
+"TITLE_SETTINGS" = "Settings";
