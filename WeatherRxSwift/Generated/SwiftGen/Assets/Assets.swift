@@ -19,9 +19,19 @@
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
   internal enum Assets {
+    internal static let icon16Tick = ImageAsset(name: "icon_16_tick")
     internal static let iconsCancel = ImageAsset(name: "iconsCancel")
+    internal static let menuIcon = ImageAsset(name: "menuIcon")
+    internal static let navigationBack = ImageAsset(name: "navigation_back")
+    internal static let navigationClose = ImageAsset(name: "navigation_close")
+    internal static let settings = ImageAsset(name: "settings")
   }
-  internal enum Icons {
+  internal enum ColorsAssets {
+    internal static let barTintColor = ColorAsset(name: "barTintColor")
+    internal static let descriptionColor = ColorAsset(name: "descriptionColor")
+    internal static let primaryColor = ColorAsset(name: "primaryColor")
+    internal static let titleColor = ColorAsset(name: "titleColor")
+    internal static let viewBackgroundColor = ColorAsset(name: "viewBackgroundColor")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

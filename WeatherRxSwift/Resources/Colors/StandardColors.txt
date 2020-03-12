@@ -13,10 +13,6 @@ coral              : #F46F60
 whiteSmoke         : #F5F5F5
 headerColour       : #1D1E1F
 headerBuy          : #0D2A34
-
-sellUnselected     : #1A1200
-buyUnselected      : #0C2933
-
 turquoiseSurf      : #00c5cd
 brightOrange       : #ee9d39
 cancelButtonColour : #4c4d4e

@@ -12,6 +12,10 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
   internal enum DashBoard {
+    /// Add City
+    internal static let titleAddCity = L10n.tr("DashBoard", "TITLE_ADD_CITY")
+    /// Settings
+    internal static let titleSettings = L10n.tr("DashBoard", "TITLE_SETTINGS")
   }
   internal enum Mock {
   }

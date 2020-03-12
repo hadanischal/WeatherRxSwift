@@ -24,8 +24,10 @@ class WeatherDetailTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.backgroundColor = UIColor.viewBackgroundColor
-        self.labelTitle.font = .detailTitle
-        self.labelDescription.font = .detailBody
+        contentView.backgroundColor = .viewBackgroundColor
+        self.labelTitle?.font = .body1
+        self.labelDescription?.font = .detailBody
+        self.labelTitle?.textColor = .titleColor
+        self.labelDescription?.textColor = .descriptionColor
     }
 }
