@@ -27,7 +27,7 @@ final class WeatherViewController: UIViewController {
 
     func setupUI() {
         self.view.backgroundColor = UIColor.viewBackgroundColor
-        self.title = "Add City"
+        self.title = viewModel.title
     }
 
     func setupViewModel() {
