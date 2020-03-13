@@ -13,6 +13,7 @@ final class WeatherViewModel: WeatherViewModelProtocol {
     private let getWeatherHandler: GetWeatherHandlerProtocol
     private let disposeBag = DisposeBag()
     var weatherList: Observable<WeatherResult>
+    var title: String { return L10n.DashBoard.titleAddCity}
 
     private let weatherListSubject = PublishSubject<WeatherResult>()
 
