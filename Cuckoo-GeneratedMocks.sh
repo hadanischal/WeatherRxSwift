@@ -16,5 +16,7 @@ ${PODS_ROOT}/Cuckoo/run generate --testable "WeatherRxSwift" \
 "$INPUT_DIR/APIHandler/GetWeatherHandlerProtocol.swift" \
 "$INPUT_DIR/APIHandler/CityListHandlerProtocol.swift" \
 "$INPUT_DIR/APIHandler/DetailListHandlerProtocol.swift" \
+"$INPUT_DIR/Utility/UserDefaultsManager/UserDefaultsManager.swift" \
+"$INPUT_DIR/Utility/TemperatureUnitManager/TemperatureUnitManager.swift" \
 
 # ... and so forth
