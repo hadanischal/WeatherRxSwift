@@ -12,7 +12,7 @@ import RxCocoa
 import Lottie
 
 final class AnimationViewController: UIViewController {
-    var viewModel: AnimationViewModelProtocol = AnimationViewModel()
+    var viewModel: AnimationDataSource = AnimationViewModel()
     let lottieAnimationHelper = LottieAnimationHelper()
     private let disposeBag = DisposeBag()
 
