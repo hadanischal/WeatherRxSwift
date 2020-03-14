@@ -11,7 +11,11 @@ import RxSwift
 import RxCocoa
 import Lottie
 
-final class AnimationViewModel: AnimationViewModelProtocol {
+protocol AnimationDataSource {
+    var animation: Observable<Animation?> { get }
+}
+
+final class AnimationViewModel: AnimationDataSource {
     var animation: Observable<Animation?>
 
     init() {

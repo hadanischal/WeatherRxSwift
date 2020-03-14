@@ -10,19 +10,25 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class CityListViewModel: CityListViewModelProtocol {
-    //input
-    private let cityListHandler: CityListHandlerProtocol
-    private let weatherHandler: GetWeatherHandlerProtocol
+protocol CityListDataSource {
+    var weatherList: Observable<[WeatherResult]> { get }
+    func getCityListFromFile()
+    func fetchWeatherFor(selectedCity cityName: CityListModel)
+    var errorMessage: Observable<String> { get }
+}
+
+final class CityListViewModel: CityListDataSource {
 
     //output
     var cityList: [CityListModel]!
     var weatherList: Observable<[WeatherResult]>
     var errorMessage: Observable<String>
 
-    let weatherListBehaviorRelay: BehaviorRelay<[WeatherResult]> = BehaviorRelay(value: [])
-    let errorSubject = PublishSubject<String>()
-
+    //input
+    private let cityListHandler: CityListHandlerProtocol
+    private let weatherHandler: GetWeatherHandlerProtocol
+    private let weatherListBehaviorRelay: BehaviorRelay<[WeatherResult]> = BehaviorRelay(value: [])
+    private let errorSubject = PublishSubject<String>()
     private let disposeBag = DisposeBag()
 
     init(withCityList cityListHandler: CityListHandlerProtocol = CityListHandler(),

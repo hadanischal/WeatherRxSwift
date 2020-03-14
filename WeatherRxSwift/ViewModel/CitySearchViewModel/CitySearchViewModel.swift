@@ -18,13 +18,14 @@ protocol CitySearchDataSource {
 }
 
 final class CitySearchViewModel: CitySearchDataSource {
-    //input
-    private let cityListHandler: CityListHandlerProtocol
-    private let backgroundScheduler: SchedulerType
 
     //output
     var cityList: Observable<[CityListModel]>
     var isLoading: Observable<Bool>
+
+    //input
+    private let cityListHandler: CityListHandlerProtocol
+    private let backgroundScheduler: SchedulerType
 
     private let cityListSubject = PublishSubject<[CityListModel]>()
     private let loadingSubject = BehaviorRelay<Bool>(value: true)

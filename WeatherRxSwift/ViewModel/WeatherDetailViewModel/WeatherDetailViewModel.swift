@@ -9,6 +9,11 @@
 import Foundation
 import RxSwift
 
+protocol WeatherDetailDataSource {
+    var detailList: Observable<[DetailModel]> { get }
+    func getDetailResult()
+}
+
 final class WeatherDetailViewModel: WeatherDetailDataSource {
 
     //input

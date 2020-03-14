@@ -25,12 +25,12 @@ final class WeatherViewController: UIViewController {
         self.setupViewModel()
     }
 
-    func setupUI() {
+    private func setupUI() {
         self.view.backgroundColor = UIColor.viewBackgroundColor
         self.title = viewModel.title
     }
 
-    func setupViewModel() {
+    private func setupViewModel() {
         self.viewModel.weatherList
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] weather in

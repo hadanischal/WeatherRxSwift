@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 final class WeatherTableViewController: UITableViewController {
-    var viewModel: CityListViewModelProtocol = CityListViewModel()
+    var viewModel: CityListDataSource = CityListViewModel()
     private var weatherList = [WeatherResult]()
     private let disposeBag = DisposeBag()
 
@@ -55,6 +55,19 @@ final class WeatherTableViewController: UITableViewController {
             }).disposed(by: disposeBag)
     }
 
+    @IBAction func actionSettings(_ sender: Any) {
+        let settingsViewModel = SettingsViewModel()
+        let viewController = SettingsTableViewController.settingsVC(settingsViewModel)
+        let navigationController = NavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .fullScreen
+
+        settingsViewModel.isUpdated
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+
+            }).disposed(by: disposeBag)
+        self.present(navigationController, animated: true)
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

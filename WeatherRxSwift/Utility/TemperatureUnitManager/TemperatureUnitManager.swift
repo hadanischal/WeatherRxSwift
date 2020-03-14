@@ -32,7 +32,6 @@ final class TemperatureUnitManager: TemperatureUnitManagerProtocol {
     func getTemperatureUnit() -> SettingsUnit {
         guard let unit = userDefaultsManager.string(forKey: TemperatureUnitKey.unit.rawValue),
             let temperatureUnit = SettingsUnit(rawValue: unit) else {
-                assertionFailure("SettingsUnit not found")
                 return SettingsUnit.celsius
         }
         return temperatureUnit
