@@ -174,7 +174,7 @@
                     <navigationItem key="navigationItem" id="VLm-Pc-7Wk">
                         <barButtonItem key="leftBarButtonItem" image="settings" id="vWg-ch-zq4">
                             <connections>
-                                <segue destination="qxM-BA-J75" kind="show" id="rK4-a8-cxo"/>
+                                <action selector="actionSettings:" destination="riP-nl-MuO" id="Qqx-bu-onv"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="ck2-A3-Jb1">
@@ -196,11 +196,11 @@
             <objects>
                 <viewController storyboardIdentifier="WeatherViewController" id="qxM-BA-J75" userLabel="Weather View Controller" customClass="WeatherViewController" customModule="WeatherRxSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kb4-cO-pO3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DvZ-G8-uuK" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
-                                <rect key="frame" x="41.5" y="86" width="331" height="50"/>
+                                <rect key="frame" x="41.5" y="74" width="331" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="6cG-Aw-PUw"/>
                                 </constraints>
@@ -213,13 +213,13 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfi-pv-cLa">
-                                <rect key="frame" x="161" y="397.5" width="92" height="47"/>
+                                <rect key="frame" x="161" y="424.5" width="92" height="47"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="39"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBk-t5-ALw">
-                                <rect key="frame" x="176" y="573" width="62" height="32"/>
+                                <rect key="frame" x="176" y="627" width="62" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
