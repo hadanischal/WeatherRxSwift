@@ -20,7 +20,7 @@ ib:
   inputs:
     - ./WeatherRxSwift/Base.lproj/LaunchScreen.storyboard
     - ./WeatherRxSwift/Base.lproj/Main.storyboard
-
+    - ./WeatherRxSwift/Storyboard/SettingsStoryboard.storyboard
   outputs:
     - templateName: scenes-swift4
       output: ./WeatherRxSwift/Generated/SwiftGen/Storyboards/StoryboardScenes.swift
