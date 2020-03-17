@@ -8,38 +8,55 @@
 
 import UIKit
 import RxSwift
-import RxCocoa
+
+protocol GetWeatherHandlerProtocol {
+    func getWeatherInfo(by city: String) -> Observable<WeatherResult?>
+    func getWeatherInfo(byCityIDs IDs: String) -> Observable<CityWeatherModel>
+}
 
 class GetWeatherHandler: GetWeatherHandlerProtocol {
-    init() {}
+
+    private let networkingManager: NetworkingManager
+    private let temperatureManager: TemperatureUnitManagerProtocol
+
+    init(_ networkingManager: NetworkingManager = NetworkManager(),
+         temperatureManager: TemperatureUnitManagerProtocol = TemperatureUnitManager()) {
+        self.networkingManager = networkingManager
+        self.temperatureManager = temperatureManager
+    }
 
     func getWeatherInfo(by city: String) -> Observable<WeatherResult?> {
+        guard let url =  URL.singleWeatherByCityName else { return Observable.error(NetworkError.badURL)}
 
-        guard let cityEncoded = city.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
-            let url = URL.urlForWeatherAPI(city: cityEncoded) else { return Observable<WeatherResult?>.error(RxError.noElements) }
-        let resource = Resource<WeatherResult>(url: url)
-        return URLRequest.load(resource: resource)
+        let payLoad: [String: String] = ["q": city,
+                                         "units": temperatureManager.getTemperatureUnit().rawValue,
+                                         "APPID": ApiKey.appId]
+
+        let resource = Resource<WeatherResult>(url: url, parameter: payLoad)
+
+        return networkingManager.load(resource: resource)
             .map { article -> WeatherResult? in
                 return article
-            }.asObservable()
+            }
+            .asObservable()
             .retry(2)
     }
 
     func getWeatherInfo(byCityIDs IDs: String) -> Observable<CityWeatherModel> {
-
-        guard let cityEncoded = IDs.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
-            let url = URL.urlForWeatherAPI(byCityIDs: cityEncoded) else { return Observable<CityWeatherModel>.error(RxError.noElements) }
-        let resource = Resource<CityWeatherModel>(url: url)
-        return URLRequest.load(resource: resource)
+        //let cityEncoded = IDs.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
+        guard let url =  URL.groupWeatherById else { return Observable.error(NetworkError.badURL)}
+        let payLoad: [String: String] = ["id": IDs,
+                                         "units": temperatureManager.getTemperatureUnit().rawValue,
+                                         "APPID": ApiKey.appId]
+        let resource = Resource<CityWeatherModel> (url: url, parameter: payLoad)
+        return networkingManager.load(resource: resource)
             .map { article -> CityWeatherModel in
                 return article
-            }.asObservable()
+            }
+            .asObservable()
             .retry(2)
     }
-
 }
 
-//Call for several city IDs
-//api.openweathermap.org/data/2.5/weather?id=2172797
-//http://api.openweathermap.org/data/2.5/group?id=524901,703448,2643743&units=metric
-//   // https://samples.openweathermap.org/data/2.5/group?id=524901,703448,2643743&units=metric&appid=b6907d289e10d714a6e88b30761fae22
+//"https://api.openweathermap.org/data/2.5/group?id=2147714,4163971,1023656,7839562,2063523,2165087,2147291&APPID=d668412f7da6fddb022f0bc4631ba64a&units=metric" -i -v
+//"https://api.openweathermap.org/data/2.5/weather?q=Merida&APPID=d668412f7da6fddb022f0bc4631ba64a&units=metric" -i -v

@@ -13,7 +13,8 @@ echo "Mocks Input Directory = $INPUT_DIR"
 # Generate mock files, include as many input files as you'd like to create mocks for.
 ${PODS_ROOT}/Cuckoo/run generate --testable "WeatherRxSwift" \
 --output "${OUTPUT_FILE}" \
-"$INPUT_DIR/APIHandler/GetWeatherHandlerProtocol.swift" \
+"$INPUT_DIR/Networking/NetworkManager.swift" \
+"$INPUT_DIR/APIHandler/GetWeatherHandler.swift" \
 "$INPUT_DIR/FileManagerHandler/FileManagerWraper.swift" \
 "$INPUT_DIR/Utility/UserDefaultsManager/UserDefaultsManager.swift" \
 "$INPUT_DIR/Utility/TemperatureUnitManager/TemperatureUnitManager.swift" \
