@@ -20,13 +20,13 @@ class CitySearchViewModelTests: QuickSpec {
 
     override func spec() {
         var testViewModel: CitySearchViewModel!
-        var mockCityListHandler: MockSearchCityListHandlerProtocol!
+        var mockCityListHandler: MockAddCityListHandlerProtocol!
         var testScheduler: TestScheduler!
 
         describe("CitySearchViewModel") {
             beforeEach {
                 testScheduler = TestScheduler(initialClock: 0)
-                mockCityListHandler = MockSearchCityListHandlerProtocol()
+                mockCityListHandler = MockAddCityListHandlerProtocol()
                 stub(mockCityListHandler, block: { stub in
                     when(stub.getSearchCityList()).thenReturn(Observable.just([cityList]))
                 })
