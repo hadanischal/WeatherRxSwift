@@ -9,7 +9,7 @@
 import Foundation
 
 // swiftlint:disable all
-struct MainModel: Codable {
+struct MainModel: Codable, Equatable {
     let temp: Double
     let pressure: Double
     let humidity: Double

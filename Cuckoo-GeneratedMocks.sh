@@ -18,5 +18,6 @@ ${PODS_ROOT}/Cuckoo/run generate --testable "WeatherRxSwift" \
 "$INPUT_DIR/FileManagerHandler/FileManagerWraper.swift" \
 "$INPUT_DIR/Utility/UserDefaultsManager/UserDefaultsManager.swift" \
 "$INPUT_DIR/Utility/TemperatureUnitManager/TemperatureUnitManager.swift" \
+"$INPUT_DIR/ViewModel/CityListViewModel/CityListInteractor.swift" \
 
 # ... and so forth
