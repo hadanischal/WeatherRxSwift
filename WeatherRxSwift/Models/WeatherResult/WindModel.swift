@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct WindModel: Codable {
+struct WindModel: Codable, Equatable {
     let speed: Double?
     let deg: Double?
     let gust: Double?

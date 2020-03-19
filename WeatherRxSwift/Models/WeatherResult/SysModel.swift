@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SysModel: Codable {
+struct SysModel: Codable, Equatable {
     let timezone: Int64?
     let country: String?
     let sunrise: Double?
