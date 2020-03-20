@@ -15,41 +15,49 @@ final class CitySearchViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
-
-    private let selectedCitySubject = PublishSubject<CityListModel>()
-    var selectedCity: Observable<CityListModel>? {
-        return selectedCitySubject.asObserver()
-    }
+    var completionHandlers: ((CityListModel) -> Void)?
 
     private var cityList = [CityListModel]()
     private var viewModel: CitySearchDataSource!
     private let disposeBag = DisposeBag()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationController?.setCustomStyle()
-        self.setupUI()
-        self.setupViewModel()
+    convenience init(withDataSource dataSource: CitySearchDataSource) {
+        self.init()
+        self.viewModel = dataSource
     }
 
-    private func setupUI() {
-        self.title = "Search City"
-        self.tableView.backgroundColor = UIColor.viewBackgroundColor
+    static func citySearchVC(_ viewModel: CitySearchDataSource = CitySearchViewModel()) -> CitySearchViewController {
+        let viewController = StoryboardScene.Main.citySearchViewController.instantiate()
+        viewController.viewModel = viewModel
+        return viewController
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureView()
+        configureTableView()
+        configureViewModel()
+    }
+
+    private func configureView() {
+        navigationController?.setCustomStyle()
+        navigationItem.title = L10n.DashBoard.titleSearchCity
         //change UISearchBar font
         UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.body2
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.body2
-
-        self.tableView.hideEmptyCells()
-        self.cancelButton.rx.tap
-            .subscribe { [weak self] _  in
-                self?.dismiss(animated: true)
-        }.disposed(by: disposeBag)
-
     }
 
-    private func setupViewModel() {
-        viewModel = CitySearchViewModel()
+    private func configureTableView() {
+        tableView?.backgroundColor = UIColor.viewBackgroundColor
+        view.backgroundColor = UIColor.viewBackgroundColor
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.register(CitySearchTableViewCell.self)
+        tableView.estimatedRowHeight = 160
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.hideEmptyCells()
+    }
 
+    private func configureViewModel() {
         viewModel.cityList
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] list in
@@ -64,6 +72,12 @@ final class CitySearchViewController: UIViewController, UITableViewDelegate, UIT
         viewModel.getCityList()
     }
 
+    // MARK: - Button Action
+
+    @IBAction func actionCancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -75,14 +89,8 @@ final class CitySearchViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") else {
-            fatalError("Cell does not exist")
-        }
-        let city = self.cityList[indexPath.row]
-        cell.textLabel?.text = city.name
-        cell.detailTextLabel?.text = city.country
-        cell.textLabel?.font = .body2
-        cell.detailTextLabel?.font = .body3
+        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath) as CitySearchTableViewCell
+        cell.configure(cityList[indexPath.row])
         return cell
     }
 
@@ -91,8 +99,9 @@ final class CitySearchViewController: UIViewController, UITableViewDelegate, UIT
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let citySelected = self.cityList[indexPath.row]
-        self.selectedCitySubject.onNext(citySelected)
+        self.dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            self.completionHandlers?(self.cityList[indexPath.row])
+        }
     }
-
 }
