@@ -76,7 +76,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="HAK-aG-SSV">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="iconsCancel" id="bLJ-oi-snP"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="iconsCancel" id="bLJ-oi-snP">
+                            <connections>
+                                <action selector="actionCancel:" destination="BYZ-38-t0r" id="wxk-zg-H95"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicatorView" destination="kMd-eo-2kJ" id="LzZ-Gm-m99"/>
@@ -87,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3239" y="1284"/>
+            <point key="canvasLocation" x="2183" y="1333"/>
         </scene>
         <!--Weather Table View Controller-->
         <scene sceneID="Ch6-Qk-jD7">
@@ -179,12 +183,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="ck2-A3-Jb1">
                             <connections>
-                                <segue destination="HRt-rG-lCf" kind="presentation" identifier="segueCitySearch" id="PQs-Uj-BYU"/>
+                                <action selector="actionSearch:" destination="riP-nl-MuO" id="SMM-MH-Sra"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="Y4z-Gu-2T9" kind="show" identifier="segueWeatherDetail" id="i7W-kH-E9I"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="segueCitySearch" id="2LR-pU-mVn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sOD-Gg-4Xc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -466,24 +471,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8iC-Mp-p5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-165" y="809"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="rYU-0H-pn2">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HRt-rG-lCf" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YeP-ia-k6j">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="1gG-kC-EAl"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oYH-Rx-VKv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2182.608695652174" y="1283.7053571428571"/>
         </scene>
     </scenes>
     <resources>

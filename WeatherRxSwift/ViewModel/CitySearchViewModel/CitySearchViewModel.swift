@@ -20,8 +20,8 @@ protocol CitySearchDataSource {
 final class CitySearchViewModel: CitySearchDataSource {
 
     //output
-    var cityList: Observable<[CityListModel]>
-    var isLoading: Observable<Bool>
+    let cityList: Observable<[CityListModel]>
+    let isLoading: Observable<Bool>
 
     //input
     private let cityListHandler: AddCityListHandlerProtocol
