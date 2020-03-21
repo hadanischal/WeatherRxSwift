@@ -17,22 +17,27 @@ final class WeatherTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        configureView()
+        configureTableView()
         setupViewModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
     }
 
-    private func setupUI() {
-        title = "City List"
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
+    private func configureView() {
         navigationController?.setCustomStyle()
-        tableView.backgroundColor = UIColor.viewBackgroundColor
+        navigationItem.title = L10n.DashBoard.titleCityList
+    }
+
+    private func configureTableView() {
+        tableView?.backgroundColor = UIColor.viewBackgroundColor
+        view.backgroundColor = UIColor.viewBackgroundColor
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.separatorStyle = .none
         tableView.hideEmptyCells()
+        tableView.register(CitySearchTableViewCell.self)
     }
 
     private func setupViewModel() {
@@ -46,13 +51,24 @@ final class WeatherTableViewController: UITableViewController {
             })
             .disposed(by: disposeBag)
 
-        let appName = Bundle.main.displayName ?? "This app"
-
         self.viewModel.errorMessage
-        .asDriver(onErrorJustReturn: "")
+            .asDriver(onErrorJustReturn: "")
             .drive(onNext: { [weak self] message in
-                self?.showAlertView(withTitle: appName, andMessage: message)
+                self?.showAlertView(withTitle: Bundle.main.displayName, andMessage: message)
             }).disposed(by: disposeBag)
+
+        self.viewModel.getWeatherInfoForCityList()
+    }
+
+    @IBAction func actionSearch(_ sender: UIBarButtonItem) {
+        let citySearchViewModel = CitySearchViewModel()
+        let viewController = CitySearchViewController.citySearchVC(citySearchViewModel)
+        let navigationController = NavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        viewController.completionHandlers = { [weak self] cityModel in
+            self?.viewModel.fetchWeatherFor(selectedCity: cityModel)
+        }
+        self.present(navigationController, animated: true)
     }
 
     @IBAction func actionSettings(_ sender: Any) {
@@ -60,12 +76,9 @@ final class WeatherTableViewController: UITableViewController {
         let viewController = SettingsTableViewController.settingsVC(settingsViewModel)
         let navigationController = NavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .fullScreen
-
-        settingsViewModel.isUpdated
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-
-            }).disposed(by: disposeBag)
+        viewController.completionHandlers = { [weak self] in
+            self?.viewModel.getWeatherInfoForCityList()
+        }
         self.present(navigationController, animated: true)
     }
     // MARK: - Table view data source
@@ -99,21 +112,6 @@ final class WeatherTableViewController: UITableViewController {
         guard let storyboardSegue = StoryboardSegue.Main(segue) else { return }
 
         switch storyboardSegue {
-        case .segueCitySearch:
-            guard let navC = segue.destination as? UINavigationController,
-                let citySearchVC = navC.viewControllers.first as? CitySearchViewController else {
-                    fatalError("Segue destination is not found")
-            }
-
-            citySearchVC
-                .selectedCity?
-                .observeOn(MainScheduler.asyncInstance)
-                .subscribe(onNext: { [weak self] cityModel in
-                    citySearchVC.dismiss(animated: true)
-                    self?.viewModel.fetchWeatherFor(selectedCity: cityModel)
-                })
-                .disposed(by: disposeBag)
-
         case .segueWeatherDetail:
             guard let weatherDetailVC = segue.destination as? WeatherDetailViewController,
                 let indexPath = sender as? IndexPath
@@ -121,7 +119,7 @@ final class WeatherTableViewController: UITableViewController {
                     fatalError("Segue destination is not found")
             }
             weatherDetailVC.weatherInfo = weatherList[indexPath.row]
-        case .segueWeatherListView:
+        case .segueWeatherListView, .segueCitySearch:
             break
 
         }

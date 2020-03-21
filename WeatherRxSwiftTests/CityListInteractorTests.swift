@@ -103,7 +103,7 @@ class CityListInteractorTests: QuickSpec {
                     }
                 }
                 
-                context("when server request completes successfully") {
+                context("when server request fails with error") {
                     beforeEach {
                         stub(mockGetWeatherHandler) { stub in
                             when(stub.getWeatherInfo(byCityIDs: any())).thenReturn(Observable.error(testError1))
