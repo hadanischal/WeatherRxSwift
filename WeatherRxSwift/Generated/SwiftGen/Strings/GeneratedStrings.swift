@@ -14,6 +14,8 @@ internal enum L10n {
   internal enum DashBoard {
     /// Add City
     internal static let titleAddCity = L10n.tr("DashBoard", "TITLE_ADD_CITY")
+    /// City List
+    internal static let titleCityList = L10n.tr("DashBoard", "TITLE_CITY_LIST")
     /// Search City
     internal static let titleSearchCity = L10n.tr("DashBoard", "TITLE_SEARCH_CITY")
     /// Settings

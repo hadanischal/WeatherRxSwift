@@ -17,6 +17,7 @@ final class SettingsTableViewController: UITableViewController {
     private var viewModel: SettingsDataSource!
     private var settingsList: [SettingsUnit] = []
     private let disposeBag = DisposeBag()
+    var completionHandlers : (() -> Void)?
 
     convenience init(withDataSource dataSource: SettingsDataSource) {
         self.init()
@@ -89,7 +90,10 @@ final class SettingsTableViewController: UITableViewController {
 
         let selectedValue = settingsList[row]
         viewModel.updateSettings(withUnit: selectedValue)
-        dismiss(animated: true)
+
+        self.dismiss(animated: true, completion: { [weak self] in
+            self?.completionHandlers?()
+        })
     }
 
     // MARK: - Table view data source
