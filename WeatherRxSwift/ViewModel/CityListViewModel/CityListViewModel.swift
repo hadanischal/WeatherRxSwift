@@ -16,6 +16,7 @@ protocol CityListDataSource {
     var temperatureUnit: SettingsUnit { get }
     func getWeatherInfoForCityList()
     func fetchWeatherFor(selectedCity cityName: CityListModel)
+    func getWeatherDataModel(for city: WeatherResult) -> WeatherDataModel
 }
 
 final class CityListViewModel: CityListDataSource {
@@ -93,6 +94,13 @@ final class CityListViewModel: CityListDataSource {
                     self.errorSubject.onNext("Unable to get weather information for selected city.")
             })
             .disposed(by: disposeBag)
+    }
+
+    func getWeatherDataModel(for city: WeatherResult) -> WeatherDataModel {
+        guard let data = WeatherDataModel(city, unit: temperatureUnit) else {
+            fatalError("WeatherDataModel not found")
+        }
+        return data
     }
 
     // MARK: - Get Citylist from jsonfile

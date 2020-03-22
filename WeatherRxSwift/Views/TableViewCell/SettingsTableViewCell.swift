@@ -13,7 +13,7 @@ class SettingsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 //        contentView.backgroundColor = .viewBackgroundColor
-        self.textLabel?.font = .body2//.body1
+        self.textLabel?.font = .body2
         self.detailTextLabel?.font = .detailBody
         self.textLabel?.textColor = .titleColor
         self.detailTextLabel?.textColor = .descriptionColor

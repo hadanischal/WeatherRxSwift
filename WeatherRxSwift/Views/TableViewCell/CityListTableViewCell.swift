@@ -14,31 +14,17 @@ class CityListTableViewCell: UITableViewCell {
     @IBOutlet weak var labelCityTemperature: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
 
-    var model: WeatherResult? {
-        didSet {
-            guard let data = model else {
-                return
-            }
-            labelCityName.text = data.name
-            if let main = data.main {
-                labelCityTemperature.text = "\(main.temp) °C"
-            }
-            if
-                let weather = data.weather,
-                !weather.isEmpty {
-                let imageIcon = weather[0].icon
-                if let url = URL.iconURL(imageIcon) {
-                self.weatherImageView.setImage(url: url)
-                }
-            }
-
-        }
-    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
         self.contentView.backgroundColor = .viewBackgroundColor
         self.labelCityName.font = .body1
         self.labelCityTemperature.font = .body1
+    }
+
+    func configure(_ data: WeatherDataModel?) {
+        guard let data = data else { return }
+        labelCityName.text = data.cityName
+        labelCityTemperature.text = data.temperature
+        weatherImageView.setImage(url: data.iconURL)
     }
 }

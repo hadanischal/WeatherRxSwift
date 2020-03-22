@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct WeatherDataModel {
+struct WeatherDataModel: Equatable {
     let cityName: String
     let temperature: String
     let iconURL: URL
