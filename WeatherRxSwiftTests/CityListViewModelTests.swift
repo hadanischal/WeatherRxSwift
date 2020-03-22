@@ -140,11 +140,11 @@ class CityListViewModelTests: QuickSpec {
                         }
                         result = testViewModel.temperatureUnit
                     }
-                    it("update settings info in mockUserDefaultsManager") {
+                    it("getTemperatureUnit from mockTemperatureUnitManager") {
                         verify(mockTemperatureUnitManager).getTemperatureUnit()
                     }
                     
-                    it("returns selected index to be 0") {
+                    it("returns temperatureUnit to be celsius") {
                         expect(result).to(equal(.celsius))
                     }
                 }
@@ -157,11 +157,47 @@ class CityListViewModelTests: QuickSpec {
                         }
                         result = testViewModel.temperatureUnit
                     }
-                    it("update settings info in mockUserDefaultsManager") {
+                    it("getTemperatureUnit from mockTemperatureUnitManager") {
+                        verify(mockTemperatureUnitManager).getTemperatureUnit()
+                    }
+                    it("returns temperatureUnit to be fahrenheit") {
+                        expect(result).to(equal(.fahrenheit))
+                    }
+                }
+            }
+            
+            describe("When get WeatherDataModel for selected weatherResult") {
+                context("When user select weatherResult and unit is celsius") {
+                    let correctResult = WeatherDataModel(MocksInfo.weatherResult, unit: .celsius)
+                    var result: WeatherDataModel!
+                    beforeEach {
+                        stub(mockTemperatureUnitManager) { stub in
+                            when(stub.getTemperatureUnit()).thenReturn(.celsius)
+                        }
+                        result = testViewModel.getWeatherDataModel(for: MocksInfo.weatherResult)
+                    }
+                    it("getTemperatureUnit from mockTemperatureUnitManager") {
                         verify(mockTemperatureUnitManager).getTemperatureUnit()
                     }
                     it("returns selected index to be 0") {
-                        expect(result).to(equal(.fahrenheit))
+                        expect(result).to(equal(correctResult))
+                    }
+                }
+                
+                context("When user select weatherResult and unit is fahrenheit") {
+                    let correctResult = WeatherDataModel(MocksInfo.weatherResult, unit: .fahrenheit)
+                    var result: WeatherDataModel!
+                    beforeEach {
+                        stub(mockTemperatureUnitManager) { stub in
+                            when(stub.getTemperatureUnit()).thenReturn(.fahrenheit)
+                        }
+                        result = testViewModel.getWeatherDataModel(for: MocksInfo.weatherResult)
+                    }
+                    it("getTemperatureUnit from mockTemperatureUnitManager") {
+                        verify(mockTemperatureUnitManager).getTemperatureUnit()
+                    }
+                    it("returns selected index to be 0") {
+                        expect(result).to(equal(correctResult))
                     }
                 }
             }
