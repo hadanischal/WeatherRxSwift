@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DetailModel: Codable {
+struct DetailModel: Codable, Equatable {
     let title: String?
     var description: String?
 }

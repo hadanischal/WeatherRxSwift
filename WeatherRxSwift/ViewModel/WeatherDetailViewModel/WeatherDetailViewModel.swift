@@ -10,44 +10,51 @@ import Foundation
 import RxSwift
 
 protocol WeatherDetailDataSource {
+    var title: Observable<String> { get }
+    var weatherDataModel: WeatherDataModel? { get }
     var detailList: Observable<[DetailModel]> { get }
     func getDetailResult()
 }
 
 final class WeatherDetailViewModel: WeatherDetailDataSource {
 
+    //output
+    var title: Observable<String> { Observable.just(weatherResult.name ?? "Detail") }
+    var weatherDataModel: WeatherDataModel?
+    let detailList: Observable<[DetailModel]>
+
     //input
+    private var weatherResult: WeatherResult
+
     private let detailListHandler: DetailListHandlerProtocol
     private let backgroundScheduler: SchedulerType
-    private var weatherResult: WeatherResult!
-
-    private var detailModel: [DetailModel]!
-
-    //output
-    var detailList: Observable<[DetailModel]>
+    private let temperatureManager: TemperatureUnitManagerProtocol
 
     private var detailSubject = PublishSubject<[DetailModel]>()
+    private var detailModel: [DetailModel]!
     private let disposeBag = DisposeBag()
 
     init(withDetailListHandler detailListHandler: DetailListHandlerProtocol = FileManagerWraper(),
          withWeatherResultModel weatherResult: WeatherResult,
+         temperatureManager: TemperatureUnitManagerProtocol = TemperatureUnitManager(),
          withSchedulerType backgroundScheduler: SchedulerType = ConcurrentDispatchQueueScheduler(qos: .background)) {
         self.detailListHandler = detailListHandler
         self.backgroundScheduler = backgroundScheduler
         self.weatherResult = weatherResult
+        self.temperatureManager = temperatureManager
 
-        self.detailList = detailSubject.asObserver()
-        self.getDetailResult()
+        self.weatherDataModel = WeatherDataModel(weatherResult, unit: self.temperatureManager.getTemperatureUnit())
+        self.detailList = detailSubject.asObservable()
     }
 
-     func getDetailResult() {
+    func getDetailResult() {
         self.detailListHandler
             .getDetailInfo()
             .subscribeOn(backgroundScheduler)
             .subscribe(onNext: { [weak self] detailList in
                 self?.detailModel = detailList
                 self?.updateDetailList()
-                 }, onError: { error in
+                }, onError: { error in
                     print("onError: \(error)")
             }).disposed(by: disposeBag)
     }

@@ -359,6 +359,7 @@
 				04EA1C6D23DB0B9D00D535A6 /* CitySearchViewModelTests.swift */,
 				0426719E241B9EC700158B60 /* SettingsViewModelTests.swift */,
 				043697C7241C51AD003A433E /* TemperatureUnitManagerTests.swift */,
+				04EA1C7E23DB0BB600D535A6 /* WeatherDetailViewModelTests.swift */,
 				040E95FD23DB0482002BAB43 /* WeatherRxSwiftTests.swift */,
 				040E95FF23DB0482002BAB43 /* Info.plist */,
 			);
@@ -778,7 +779,6 @@
 				04EA1C7B23DB0BB600D535A6 /* GeneratedMocks.swift */,
 				04EA1C7C23DB0BB600D535A6 /* MockData.swift */,
 				04EA1C7D23DB0BB600D535A6 /* MockDetailList.json */,
-				04EA1C7E23DB0BB600D535A6 /* WeatherDetailViewModelTests.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
