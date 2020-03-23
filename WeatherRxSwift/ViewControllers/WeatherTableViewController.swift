@@ -103,7 +103,13 @@ final class WeatherTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.perform(segue: StoryboardSegue.Main.segueWeatherDetail, sender: indexPath)
+        handellNavigation(indexPath)
+    }
+
+    private func handellNavigation(_ indexPath: IndexPath) {
+        let detailViewModel = WeatherDetailViewModel(withWeatherResultModel: weatherList[indexPath.row])
+        let viewController = WeatherDetailViewController.weatherDetailVC(detailViewModel)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     // MARK: - Navigation
@@ -112,16 +118,8 @@ final class WeatherTableViewController: UITableViewController {
         guard let storyboardSegue = StoryboardSegue.Main(segue) else { return }
 
         switch storyboardSegue {
-        case .segueWeatherDetail:
-            guard let weatherDetailVC = segue.destination as? WeatherDetailViewController,
-                let indexPath = sender as? IndexPath
-                else {
-                    fatalError("Segue destination is not found")
-            }
-            weatherDetailVC.weatherInfo = weatherList[indexPath.row]
-        case .segueWeatherListView, .segueCitySearch:
+        case .segueCitySearch, .segueWeatherListView, .segueWeatherDetail:
             break
-
         }
     }
 
