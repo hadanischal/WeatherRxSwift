@@ -16,4 +16,27 @@ struct MocksInfo {
     static let weather = Weather(id: 803, main: "Clouds", description: "broken clouds", icon: "04d")
     static let weatherResult = WeatherResult(main: mainModel, weather: [weather], sys: nil, visibility: 10, wind: nil, name: "Sydney")
     static let citysWeatherResult = CityWeatherModel(cnt: 1, list: [weatherResult])
+    
+    static func mockDetailModelList() -> [DetailModel] {
+        return updateDetailList()
+    }
+    
+    private static func updateDetailList() -> [DetailModel] {
+        let sunrise = Date(timeIntervalSince1970: weatherResult.sys?.sunrise ?? 0.00)
+        let sunset = Date(timeIntervalSince1970: weatherResult.sys?.sunset ?? 0.00)
+        
+        var detailModel = MockData().stubDetailModelList()
+        
+        detailModel[WeatherDetail.sunrise.rawValue].description = sunrise.time
+        detailModel[WeatherDetail.sunset.rawValue].description = sunset.time
+        detailModel[WeatherDetail.pressure.rawValue].description = "\(weatherResult.main?.pressure ?? 0)"
+        detailModel[WeatherDetail.humidity.rawValue].description = "\(weatherResult.main?.humidity ?? 0)"
+        detailModel[WeatherDetail.tempMin.rawValue].description = "\(weatherResult.main?.temp_min ?? 0)"
+        detailModel[WeatherDetail.tempMax.rawValue].description = "\(weatherResult.main?.temp_max ?? 0)"
+        detailModel[WeatherDetail.wind.rawValue].description = "\(weatherResult.wind?.speed ?? 0)"
+        detailModel[WeatherDetail.visibility.rawValue].description = "\(weatherResult.visibility ?? 0)"
+        
+        return detailModel
+    }
+
 }
