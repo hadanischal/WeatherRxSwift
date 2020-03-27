@@ -68,6 +68,11 @@ final class WeatherDetailViewController: UIViewController {
         weatherImageView.setImage(url: data.iconURL)
         labelMainName.text = data.mainName
         labelDescription.text = data.description
+        
+        labelCityName.textColor = .titleColor
+        labelCityTemperature.textColor = .descriptionColor
+        labelMainName.textColor = .titleColor
+        labelDescription.textColor = .descriptionColor
     }
 
 }

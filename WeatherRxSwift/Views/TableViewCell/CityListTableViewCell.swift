@@ -19,6 +19,8 @@ class CityListTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = .viewBackgroundColor
         self.labelCityName.font = .body1
         self.labelCityTemperature.font = .body1
+        self.labelCityName?.textColor = .titleColor
+        self.labelCityTemperature?.textColor = .descriptionColor
     }
 
     func configure(_ data: WeatherDataModel?) {

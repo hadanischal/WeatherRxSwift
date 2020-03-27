@@ -13,11 +13,10 @@
 This demo is expected to be run using Swift 5.0 and Xcode 11.3.1
 
 ## Objective:
-This is a simple Demo project which aims to display weather information using MVVM pattern in Swift. A fun app made with to demonstrate some examples of **clean architecture**, **SOLID principles** code organisation, loose coupling, **unit testing** and some of the best practices used in modern iOS programming using `Swift`. It displays a simple order placement ticket, showing real-time updating Bitcoin prices.
+This is a simple Demo project which aims to display weather information using MVVM pattern in Swift. A fun app made with to demonstrate some examples of **clean architecture**, **SOLID principles** code organisation, loose coupling, **unit testing** and some of the best practices used in modern iOS programming using `Swift`.
 
 ## App Goal:
  - This project was intended to work as a  weather information demo projects for iOS using Swift.
-
 
 ## Implementation:
  - The demo uses the [Openweathermap API](http://api.openweathermap.org) as an excuse to have a nice use-case, because querying a WebService API is asynchronous by nature and is thus a good example for showing how It can be useful .

@@ -8,7 +8,7 @@
       "idiom" : "universal",
       "color" : {
         "platform" : "ios",
-        "reference" : "darkTextColor"
+        "reference" : "labelColor"
       }
     },
     {
@@ -21,7 +21,7 @@
       ],
       "color" : {
         "platform" : "ios",
-        "reference" : "labelColor"
+        "reference" : "darkTextColor"
       }
     }
   ]
