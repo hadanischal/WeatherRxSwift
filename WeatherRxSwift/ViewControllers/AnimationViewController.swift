@@ -56,7 +56,7 @@ final class AnimationViewController: UIViewController {
 
     private func displayRootView() {
         DispatchQueue.main.async {
-            if let window = UIApplication.shared.keyWindow {
+            if let window = UIApplication.shared.windows.filter({ $0.isKeyWindow }).first {
                 let viewController = StoryboardScene.Main.weatherTableViewController.instantiate()
                 let navigationController = NavigationController(rootViewController: viewController)
                 window.rootViewController = navigationController

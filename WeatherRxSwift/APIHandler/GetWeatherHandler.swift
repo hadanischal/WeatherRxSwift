@@ -48,7 +48,7 @@ class GetWeatherHandler: GetWeatherHandlerProtocol {
         let payLoad: [String: String] = ["id": IDs,
                                          "units": temperatureManager.getTemperatureUnit().rawValue,
                                          "APPID": ApiKey.appId]
-        let resource = Resource<CityWeatherModel> (url: url, parameter: payLoad)
+        let resource = Resource<CityWeatherModel>(url: url, parameter: payLoad)
         return networkingManager.load(resource: resource)
             .map { article -> CityWeatherModel in
                 return article
