@@ -6,18 +6,17 @@
 //  Copyright © 2019 NischalHada. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 final class WeatherViewController: UIViewController {
-
     private let disposeBag = DisposeBag()
     var viewModel: WeatherViewModelProtocol = WeatherViewModel()
 
-    @IBOutlet weak var cityNameTextField: UITextField!
-    @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet var cityNameTextField: UITextField!
+    @IBOutlet var temperatureLabel: UILabel!
+    @IBOutlet var humidityLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +34,8 @@ final class WeatherViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] weather in
                 self?.displayWeather(weather)
-                }, onError: { error in
-                    print("onError: \(error)")
+            }, onError: { error in
+                print("onError: \(error)")
             })
             .disposed(by: disposeBag)
 
@@ -57,7 +56,6 @@ final class WeatherViewController: UIViewController {
     }
 
     private func displayWeather(_ weather: WeatherResult?) {
-
         if let weather = weather?.main {
             self.temperatureLabel.text = "\(weather.temp) °C"
             self.humidityLabel.text = "\(weather.humidity) 💦"
@@ -66,5 +64,4 @@ final class WeatherViewController: UIViewController {
             self.humidityLabel.text = "⦰"
         }
     }
-
 }

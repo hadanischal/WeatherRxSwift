@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import RxSwift
-import RxCocoa
 import Lottie
+import RxCocoa
+import RxSwift
 
 protocol AnimationDataSource {
     var animation: Observable<Animation?> { get }

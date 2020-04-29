@@ -7,11 +7,10 @@
 //
 
 import Foundation
-import XCTest
 @testable import WeatherRxSwift
+import XCTest
 
 class MockData {
-
     func stubDetailModelList() -> [DetailModel] {
         let mockData = DetailModel(title: nil, description: nil)
 
@@ -46,7 +45,7 @@ class MockData {
         }
     }
 
-    func readJson(forResource fileName: String ) -> Data? {
+    func readJson(forResource fileName: String) -> Data? {
         let bundle = Bundle(for: type(of: self))
         guard let url = bundle.url(forResource: fileName, withExtension: "json") else {
             XCTFail("Missing file: \(fileName).json")
@@ -61,5 +60,4 @@ class MockData {
             return nil
         }
     }
-
 }

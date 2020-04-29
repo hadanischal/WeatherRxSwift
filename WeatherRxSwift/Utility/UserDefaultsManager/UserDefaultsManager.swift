@@ -5,7 +5,7 @@
 //  Created by Nischal Hada on 13/3/20.
 //  Copyright © 2020 Nischal Hada. All rights reserved.
 //
-//swiftlint:disable line_length
+// swiftlint:disable line_length
 
 import Foundation
 
@@ -30,6 +30,7 @@ final class UserDefaultsManager: UserDefaultsManagerProtocol {
     func set(value: Any?, forKey key: String) {
         UserDefaults.standard.set(value, forKey: key)
     }
+
     /*!
      -objectForKey: will search the receiver's search list for a default with the key 'key' and return it. If another process has changed defaults in the search list, NSUserDefaults will automatically update to the latest values. If the key in question has been marked as ubiquitous via a Defaults Configuration File, the latest value may not be immediately available, and the registered value will be returned instead.
      */
@@ -81,7 +82,7 @@ final class UserDefaultsManager: UserDefaultsManagerProtocol {
 
     /*!
      -boolForKey: is equivalent to -objectForKey:, except that it converts the returned value to a BOOL. If the value is an NSNumber, NO will be returned if the value is 0, YES otherwise. If the value is an NSString, values of "YES" or "1" will return YES, and values of "NO", "0", or any other string will return NO. If the value is absent or can't be converted to a BOOL, NO will be returned.
-     
+
      */
     func bool(forKey key: String) -> Bool {
         return UserDefaults.standard.bool(forKey: key)

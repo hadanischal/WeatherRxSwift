@@ -6,17 +6,16 @@
 //  Copyright © 2019 NischalHada. All rights reserved.
 //
 
-import XCTest
-import Quick
-import Nimble
-import RxTest
-import RxSwift
 import Cuckoo
+import Nimble
+import Quick
+import RxSwift
+import RxTest
+import XCTest
 
 @testable import WeatherRxSwift
 
 final class WeatherDetailViewModelTests: QuickSpec {
-
     override func spec() {
         var testViewModel: WeatherDetailViewModel!
         var mockDetailListHandler: MockDetailListHandlerProtocol!
@@ -35,7 +34,7 @@ final class WeatherDetailViewModelTests: QuickSpec {
                                                        withWeatherResultModel: mockWeatherResult,
                                                        withSchedulerType: MainScheduler.instance)
             }
-            
+
             describe("Get detail information List from json file") {
                 context("when get request succeed") {
                     beforeEach {

@@ -16,7 +16,6 @@ protocol CityListInteracting {
 }
 
 final class CityListInteractor: CityListInteracting {
-
     private let cityListHandler: StartCityListHandlerProtocol
     private let weatherHandler: GetWeatherHandlerProtocol
 
@@ -27,6 +26,7 @@ final class CityListInteractor: CityListInteracting {
     }
 
     // MARK: - Get Citylist from jsonfile
+
     func getCityListFromFile() -> Observable<[CityListModel]> {
         self.cityListHandler
             .getStartCityList()
@@ -37,7 +37,7 @@ final class CityListInteractor: CityListInteracting {
     func getWeatherInfo(forCityList cityList: [CityListModel]) -> Observable<[WeatherResult]> {
         let cityIds = cityList
             .compactMap { $0.id }
-            .compactMap { String($0)}
+            .compactMap { String($0) }
             .joined(separator: ",")
 
         return self.weatherHandler
@@ -47,12 +47,13 @@ final class CityListInteractor: CityListInteracting {
     }
 
     // MARK: - Fetch weather for selected city
+
     func getWeatherInfo(forCity city: CityListModel) -> Observable<WeatherResult> {
-        guard let name = city.name else { return Observable.error(NetworkError.badURL)}
+        guard let name = city.name else { return Observable.error(NetworkError.badURL) }
 
         return Observable.just(name)
             .flatMap { name -> Observable<WeatherResult?> in
-                return self.weatherHandler.getWeatherInfo(by: name)
+                self.weatherHandler.getWeatherInfo(by: name)
             }
             .compactMap { $0 }
     }

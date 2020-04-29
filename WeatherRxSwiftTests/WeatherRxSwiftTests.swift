@@ -6,11 +6,10 @@
 //  Copyright © 2020 Nischal Hada. All rights reserved.
 //
 
-import XCTest
 @testable import WeatherRxSwift
+import XCTest
 
 class WeatherRxSwiftTests: XCTestCase {
-
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -30,5 +29,4 @@ class WeatherRxSwiftTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

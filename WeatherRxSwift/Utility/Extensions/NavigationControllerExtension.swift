@@ -9,7 +9,6 @@
 import UIKit
 
 class NavigationController: UINavigationController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setCustomStyle()
@@ -19,9 +18,9 @@ class NavigationController: UINavigationController {
 extension UINavigationController {
     func setCustomStyle() {
         navigationBar.isTranslucent = false
-        //To tint the bar's items
+        // To tint the bar's items
         navigationBar.tintColor = .titleTintColor
-        //To tint the bar's background
+        // To tint the bar's background
         navigationBar.barTintColor = .barTintColor
 //        navigationItem.hidesBackButton = true
 

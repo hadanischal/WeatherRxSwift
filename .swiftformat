@@ -1,0 +1,10 @@
+
+--swiftversion 5
+--exclude Pods
+--exclude */Generated/*
+
+--disable indent
+--disable linebreaks
+--disable redundantSelf
+--disable trailingCommas
+--disable unusedArguments

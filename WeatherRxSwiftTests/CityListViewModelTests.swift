@@ -6,44 +6,43 @@
 //  Copyright © 2020 Nischal Hada. All rights reserved.
 //
 
-import XCTest
-import Quick
-import Nimble
 import Cuckoo
-import RxTest
+import Nimble
+import Quick
 import RxBlocking
 import RxSwift
+import RxTest
 @testable import WeatherRxSwift
+import XCTest
 
-//swiftlint:disable function_body_length
+// swiftlint:disable function_body_length
 class CityListViewModelTests: QuickSpec {
-    
     override func spec() {
         var testViewModel: CityListViewModel!
         var mockCityListHandler: MockCityListInteracting!
         var mockTemperatureUnitManager: MockTemperatureUnitManagerProtocol!
         var testScheduler: TestScheduler!
-        
+
         describe("CityListViewModel") {
             beforeEach {
                 testScheduler = TestScheduler(initialClock: 0)
-                
+
                 mockCityListHandler = MockCityListInteracting()
                 stub(mockCityListHandler) { stub in
                     when(stub.getCityListFromFile()).thenReturn(Observable.error(RxError.noElements))
                     when(stub.getWeatherInfo(forCity: any())).thenReturn(Observable.just(MocksInfo.weatherResult))
                     when(stub.getWeatherInfo(forCityList: any())).thenReturn(Observable.just([MocksInfo.weatherResult]))
                 }
-                
+
                 mockTemperatureUnitManager = MockTemperatureUnitManagerProtocol()
                 stub(mockTemperatureUnitManager) { stub in
                     when(stub.setTemperatureUnit(any())).thenDoNothing()
                 }
-                
+
                 testViewModel = CityListViewModel(withCityList: mockCityListHandler,
                                                   temperatureManager: mockTemperatureUnitManager)
             }
-            
+
             describe("Get WeatherInfo for cityList from server") {
                 context("when server request completes successfully") {
                     beforeEach {
@@ -65,14 +64,14 @@ class CityListViewModelTests: QuickSpec {
                         expect(res.events).to(equal(correctResult))
                     }
                 }
-                
+
                 context("when server request fails with error") {
                     beforeEach {
                         stub(mockCityListHandler) { stub in
                             when(stub.getCityListFromFile()).thenReturn(Observable.just([MocksInfo.cityList]))
                             when(stub.getWeatherInfo(forCityList: any())).thenReturn(Observable.error(testError1))
                         }
-                        
+
                         testViewModel.getWeatherInfoForCityList()
                     }
                     it("calls to the mockGetWeatherHandler to get weather info") {
@@ -88,7 +87,7 @@ class CityListViewModelTests: QuickSpec {
                     }
                 }
             }
-            
+
             describe("fetch weather info for selected city from server") {
                 context("when server request succeed") {
                     beforeEach {
@@ -109,7 +108,7 @@ class CityListViewModelTests: QuickSpec {
                         expect(res.events).to(equal(correctResult))
                     }
                 }
-                
+
                 context("when server request failed") {
                     beforeEach {
                         stub(mockCityListHandler) { stub in
@@ -130,7 +129,7 @@ class CityListViewModelTests: QuickSpec {
                     }
                 }
             }
-            
+
             describe("When get Temprature unit if have set before") {
                 context("When user select celsius") {
                     var result: SettingsUnit!
@@ -143,12 +142,12 @@ class CityListViewModelTests: QuickSpec {
                     it("getTemperatureUnit from mockTemperatureUnitManager") {
                         verify(mockTemperatureUnitManager).getTemperatureUnit()
                     }
-                    
+
                     it("returns temperatureUnit to be celsius") {
                         expect(result).to(equal(.celsius))
                     }
                 }
-                
+
                 context("When user select fahrenheit") {
                     var result: SettingsUnit!
                     beforeEach {
@@ -165,7 +164,7 @@ class CityListViewModelTests: QuickSpec {
                     }
                 }
             }
-            
+
             describe("When get WeatherDataModel for selected weatherResult") {
                 context("When user select weatherResult and unit is celsius") {
                     let correctResult = WeatherDataModel(MocksInfo.weatherResult, unit: .celsius)
@@ -183,7 +182,7 @@ class CityListViewModelTests: QuickSpec {
                         expect(result).to(equal(correctResult))
                     }
                 }
-                
+
                 context("When user select weatherResult and unit is fahrenheit") {
                     let correctResult = WeatherDataModel(MocksInfo.weatherResult, unit: .fahrenheit)
                     var result: WeatherDataModel!

@@ -9,7 +9,6 @@
 import XCTest
 
 class WeatherRxSwiftUITests: XCTestCase {
-
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
@@ -20,7 +19,6 @@ class WeatherRxSwiftUITests: XCTestCase {
         let app = XCUIApplication()
         setupSnapshot(app)
         app.launch()
-
     }
 
     override func tearDown() {
@@ -36,7 +34,7 @@ class WeatherRxSwiftUITests: XCTestCase {
 
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
+
         // Check the string displayed on the label is existing
 //        XCTAssertTrue(app.otherElements["myLabel"].exists)
 //

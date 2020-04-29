@@ -26,8 +26,9 @@ extension URL {
         return URL(string: ApiKey.iconBaseURL + "img/wn/\(icon)@2x.png")
     }
 }
-//http://api.openweathermap.org/data/2.5/group?id=524901,703448,2643743&units=metric
-//imperial °F or metric °C
+
+// http://api.openweathermap.org/data/2.5/group?id=524901,703448,2643743&units=metric
+// imperial °F or metric °C
 struct ApiKey {
     static let appId = "d668412f7da6fddb022f0bc4631ba64a"
     static let baseURL = "https://api.openweathermap.org/"
@@ -35,5 +36,4 @@ struct ApiKey {
 
     static let unitMetric = "metric"
     static let unitImperial = "imperial"
-
 }

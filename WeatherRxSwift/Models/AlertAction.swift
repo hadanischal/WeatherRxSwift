@@ -9,7 +9,6 @@
 import UIKit
 
 public struct AlertAction {
-
     public let title: String
     public let type: Int
     public let style: UIAlertAction.Style
