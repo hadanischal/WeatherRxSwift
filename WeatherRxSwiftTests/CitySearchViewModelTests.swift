@@ -6,18 +6,17 @@
 //  Copyright © 2019 NischalHada. All rights reserved.
 //
 
-import XCTest
-import Quick
-import Nimble
 import Cuckoo
-import RxTest
+import Nimble
+import Quick
 import RxBlocking
 import RxSwift
+import RxTest
 @testable import WeatherRxSwift
+import XCTest
 
-//swiftlint:disable function_body_length
+// swiftlint:disable function_body_length
 class CitySearchViewModelTests: QuickSpec {
-
     override func spec() {
         var testViewModel: CitySearchViewModel!
         var mockCityListHandler: MockAddCityListHandlerProtocol!
@@ -33,9 +32,8 @@ class CitySearchViewModelTests: QuickSpec {
                 testViewModel = CitySearchViewModel(withCityList: mockCityListHandler, withSchedulerType: MainScheduler.instance)
             }
 
-            describe("Get city List from json file", {
-
-                context("when getCityInfo withFilename succeed ", {
+            describe("Get city List from json file") {
+                context("when getCityInfo withFilename succeed ") {
                     beforeEach {
                         stub(mockCityListHandler, block: { stub in
                             when(stub.getSearchCityList()).thenReturn(Observable.just([cityList]))
@@ -82,10 +80,9 @@ class CitySearchViewModelTests: QuickSpec {
                         }
 
                     })
+                }
 
-                })
-
-                context("when get city info request failed ", {
+                context("when get city info request failed ") {
                     beforeEach {
                         stub(mockCityListHandler, block: { stub in
                             when(stub.getSearchCityList()).thenReturn(Observable.error(RxError.noElements))
@@ -104,13 +101,13 @@ class CitySearchViewModelTests: QuickSpec {
 
                         expect(res.events).to(beEmpty())
                     })
-                })
-            })
+                }
+            }
 
-            describe("Search city list with name from json file", {
+            describe("Search city list with name from json file") {
                 var searchText: Observable<String>!
 
-                context("when getCityInfo withFilename succeed ", {
+                context("when getCityInfo withFilename succeed ") {
                     beforeEach {
                         searchText = testScheduler.createColdObservable([Recorded.next(300, "Sydney")]).asObservable()
 
@@ -156,9 +153,9 @@ class CitySearchViewModelTests: QuickSpec {
                         }
 
                     })
-                })
+                }
 
-                context("when getCityInfo withFilename succeed ", {
+                context("when getCityInfo withFilename succeed ") {
                     beforeEach {
                         searchText = testScheduler.createColdObservable([Recorded.next(300, "abcd"), Recorded.next(320, "syd")]).asObservable()
 
@@ -204,9 +201,8 @@ class CitySearchViewModelTests: QuickSpec {
                         }
 
                     })
-                })
-            })
-
+                }
+            }
         }
     }
 }

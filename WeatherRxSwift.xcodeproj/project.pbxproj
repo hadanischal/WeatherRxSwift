@@ -123,6 +123,7 @@
 		68591EB78BC3EE841D8EC187 /* Pods_WeatherRxSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88A492F88710D0E7190B5B1E /* Pods_WeatherRxSwiftTests.framework */; };
 		937DAA4684DDE87011BF4A17 /* Pods_WeatherRxSwift_WeatherRxSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFFE2D86EF121C0F8BA41A1 /* Pods_WeatherRxSwift_WeatherRxSwiftUITests.framework */; };
 		AF416276244184A20025FD70 /* bitrise.yml in Resources */ = {isa = PBXBuildFile; fileRef = AF416275244184A20025FD70 /* bitrise.yml */; };
+		AF70398124586DD800FB7769 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = AF70398024586DD800FB7769 /* .swiftformat */; };
 		AF86FCFC244B3E5B0057D2E5 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF86FCFB244B3E5B0057D2E5 /* SnapshotHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -270,6 +271,7 @@
 		88A492F88710D0E7190B5B1E /* Pods_WeatherRxSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherRxSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FE6638DA2399B79DDF3A4D0 /* Pods-WeatherRxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherRxSwift.debug.xcconfig"; path = "Target Support Files/Pods-WeatherRxSwift/Pods-WeatherRxSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		AF416275244184A20025FD70 /* bitrise.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = bitrise.yml; sourceTree = "<group>"; };
+		AF70398024586DD800FB7769 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		AF86FCFB244B3E5B0057D2E5 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		AFC8623CC345427C5D41324D /* Pods-WeatherRxSwift-WeatherRxSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherRxSwift-WeatherRxSwiftUITests.debug.xcconfig"; path = "Target Support Files/Pods-WeatherRxSwift-WeatherRxSwiftUITests/Pods-WeatherRxSwift-WeatherRxSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BABAE994C57772CE5B235893 /* Pods-WeatherRxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherRxSwift.release.xcconfig"; path = "Target Support Files/Pods-WeatherRxSwift/Pods-WeatherRxSwift.release.xcconfig"; sourceTree = "<group>"; };
@@ -827,6 +829,7 @@
 				0437187123DBA09500756CEA /* swiftgen.yml */,
 				04EA1C8A23DB0BFF00D535A6 /* Cuckoo-GeneratedMocks.sh */,
 				0453F96B23E5090700404F3B /* .pecker.yml */,
+				AF70398024586DD800FB7769 /* .swiftformat */,
 			);
 			name = BuildScripts;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				0400327523DBD11F003D53DD /* SwiftGen Script */,
 				0400327623DBD135003D53DD /* Swiftlint Script */,
 				0453F96A23E5085500404F3B /* Pecker Script */,
+				AF70398224586E2A00FB7769 /* Swiftformat Script */,
 			);
 			buildRules = (
 			);
@@ -993,6 +997,7 @@
 				044AFFB2241A56B700D6FFC3 /* SettingsTableViewCell.xib in Resources */,
 				040E95F323DB0482002BAB43 /* LaunchScreen.storyboard in Resources */,
 				048E9AAD23F3B2E500509B6A /* ColorsAssets.xcassets in Resources */,
+				AF70398124586DD800FB7769 /* .swiftformat in Resources */,
 				0400327823DBD4FB003D53DD /* weather-app-animation.json in Resources */,
 				048E9AAC23F3B2E500509B6A /* Assets.xcassets in Resources */,
 				0437187323DBA09500756CEA /* swiftgen.yml in Resources */,
@@ -1173,6 +1178,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WeatherRxSwift/Pods-WeatherRxSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		AF70398224586E2A00FB7769 /* Swiftformat Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swiftformat Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
 		};
 		D657FC3F4DB8212BCDB62916 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -6,18 +6,17 @@
 //  Copyright © 2019 NischalHada. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 final class WeatherDetailViewController: UIViewController {
-
-    @IBOutlet weak var labelCityName: UILabel!
-    @IBOutlet weak var labelCityTemperature: UILabel!
-    @IBOutlet weak var labelMainName: UILabel!
-    @IBOutlet weak var labelDescription: UILabel!
-    @IBOutlet weak var weatherImageView: UIImageView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var labelCityName: UILabel!
+    @IBOutlet var labelCityTemperature: UILabel!
+    @IBOutlet var labelMainName: UILabel!
+    @IBOutlet var labelDescription: UILabel!
+    @IBOutlet var weatherImageView: UIImageView!
+    @IBOutlet var tableView: UITableView!
 
     private var viewModel: WeatherDetailDataSource!
     private var detailList = [DetailModel]()
@@ -62,7 +61,7 @@ final class WeatherDetailViewController: UIViewController {
     }
 
     private func updateView() {
-        guard let data =  viewModel.weatherDataModel else { return }
+        guard let data = viewModel.weatherDataModel else { return }
         labelCityName.text = data.cityName
         labelCityTemperature.text = data.temperature
         weatherImageView.setImage(url: data.iconURL)
@@ -74,12 +73,11 @@ final class WeatherDetailViewController: UIViewController {
         labelMainName.textColor = .titleColor
         labelDescription.textColor = .descriptionColor
     }
-
 }
 
 // MARK: - TableViewDelegate Setup
-extension WeatherDetailViewController: UITableViewDataSource, UITableViewDelegate {
 
+extension WeatherDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }

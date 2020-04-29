@@ -9,8 +9,8 @@
 import UIKit
 
 class WeatherDetailTableViewCell: UITableViewCell {
-    @IBOutlet weak var labelTitle: UILabel!
-    @IBOutlet weak var labelDescription: UILabel!
+    @IBOutlet var labelTitle: UILabel!
+    @IBOutlet var labelDescription: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

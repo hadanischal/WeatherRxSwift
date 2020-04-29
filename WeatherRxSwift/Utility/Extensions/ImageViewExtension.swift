@@ -6,8 +6,8 @@
 //  Copyright © 2019 NischalHada. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 extension UIImageView {
     public func setImage(url: URL) {

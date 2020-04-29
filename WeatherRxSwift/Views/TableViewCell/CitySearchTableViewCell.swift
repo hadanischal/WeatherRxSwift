@@ -9,7 +9,6 @@
 import UIKit
 
 class CitySearchTableViewCell: UITableViewCell {
-
     override func awakeFromNib() {
         super.awakeFromNib()
         //        contentView.backgroundColor = .viewBackgroundColor

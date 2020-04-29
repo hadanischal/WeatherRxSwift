@@ -17,13 +17,12 @@ protocol WeatherDetailDataSource {
 }
 
 final class WeatherDetailViewModel: WeatherDetailDataSource {
-
-    //output
+    // Output
     var title: Observable<String> { Observable.just(weatherResult.name ?? "Detail") }
     var weatherDataModel: WeatherDataModel?
     let detailList: Observable<[DetailModel]>
 
-    //input
+    // Input
     private var weatherResult: WeatherResult
 
     private let detailListHandler: DetailListHandlerProtocol
@@ -54,8 +53,8 @@ final class WeatherDetailViewModel: WeatherDetailDataSource {
             .subscribe(onNext: { [weak self] detailList in
                 self?.detailModel = detailList
                 self?.updateDetailList()
-                }, onError: { error in
-                    print("onError: \(error)")
+            }, onError: { error in
+                print("onError: \(error)")
             }).disposed(by: disposeBag)
     }
 
@@ -74,5 +73,4 @@ final class WeatherDetailViewModel: WeatherDetailDataSource {
 
         self.detailSubject.onNext(detailModel)
     }
-
 }

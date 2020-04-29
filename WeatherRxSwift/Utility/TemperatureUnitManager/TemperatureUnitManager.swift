@@ -18,7 +18,6 @@ protocol TemperatureUnitManagerProtocol {
 }
 
 final class TemperatureUnitManager: TemperatureUnitManagerProtocol {
-
     private let userDefaultsManager: UserDefaultsManagerProtocol
 
     init(_ userDefaultsManager: UserDefaultsManagerProtocol = UserDefaultsManager()) {
@@ -32,7 +31,7 @@ final class TemperatureUnitManager: TemperatureUnitManagerProtocol {
     func getTemperatureUnit() -> SettingsUnit {
         guard let unit = userDefaultsManager.string(forKey: TemperatureUnitKey.unit.rawValue),
             let temperatureUnit = SettingsUnit(rawValue: unit) else {
-                return SettingsUnit.celsius
+            return SettingsUnit.celsius
         }
         return temperatureUnit
     }

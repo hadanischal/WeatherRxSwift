@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import RxSwift
 import RxCocoa
+import RxSwift
 
 protocol CityListDataSource {
     var weatherList: Observable<[WeatherResult]> { get }
@@ -20,13 +20,12 @@ protocol CityListDataSource {
 }
 
 final class CityListViewModel: CityListDataSource {
-
-    //output
+    // output
     var weatherList: Observable<[WeatherResult]>
     var errorMessage: Observable<String>
     var temperatureUnit: SettingsUnit { self.temperatureManager.getTemperatureUnit() }
 
-    //input
+    // input
     private var cityList: [CityListModel] = []
     private let cityListHandler: CityListInteracting
     private let temperatureManager: TemperatureUnitManagerProtocol
@@ -37,7 +36,6 @@ final class CityListViewModel: CityListDataSource {
 
     init(withCityList cityListHandler: CityListInteracting = CityListInteractor(),
          temperatureManager: TemperatureUnitManagerProtocol = TemperatureUnitManager()) {
-
         self.cityListHandler = cityListHandler
         self.temperatureManager = temperatureManager
 
@@ -49,39 +47,38 @@ final class CityListViewModel: CityListDataSource {
     private func syncTask() {
         Observable<Int>.interval(.seconds(300), scheduler: ConcurrentDispatchQueueScheduler(qos: DispatchQoS.utility))
             .flatMap { [weak self] _ -> Observable<[CityListModel]> in
-                return self?.getCityListFromFile() ?? Observable.error(NetworkError.unknown)
+                self?.getCityListFromFile() ?? Observable.error(NetworkError.unknown)
             }
-            .flatMap { [weak self] cityList ->  Observable<[WeatherResult]>  in
-                return self?.cityListHandler.getWeatherInfo(forCityList: cityList) ?? Observable.error(NetworkError.unknown)
+            .flatMap { [weak self] cityList -> Observable<[WeatherResult]> in
+                self?.cityListHandler.getWeatherInfo(forCityList: cityList) ?? Observable.error(NetworkError.unknown)
             }
             .subscribe(onNext: { [weak self] wetherInfo in
                 self?.weatherListRelay.accept(wetherInfo)
-                }, onError: { _ in
-                    self.errorSubject.onNext("Unable to get weather information for city list.")
+            }, onError: { _ in
+                self.errorSubject.onNext("Unable to get weather information for city list.")
             }).disposed(by: disposeBag)
     }
 
     // MARK: - Get Citylist from jsonfile Then make API Request
 
-     func getWeatherInfoForCityList() {
+    func getWeatherInfoForCityList() {
         self.getCityListFromFile()
             .flatMap { [weak self] cityList -> Observable<[WeatherResult]> in
-                return self?.cityListHandler.getWeatherInfo(forCityList: cityList) ?? Observable.error(NetworkError.unknown)
+                self?.cityListHandler.getWeatherInfo(forCityList: cityList) ?? Observable.error(NetworkError.unknown)
             }
             .subscribe(onNext: { [weak self] wetherInfo in
                 self?.weatherListRelay.accept(wetherInfo)
-                }, onError: { _ in
-                    self.errorSubject.onNext("Unable to get weather information for city list.")
+            }, onError: { _ in
+                self.errorSubject.onNext("Unable to get weather information for city list.")
             }).disposed(by: disposeBag)
     }
 
     // MARK: - Fetch weather for selected city
 
     func fetchWeatherFor(selectedCity city: CityListModel) {
-
         let foundItems = self.cityList.filter { $0.id == city.id }.first
-        //add city if its not in list
-        guard foundItems == nil else { self.errorSubject.onNext("City already added in city list.") ; return }
+        // add city if its not in list
+        guard foundItems == nil else { self.errorSubject.onNext("City already added in city list."); return }
         self.cityList.append(city)
 
         self.cityListHandler
@@ -89,9 +86,9 @@ final class CityListViewModel: CityListDataSource {
             .subscribe(onNext: { [weak self] weatherResult in
                 guard let self = self else { return }
                 self.weatherListRelay.accept(self.weatherListRelay.value + [weatherResult])
-                }, onError: { error in
-                    print("selectedCity onError: \(error)")
-                    self.errorSubject.onNext("Unable to get weather information for selected city.")
+            }, onError: { error in
+                print("selectedCity onError: \(error)")
+                self.errorSubject.onNext("Unable to get weather information for selected city.")
             })
             .disposed(by: disposeBag)
     }
@@ -104,17 +101,18 @@ final class CityListViewModel: CityListDataSource {
     }
 
     // MARK: - Get Citylist from jsonfile
+
     private func getCityListFromFile() -> Observable<[CityListModel]> {
         // Get from file if city list is empty
         return Observable.just(cityList)
             .flatMap { [weak self] cityList -> Observable<[CityListModel]> in
-                guard cityList.isEmpty else { return Observable.just(cityList)}
+                guard cityList.isEmpty else { return Observable.just(cityList) }
                 return self?.cityListHandler
                     .getCityListFromFile()
                     .flatMap { [weak self] cityList -> Observable<[CityListModel]> in
                         self?.cityList = cityList
                         return Observable.just(cityList)
-                    }  ?? Observable.error(NetworkError.badURL)
+                    } ?? Observable.error(NetworkError.badURL)
             }
     }
 }

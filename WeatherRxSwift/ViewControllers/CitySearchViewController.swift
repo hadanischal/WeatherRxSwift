@@ -6,15 +6,15 @@
 //  Copyright © 2019 NischalHada. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 final class CitySearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet var cancelButton: UIBarButtonItem!
     var completionHandlers: ((CityListModel) -> Void)?
 
     private var cityList = [CityListModel]()
@@ -42,7 +42,7 @@ final class CitySearchViewController: UIViewController, UITableViewDelegate, UIT
     private func configureView() {
         navigationController?.setCustomStyle()
         navigationItem.title = L10n.DashBoard.titleSearchCity
-        //change UISearchBar font
+        // change UISearchBar font
         UILabel.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.body2
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font = UIFont.body2
     }

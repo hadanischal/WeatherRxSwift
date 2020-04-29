@@ -7,9 +7,9 @@
 //
 // pecker:ignore all
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 extension UIViewController {
     public func alert(title: String?,
@@ -17,7 +17,6 @@ extension UIViewController {
                       actions: [AlertAction],
                       preferredStyle: UIAlertController.Style = .alert,
                       viewController: UIViewController) -> Observable<Int> {
-
         let actionSheet = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
 
         return actionSheet.addAction(actions: actions)

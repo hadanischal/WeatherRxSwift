@@ -6,9 +6,9 @@
 //  Copyright © 2019 NischalHada. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 final class WeatherTableViewController: UITableViewController {
     var viewModel: CityListDataSource = CityListViewModel()
@@ -46,8 +46,8 @@ final class WeatherTableViewController: UITableViewController {
             .subscribe(onNext: { [weak self] list in
                 self?.weatherList = list
                 self?.tableView.reloadData()
-                }, onError: { error in
-                    print("onError: \(error)")
+            }, onError: { error in
+                print("onError: \(error)")
             })
             .disposed(by: disposeBag)
 
@@ -81,6 +81,7 @@ final class WeatherTableViewController: UITableViewController {
         }
         self.present(navigationController, animated: true)
     }
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -113,6 +114,7 @@ final class WeatherTableViewController: UITableViewController {
     }
 
     // MARK: - Navigation
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let storyboardSegue = StoryboardSegue.Main(segue) else { return }
@@ -122,5 +124,4 @@ final class WeatherTableViewController: UITableViewController {
             break
         }
     }
-
 }

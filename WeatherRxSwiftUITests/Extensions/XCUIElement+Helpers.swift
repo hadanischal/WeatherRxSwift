@@ -10,14 +10,14 @@ import XCTest
 
 extension XCUIElement {
     var valueAsString: String {
-            return self.value as? String ?? ""
+        return self.value as? String ?? ""
     }
 
     /**
      SEE: https://stackoverflow.com/questions/32897757/is-there-a-way-to-find-if-the-xcuielement-has-focus-or-not
      */
     var hasKeyboardFocus: Bool {
-            return (value(forKey: "hasKeyboardFocus") as? Bool) ?? false
+        return (value(forKey: "hasKeyboardFocus") as? Bool) ?? false
     }
 
     /**

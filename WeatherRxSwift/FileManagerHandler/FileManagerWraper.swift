@@ -24,7 +24,6 @@ protocol DetailListHandlerProtocol {
 typealias FileManagerHandeller = StartCityListHandlerProtocol & AddCityListHandlerProtocol & DetailListHandlerProtocol
 
 final class FileManagerWraper: FileManagerHandeller {
-
     private let fileManagerHandler: FileManagerHandlerProtocol!
 
     init(withFileManagerHandler fileManagerHandler: FileManagerHandlerProtocol = FileManagerHandler()) {

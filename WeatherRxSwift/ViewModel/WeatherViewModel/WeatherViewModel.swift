@@ -6,14 +6,14 @@
 //  Copyright © 2019 NischalHada. All rights reserved.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 final class WeatherViewModel: WeatherViewModelProtocol {
     private let getWeatherHandler: GetWeatherHandlerProtocol
     private let disposeBag = DisposeBag()
     var weatherList: Observable<WeatherResult>
-    var title: String { return L10n.DashBoard.titleAddCity}
+    var title: String { return L10n.DashBoard.titleAddCity }
 
     private let weatherListSubject = PublishSubject<WeatherResult>()
 
@@ -33,12 +33,13 @@ final class WeatherViewModel: WeatherViewModelProtocol {
                 if let result = result {
                     self?.weatherListSubject.onNext(result)
                 }
-                }, onError: { error in
-                    print("getWeatherInfo onError: \(error)")
+            }, onError: { error in
+                print("getWeatherInfo onError: \(error)")
             })
             .disposed(by: disposeBag)
     }
 }
+
 /*
  //        let search = URLRequest.load(resource: resource)
  //            .observeOn(MainScheduler.instance)

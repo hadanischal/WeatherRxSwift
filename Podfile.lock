@@ -21,6 +21,7 @@ PODS:
   - RxTest (5.1.1):
     - RxSwift (~> 5)
   - SkyFloatingLabelTextField (3.8.0)
+  - SwiftFormat/CLI (0.44.7)
   - SwiftGen (6.1.0)
   - SwiftLint (0.39.2)
   - SwiftRichString (3.7.1)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - RxSwift (~> 5)
   - RxTest (~> 5.0)
   - SkyFloatingLabelTextField (~> 3.8)
+  - SwiftFormat/CLI
   - SwiftGen (~> 6.0)
   - SwiftLint
   - SwiftRichString
@@ -57,6 +59,7 @@ SPEC REPOS:
     - RxSwift
     - RxTest
     - SkyFloatingLabelTextField
+    - SwiftFormat
     - SwiftGen
     - SwiftLint
     - SwiftRichString
@@ -75,10 +78,11 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxTest: 711632d5644dffbeb62c936a521b5b008a1e1faa
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  SwiftFormat: fd97e27b8de5a46c9d1988bf1db1dc92e79f86a3
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   SwiftRichString: 9a6a70b4fe2cf428e38348b5ada5400da74621fd
 
-PODFILE CHECKSUM: b248b5370cb5388f34db0e36104bc5a5a17b2056
+PODFILE CHECKSUM: 3b65dd0b6017de7b83b87a0eaaeb2012565fcfbd
 
 COCOAPODS: 1.9.1

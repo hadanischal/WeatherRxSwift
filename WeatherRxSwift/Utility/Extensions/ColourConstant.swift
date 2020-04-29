@@ -24,14 +24,16 @@ extension UIColor {
     static var addCityViewBackgroundColor: UIColor {
         return UIColor(rgb: 0xEAE8EA)
     }
+
     static var barTintColor: UIColor {
-        return UIColor(rgb: 0x5c9ac1)
+        return UIColor(rgb: 0x5C9AC1)
     }
 
     static var titleTintColor: UIColor {
         return UIColor.white
     }
 }
+
 extension UIColor {
     convenience init(rgb: UInt) {
         self.init(

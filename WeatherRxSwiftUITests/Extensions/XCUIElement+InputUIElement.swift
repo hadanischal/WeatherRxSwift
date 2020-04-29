@@ -25,8 +25,6 @@ class InputUIElement {
 
 extension XCUIElement {
     var VBStackedInputField: InputUIElement {
-        get {
-            return InputUIElement(self)
-        }
+        return InputUIElement(self)
     }
 }

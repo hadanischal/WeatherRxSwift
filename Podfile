@@ -12,7 +12,8 @@ target 'WeatherRxSwift' do
   pod 'SwiftGen', '~> 6.0'
   pod 'PKHUD', '~> 5.0'
   pod 'SwiftRichString'
-  
+  pod 'SwiftFormat/CLI'
+
   pod 'SwiftLint'
   pod 'Kingfisher', '~> 5.13.0'
   pod 'SkyFloatingLabelTextField', '~> 3.8'

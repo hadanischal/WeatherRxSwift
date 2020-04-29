@@ -6,13 +6,13 @@
 //  Copyright © 2019 NischalHada. All rights reserved.
 //
 
-import UIKit
 import Kingfisher
+import UIKit
 
 class CityListTableViewCell: UITableViewCell {
-    @IBOutlet weak var labelCityName: UILabel!
-    @IBOutlet weak var labelCityTemperature: UILabel!
-    @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet var labelCityName: UILabel!
+    @IBOutlet var labelCityTemperature: UILabel!
+    @IBOutlet var weatherImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

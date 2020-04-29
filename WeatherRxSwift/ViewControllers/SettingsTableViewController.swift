@@ -6,18 +6,17 @@
 //  Copyright © 2020 Nischal Hada. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 final class SettingsTableViewController: UITableViewController {
-
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet var cancelButton: UIBarButtonItem!
+    @IBOutlet var doneButton: UIBarButtonItem!
     private var viewModel: SettingsDataSource!
     private var settingsList: [SettingsUnit] = []
     private let disposeBag = DisposeBag()
-    var completionHandlers : (() -> Void)?
+    var completionHandlers: (() -> Void)?
 
     convenience init(withDataSource dataSource: SettingsDataSource) {
         self.init()
@@ -52,7 +51,6 @@ final class SettingsTableViewController: UITableViewController {
     }
 
     private func setupViewModel() {
-
         viewModel.settingsList
             .asDriver(onErrorJustReturn: [])
             .drive(onNext: { [weak self] result in
@@ -123,5 +121,4 @@ final class SettingsTableViewController: UITableViewController {
             cell.accessoryType = .none
         }
     }
-
 }

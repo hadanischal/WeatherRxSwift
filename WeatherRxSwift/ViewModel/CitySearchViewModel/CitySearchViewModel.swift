@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import RxSwift
 import RxCocoa
+import RxSwift
 
 protocol CitySearchDataSource {
     var cityList: Observable<[CityListModel]> { get }
@@ -18,12 +18,11 @@ protocol CitySearchDataSource {
 }
 
 final class CitySearchViewModel: CitySearchDataSource {
-
-    //output
+    // output
     let cityList: Observable<[CityListModel]>
     let isLoading: Observable<Bool>
 
-    //input
+    // input
     private let cityListHandler: AddCityListHandlerProtocol
     private let backgroundScheduler: SchedulerType
 
@@ -53,8 +52,8 @@ final class CitySearchViewModel: CitySearchDataSource {
                 self?.cityListSubject.onNext(cityList)
                 self?.localCityList = cityList
                 self?.loadingSubject.accept(false)
-                }, onError: { error in
-                    print("onError: \(error)")
+            }, onError: { error in
+                print("onError: \(error)")
             }).disposed(by: disposeBag)
     }
 

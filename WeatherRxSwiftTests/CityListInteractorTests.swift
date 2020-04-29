@@ -6,23 +6,22 @@
 //  Copyright © 2020 Nischal Hada. All rights reserved.
 //
 
-import XCTest
-import Quick
-import Nimble
 import Cuckoo
-import RxTest
+import Nimble
+import Quick
 import RxBlocking
 import RxSwift
+import RxTest
 @testable import WeatherRxSwift
+import XCTest
 
 class CityListInteractorTests: QuickSpec {
-    
     override func spec() {
         var testInteractor: CityListInteractor!
         var mockCityListHandler: MockStartCityListHandlerProtocol!
         var mockGetWeatherHandler: MockGetWeatherHandlerProtocol!
         var testScheduler: TestScheduler!
-        
+
         describe("CityListInteractor") {
             beforeEach {
                 testScheduler = TestScheduler(initialClock: 0)
@@ -39,18 +38,17 @@ class CityListInteractorTests: QuickSpec {
                                                     withGetWeather: mockGetWeatherHandler)
             }
             describe("Get city List from local file") {
-                
                 context("When get city list succeed") {
                     beforeEach {
                         stub(mockCityListHandler) { stub in
                             when(stub.getStartCityList()).thenReturn(Observable.just([MocksInfo.cityList]))
                         }
-                        _ =  testInteractor.getCityListFromFile().toBlocking(timeout: 2).materialize()
+                        _ = testInteractor.getCityListFromFile().toBlocking(timeout: 2).materialize()
                     }
                     it("calls to the CityListHandler to get city info") {
                         verify(mockCityListHandler).getStartCityList()
                     }
-                    
+
                     it("emits city list info for updated citylist to the UI") {
                         let testObservable = testInteractor.getCityListFromFile().asObservable()
                         let res = testScheduler.start { testObservable }
@@ -59,18 +57,18 @@ class CityListInteractorTests: QuickSpec {
                         expect(res.events).to(equal(correctResult))
                     }
                 }
-                
+
                 context("When get city list failed with error") {
                     beforeEach {
                         stub(mockCityListHandler) { stub in
                             when(stub.getStartCityList()).thenReturn(Observable.error(NetworkError.unknown))
                         }
-                        _ =  testInteractor.getCityListFromFile().toBlocking(timeout: 2).materialize()
+                        _ = testInteractor.getCityListFromFile().toBlocking(timeout: 2).materialize()
                     }
                     it("calls to the CityListHandler to get city info") {
                         verify(mockCityListHandler).getStartCityList()
                     }
-                    
+
                     it("emits empty city list info for updated citylist to the UI") {
                         let testObservable = testInteractor.getCityListFromFile().asObservable()
                         let res = testScheduler.start { testObservable }
@@ -80,14 +78,14 @@ class CityListInteractorTests: QuickSpec {
                     }
                 }
             }
-            
+
             describe("Get WeatherInfo for cityList") {
                 context("when server request completes successfully") {
                     beforeEach {
                         stub(mockGetWeatherHandler) { stub in
                             when(stub.getWeatherInfo(byCityIDs: any())).thenReturn(Observable.just(MocksInfo.citysWeatherResult))
                         }
-                        _ =  testInteractor.getWeatherInfo(forCityList: [MocksInfo.cityList]).toBlocking(timeout: 2).materialize()
+                        _ = testInteractor.getWeatherInfo(forCityList: [MocksInfo.cityList]).toBlocking(timeout: 2).materialize()
                     }
                     it("calls to the mockGetWeatherHandler to get weather info") {
                         let argumentCaptor = ArgumentCaptor<String>()
@@ -102,13 +100,13 @@ class CityListInteractorTests: QuickSpec {
                         expect(res.events).to(equal(correctResult))
                     }
                 }
-                
+
                 context("when server request fails with error") {
                     beforeEach {
                         stub(mockGetWeatherHandler) { stub in
                             when(stub.getWeatherInfo(byCityIDs: any())).thenReturn(Observable.error(testError1))
                         }
-                        _ =  testInteractor.getWeatherInfo(forCityList: [MocksInfo.cityList]).toBlocking(timeout: 2).materialize()
+                        _ = testInteractor.getWeatherInfo(forCityList: [MocksInfo.cityList]).toBlocking(timeout: 2).materialize()
                     }
                     it("calls to the mockGetWeatherHandler to get weather info") {
                         let argumentCaptor = ArgumentCaptor<String>()
@@ -124,9 +122,8 @@ class CityListInteractorTests: QuickSpec {
                     }
                 }
             }
-            
+
             describe("fetch weather info for selected city from server") {
-                
                 context("when server request succeed ") {
                     beforeEach {
                         stub(mockGetWeatherHandler) { stub in
@@ -140,13 +137,13 @@ class CityListInteractorTests: QuickSpec {
                         expect(argumentCaptor.value).to(equal(MocksInfo.cityList.name))
                     }
                     it("emits weather result to the UI to update list") {
-                        let res = testScheduler.start {  testInteractor.getWeatherInfo(forCity: MocksInfo.cityList).asObservable() }
+                        let res = testScheduler.start { testInteractor.getWeatherInfo(forCity: MocksInfo.cityList).asObservable() }
                         expect(res.events.count).to(equal(2))
                         let correctResult = [Recorded.next(200, MocksInfo.weatherResult), Recorded.completed(200)]
                         expect(res.events).to(equal(correctResult))
                     }
                 }
-                
+
                 context("when get city info request failed ") {
                     beforeEach {
                         stub(mockGetWeatherHandler) { stub in

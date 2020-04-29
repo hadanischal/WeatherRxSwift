@@ -5,12 +5,11 @@
 //  Created by Nischal Hada on 10/8/19.
 //  Copyright © 2019 NischalHada. All rights reserved.
 //
-//pecker:ignore all
+// pecker:ignore all
 
 import UIKit
 
 extension UITableView {
-
     func register<T: UITableViewCell>(_: T.Type) {
         let nib = UINib(nibName: T.nibName, bundle: nil)
         register(nib, forCellReuseIdentifier: T.reuseIdentifier)

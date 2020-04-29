@@ -20,6 +20,6 @@ class InlineErrorUIElement {
 
 extension XCUIElement {
     var inlineError: InlineErrorUIElement {
-            return InlineErrorUIElement(self)
+        return InlineErrorUIElement(self)
     }
 }

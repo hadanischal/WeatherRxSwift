@@ -18,7 +18,6 @@ protocol FileManagerHandlerProtocol {
 }
 
 final class FileManagerHandler: FileManagerHandlerProtocol {
-
     func load<T: Decodable>(resource: FileManagerResource<T>) -> Observable<T> {
         return Observable<T>.create { observer in
 

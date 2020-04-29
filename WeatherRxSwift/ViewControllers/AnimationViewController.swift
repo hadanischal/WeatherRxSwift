@@ -6,10 +6,10 @@
 //  Copyright © 2019 NischalHada. All rights reserved.
 //
 
-import UIKit
-import RxSwift
-import RxCocoa
 import Lottie
+import RxCocoa
+import RxSwift
+import UIKit
 
 final class AnimationViewController: UIViewController {
     var viewModel: AnimationDataSource = AnimationViewModel()
@@ -39,7 +39,6 @@ final class AnimationViewController: UIViewController {
                 }
 
             }).disposed(by: disposeBag)
-
     }
 
     private func lottieAnimation(withAnimation animation: Animation) {
@@ -48,10 +47,9 @@ final class AnimationViewController: UIViewController {
         lottieAnimationHelper.playAnimation()
             .subscribe(onCompleted: { [weak self] in
                 self?.displayRootView()
-                }, onError: { error in
-                    print("onError: \(error)")
+            }, onError: { error in
+                print("onError: \(error)")
             }).disposed(by: disposeBag)
-
     }
 
     private func displayRootView() {
@@ -63,5 +61,4 @@ final class AnimationViewController: UIViewController {
             }
         }
     }
-
 }
